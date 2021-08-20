@@ -4,10 +4,13 @@
   </div>
 </template>
 
-
 <style>
+html,
+body {
+  font-family: "Poppins", sans-serif !important;
+  background-color: #f0f2f5 !important;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
