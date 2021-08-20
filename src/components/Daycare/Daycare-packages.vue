@@ -8,10 +8,10 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container p-3">
       <div class="row">
-        <div class="package-card col d-flex justify-content-evenly">
-          <div class="card p-3">
+        <div class="package-card col d-flex justify-content-evenly m-3">
+          <div class="card p-3 m-4" style="background-color:orange">
             <div class="card-body">
               <h1 class="card-title"><i>Premium</i> 💎</h1>
               <br />
@@ -20,28 +20,26 @@
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <button type="button" class="btn btn-dark">Choose 👉</button>
             </div>
           </div>
         </div>
-        <div class="package-card col d-flex justify-content-evenly">
-          <div class="card p-3">
+        <div class="package-card col d-flex justify-content-evenly m-3">
+          <div class="card p-3 m-4" style="background-color:red">
             <div class="card-body">
-              <h1 class="card-title"><i>Healthy Plus</i> ➕</h1>
+              <h1 class="card-title"><i>HealthyPlus</i>➕</h1>
               <br />
               <br />
               <p class="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <button type="button" class="btn btn-dark">Choose 👉</button>
             </div>
           </div>
         </div>
-        <div class="package-card col d-flex justify-content-evenly">
-          <div class="card p-3">
+        <div class="package-card col d-flex justify-content-evenly m-3">
+          <div class="card p-3 m-4" style="background-color:aqua">
             <div class="card-body">
               <h1 class="card-title"><i>Lite</i> ⚡</h1>
               <br />
@@ -50,8 +48,7 @@
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <button type="button" class="btn btn-dark">Choose 👉</button>
             </div>
           </div>
         </div>
@@ -72,5 +69,14 @@ export default {
 .package-card {
   width: 500px;
   height: 500px;
+  border-style: solid;
+  border-width: 5px;
+  transition: transform 0.2s;
+  border-radius: 10px;
+  border-color: #6504b5;
+  color: white;
+}
+.package-card:hover {
+  transform: scale(1.1);
 }
 </style>
