@@ -7,7 +7,7 @@
           <div class="col-md-2 border border-primary form-card">
             
           </div>
-          <div class="col-md-7 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
+          <div class="col-md-8 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
             <ChSlotForm/>
           </div>
         </div>
