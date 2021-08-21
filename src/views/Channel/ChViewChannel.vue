@@ -1,14 +1,7 @@
 <template>
 <div>
     <Navbar />
-    <div class="container-fluid">
-            <div class="row shadow py-1 mb-3 rounded channel-header">
-                <div class="header mb-3 mt-1 p-2">
-                <h1><b>Channel Your Pet</b></h1>
-                </div>
-            </div>
-        </div>
-        <hr/>
+    <ChHeader title="Channel Your Pet"/>
     <b-container fluid="sm">    
         <b-container class="bv-example-row" >
             <b-row>
@@ -30,21 +23,24 @@
 
 <script>
     import Navbar from "../../components/Navbar/Navbar.vue";
+    import ChHeader from "../../components/Channel/Ch_Header.vue"
     import ChCard from '../../components/Channel/Ch_Card.vue'
 
     export default {
         name: 'ChViewChannel',
         components:{
             Navbar,
+            ChHeader,
             ChCard
+        },
+
+        props:{
+        title: String, 
         },
 
     }
 </script>
 
-<style scoped>
-.channel-header {
-  background-color: #6504b5;
-  color: white;
-}
+<style>
+
 </style>
