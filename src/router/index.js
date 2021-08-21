@@ -20,6 +20,11 @@ const routes = [
         name: "Daycare-packs",
         component: () => import(/* webpackChunkName: "home" */ '../views/Daycare/Daycare-packages.vue')
     },
+    {
+        path: "/daycare-receipt",
+        name: "Daycare-receipt",
+        component: () => import(/* webpackChunkName: "home" */ '../views/Daycare/Daycare-receipt.vue')
+    },
 ]
 
 const router = new VueRouter({
