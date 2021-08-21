@@ -4,10 +4,10 @@
       <ChHeader title="New Channel Slot"/>
         <div>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-4">
             <ChSideBar />
           </div>
-          <div class="col-md-8 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
+          <div class="col-md-6 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
             <ChSlotForm/>
           </div>
         </div>

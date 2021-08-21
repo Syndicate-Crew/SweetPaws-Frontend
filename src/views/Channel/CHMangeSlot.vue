@@ -10,12 +10,12 @@
             <ChManageSlot
 
                 id="1"
-                name="sahan_ishara"
+                name="Sahan Ishara"
                 email="sahan@gmail.com"
                 phone="077485154"
                 date="2021/08/20"
-                time="8.30_12.30"
-                room="no_2"
+                time="8.30 - 12.30"
+                room="no 2"
                 charge="3000" 
             />
           </div>

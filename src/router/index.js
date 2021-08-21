@@ -47,6 +47,32 @@ const routes = [
             name: 'ChSlotManage',
             component: () => import('../views/Channel/CHMangeSlot.vue')
         },
+        {
+            path: '/ch_avachannel',
+            name: 'ChAvaChannel',
+            component: () => import('../views/Channel/ChAvailableChannel.vue')
+        },
+        {
+            path: '/ch_avaslot',
+            name: 'ChAvaSlot',
+            component: () => import('../views/Channel/ChAvailableSlot.vue')
+        },
+        {
+            path: '/ch_report',
+            name: 'ChReport',
+            component: () => import('../views/Channel/ChReport.vue')
+        },
+        {
+            path: '/ch_request',
+            name: 'ChChannelReq',
+            component: () => import('../views/Channel/ChRequest.vue')
+        },
+        {
+            path: '/ch_updateslot',
+            name: 'ChUpdateSlot',
+            component: () => import('../views/Channel/ChUpdateChannel.vue')
+        },
+        
 ]
 
 const router = new VueRouter({

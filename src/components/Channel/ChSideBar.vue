@@ -54,7 +54,7 @@ export default {
 <style>
 
     .Ch-Side-bar{
-    transition: transform 0.2s;
+    transition: transform 0.4s;
     }
 
     .Ch-Side-bar:hover {
