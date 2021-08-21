@@ -20,6 +20,15 @@ const routes = [
         name: "Daycare-packs",
         component: () => import(/* webpackChunkName: "home" */ '../views/Daycare/Daycare-packages.vue')
     },
+
+
+
+    //Channelling Routers
+    {
+        path: '/ch_view',
+        name: 'ChViewChannel',
+        component: () => import(/* webpackChunkName: "home" */ '../views/Channel/ChViewChannel.vue')
+    },
 ]
 
 const router = new VueRouter({
