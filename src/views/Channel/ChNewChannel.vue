@@ -4,8 +4,8 @@
       <ChHeader title="New Channel Slot"/>
         <div>
         <div class="row">
-          <div class="col-md-2 border border-primary form-card">
-            
+          <div class="col-md-2">
+            <ChSideBar />
           </div>
           <div class="col-md-8 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
             <ChSlotForm/>
@@ -19,6 +19,7 @@
 
 import Navbar from "../../components/Navbar/Navbar.vue"
 import ChHeader from "../../components/Channel/Ch_Header.vue"
+import ChSideBar from "../../components/Channel/ChSideBar.vue"
 import ChSlotForm from "../../components/Channel/ChNewChannel.vue"
 
 export default {
@@ -26,6 +27,7 @@ export default {
   components: {
     Navbar,
     ChHeader,
+    ChSideBar,
     ChSlotForm,
   },
 }
