@@ -3,11 +3,11 @@
       <Navbar/>
       <ChHeader title="Update Channel Slot"/>
         <div class="row">
-          <div class="col-md-2">
+          <div class="col-md-4">
             <ChSideBar />
           </div>
-          <div class="col-md-9 center m-5 p-5 shadow-lg">
-           
+          <div class="col-md-6 container center card rounded m-5 p-2 shadow-lg border border-primary form-card">
+           <ChUpdateForm />
           </div>
         </div>
   </div>
@@ -18,6 +18,7 @@
 import Navbar from "../../components/Navbar/Navbar.vue"
 import ChHeader from "../../components/Channel/Ch_Header.vue"
 import ChSideBar from "../../components/Channel/ChSideBar.vue"
+import ChUpdateForm from "../../components/Channel/ChUpdateSlotForm.vue"
 
 export default {
 
@@ -27,6 +28,7 @@ export default {
         Navbar,
         ChHeader,
         ChSideBar,
+        ChUpdateForm,
     },
 
 }

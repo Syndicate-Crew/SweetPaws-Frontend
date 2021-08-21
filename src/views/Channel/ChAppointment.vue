@@ -2,12 +2,12 @@
   <div>
       <Navbar/>
       <ChHeader title="Appointment" />
-      <div class="container">
+      <div>
         <div class="row">
-          <div class="col-md-6 card rounded m-1 p-3 shadow-lg border border-primary form-card">
+          <div class="col-md-6 container card rounded m-4  shadow-lg border border-primary form-card">
             <ChAppointment/>
           </div>
-          <div class="col-md-5 card rounded m-1 p-3 shadow-lg border border-primary form-card">
+          <div class="col-md-5 container card rounded m-4  shadow-lg border border-primary form-card">
             <ChAppSlot 
                         veterinarian="Dr Dilan"
                         day="Tuesday"
