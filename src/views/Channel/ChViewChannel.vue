@@ -1,8 +1,15 @@
 <template>
-    <b-container fluid="sm">
-        <h2 class="font-weight-bold">Channel Your Pet</h2>
+<div>
+    <Navbar />
+    <div class="container-fluid">
+            <div class="row shadow py-1 mb-3 rounded channel-header">
+                <div class="header mb-3 mt-1 p-2">
+                <h1><b>Channel Your Pet</b></h1>
+                </div>
+            </div>
+        </div>
         <hr/>
-
+    <b-container fluid="sm">    
         <b-container class="bv-example-row" >
             <b-row>
                 <b-col><ChCard title="Monday" time="12.30 - 2.30" image="https://images.indianexpress.com/2021/06/Puppy-Pixabay.jpg"/></b-col>
@@ -18,21 +25,26 @@
             </b-row>
         </b-container>  
     </b-container>
+</div>
 </template>
 
 <script>
-
+    import Navbar from "../../components/Navbar/Navbar.vue";
     import ChCard from '../../components/Channel/Ch_Card.vue'
 
     export default {
-        name: 'ChViewChannels',
+        name: 'ChViewChannel',
         components:{
-            ChCard,
+            Navbar,
+            ChCard
         },
 
     }
 </script>
 
-<style>
-
+<style scoped>
+.channel-header {
+  background-color: #6504b5;
+  color: white;
+}
 </style>

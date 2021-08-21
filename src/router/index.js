@@ -25,7 +25,7 @@ const routes = [
 
     //Channelling Routers
     {
-        path: '/ch_view',
+        path: '/ch_usercard',
         name: 'ChViewChannel',
         component: () => import(/* webpackChunkName: "home" */ '../views/Channel/ChViewChannel.vue')
     },
