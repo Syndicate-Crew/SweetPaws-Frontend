@@ -27,7 +27,22 @@ const routes = [
     {
         path: '/ch_usercard',
         name: 'ChViewChannel',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Channel/ChViewChannel.vue')
+        component: () => import('../views/Channel/ChViewChannel.vue')
+    },
+    {
+        path: '/ch_app',
+        name: 'ChApp',
+        component: () => import('../views/Channel/ChAppointment.vue')
+    },
+    {
+        path: '/ch_formslot',
+        name: 'ChNewChannelform',
+        component: () => import('../views/Channel/ChNewChannel.vue')
+    },
+    {
+        path: '/ch_manageslot',
+        name: 'ChSlotManage',
+        component: () => import('../views/Channel/CHMangeSlot.vue')
     },
 ]
 
