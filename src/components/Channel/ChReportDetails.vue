@@ -82,7 +82,7 @@
                 <div class="col-md-3 p-2"></div>
                 <div class="col-md-6 p-2">
                   <button type="button" class="btn btn-primary p-2 m-2">
-                    Downlord Report
+                    Download Report
                   </button>
                 </div>
               </div>

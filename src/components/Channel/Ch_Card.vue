@@ -5,7 +5,7 @@
             v-bind:img-src="image"
             img-alt="Image"
             img-top
-            img-height="200"
+            img-height="150"
             tag="article"
             style="max-width: 20rem; 
             box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.5);"
@@ -17,8 +17,8 @@
             </b-card-text>
             <b-button href="#" 
                     variant="primary" 
-                    v-b-popover.hover="{ variant: 'info',  content: 'Click to Channel' }"
-            >Channel</b-button>
+                    v-b-popover.hover="{ variant: 'info',  content: 'Click to Here' }"
+            >{{btntitle}}</b-button>
         </b-card>
     </div>
 </template>
@@ -31,6 +31,7 @@ export default {
         title: String,
         time: String,
         image: String,
+        btntitle:String,
     }
 }
 </script>
