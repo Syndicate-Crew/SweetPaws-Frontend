@@ -1,122 +1,58 @@
 <template>
-  <div class="daycare-reg">
-    <Navbar />
-    <div class="container-fluid">
-      <div class="row shadow py-1 mb-3 rounded daycare-header">
-        <div class="header mb-3 mt-1 p-2">
-          <h1><b>Pet Registration - Daycare 📝</b></h1>
+  <div class="container-fluid">
+    <h2 class="heading text-start mt-5 p-5 pb-0">Daycare Registration</h2>
+    <div class="row p-5">
+      <div class="col">
+        <div class="pet-image h-75 w-50 mt-4">
+          <div class="position-relative top-50 start-50 translate-middle">
+            <label for="file-upload" class="custom-file-upload">
+              <i class="bi bi-upload"></i>
+            </label>
+            <input id="file-upload" type="file" accept="image/*" multiple />
+          </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="card rounded m-5 p-5 shadow-lg border border-success">
-        <div class="row">
-          <div class="col-md-5 mx-auto m-2">
-            <h3><b>Upload Pet Image Here</b></h3>
-            <br />
-            <button
-              type="button"
-              class="btn btn-outline-primary p-5 pet-button mx-auto"
-            >
-              <h1>📤</h1>
-            </button>
-          </div>
-          <div
-            class="col-md-6 card rounded m-2 p-3 shadow-lg border border-primary form-card"
-          >
-            <form>
-              <div class="row">
-                <div class="col-md-4 p-2">
-                  <label for="exampleInputEmail1" class="form-label"
-                    ><b>Owner Name</b></label
-                  >
-                </div>
-                <div class="col-md-7 p-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
+      <div class="col">
+        <div class="w-75 text-start fw-bolder">
+          <form>
+            <div class="mb-3">
+              <label for="pet-name" class="form-label">Owner</label>
+              <input type="text" class="form-control" id="pet-name" />
+            </div>
+            <div class="mb-3">
+              <label for="pet-name" class="form-label">Pet Name</label>
+              <input type="text" class="form-control" id="pet-name" />
+            </div>
+            <div class="mb-3">
+              <label for="pet-name" class="form-label">Email</label>
+              <input type="email" class="form-control" id="pet-name" />
+            </div>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="pet-name" class="form-label">No of Days</label>
+                <input type="number" class="form-control" id="pet-name" />
               </div>
-              <div class="row">
-                <div class="col-md-4 p-2">
-                  <label for="exampleInputEmail1" class="form-label"
-                    ><b>Pet Name</b></label
-                  >
-                </div>
-                <div class="col-md-7 p-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
+              <div class="col-md-6 mb-3">
+                <label for="pet-type" class="form-label">Type</label>
+                <select class="form-select" id="pet-type">
+                  <option value="" hidden>Select</option>
+                  <option value="">Premium</option>
+                  <option value="">Medi Plus</option>
+                  <option value="">Lite</option>
+                </select>
               </div>
-              <div class="row">
-                <div class="col-md-4 p-2">
-                  <label for="exampleInputEmail1" class="form-label"
-                    ><b>Email</b></label
-                  >
-                </div>
-                <div class="col-md-6 p-2">
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 p-2">
-                  <label for="exampleInputEmail1" class="form-label"
-                    ><b>No. of days</b></label
-                  >
-                </div>
-                <div class="col-md-2 p-2">
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                  />
-                </div>
-                <div class="col-md-6 p-2 mb-5">
-                  <select
-                    class="form-select"
-                    aria-label="Default select example"
-                  >
-                    <option selected>Select the package</option>
-                    <option value="1">Premium</option>
-                    <option value="2">Healthy Plus</option>
-                    <option value="3">Lite</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 p-2">
-                  <label class="form-label"><b>Amount</b></label>
-                </div>
-                <div class="col-md-2 p-2">
-                  <label class="form-label"><b>1000</b></label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3 p-2"></div>
-                <div class="col-md-6 p-2">
-                  <button type="button" class="btn btn-success p-2 m-2">
-                    Submit
-                  </button>
-                  <button type="button" class="btn btn-danger p-2 m-2">
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="mb-3">
+              <label for="pet-age" class="form-label">Total Price 10000</label>
+            </div>
+
+            <div class="mb-3 text-end">
+              <button class="cancel-btn fw-bold me-3">
+                <i class="bi bi-chevron-left"></i>Cancel
+              </button>
+              <input type="submit" class="submit-btn fw-bold" value="Submit" />
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -124,20 +60,70 @@
 </template>
 <script>
 export default {
-  name: "daycare-reg",
+  name: "petmanagementcreate",
 };
 </script>
-<style scoped>
-.pet-button {
-  width: 400px;
-  height: 400px;
-  border-radius: 20px;
+<style>
+html {
+  background-color: #efeef1;
 }
-.form-card {
-  border-radius: 20px !important;
+.container-fluid {
+  width: 90%;
+  top: 155px;
+  background: #ffffff;
+  border-radius: 33px 33px 33px 33px;
 }
-.daycare-header {
-  background-color: #6504b5;
-  color: white;
+.heading {
+  font-family: Poppins;
+  font-weight: bolder;
+  font-size: 35px;
+  color: #171859;
+}
+input,
+textarea,
+select {
+  border: 1px solid #7e7dde !important;
+}
+label {
+  font-weight: bolder;
+}
+.submit-btn {
+  color: #ffff;
+  width: 120px;
+  height: 50px;
+  background: #5f30e2;
+  border-radius: 19px;
+  border: none;
+}
+.submit-btn:hover {
+  color: #5f30e2;
+  background: #ffff;
+  border: 1px solid #5f30e2;
+}
+.cancel-btn {
+  background: none;
+  color: #7e7e7e;
+  border: none;
+  font-size: 18px;
+}
+.cancel-btn i {
+  font-weight: 900;
+}
+.pet-image {
+  border: 1px solid #7e7dde !important;
+  border-radius: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #7e7dde;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-size: 20px;
 }
 </style>
