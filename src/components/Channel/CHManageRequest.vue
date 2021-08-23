@@ -12,7 +12,7 @@
       <table class="table table-success table-striped">
         <thead>
             <tr>
-              <th scope="col">#</th>
+              <!-- <th scope="col">#</th> -->
               <th scope="col">O Name</th>
               <th scope="col">O Email</th>
               <th scope="col">O Phone</th>
@@ -24,15 +24,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">{{id}}</th>
-              <td>{{O_name}}</td>
-              <td>{{O_email}}</td>
-              <td>{{O_phone}}</td>
-              <td>{{P_name}}</td>
-              <td>{{P_age}}</td>
-              <td>{{date}}</td>
-              <td>{{time}}</td>
+            <tr v-for="appointment in Appointments" :key="appointment._id">
+              <!-- <th scope="row">{{id}}</th> -->
+              <td>{{appointment.O_name}}</td>
+              <td>{{appointment.O_email}}</td>
+              <td>{{appointment.O_phone}}</td>
+              <td>{{appointment.P_name}}</td>
+              <td>{{appointment.P_age}}</td>
+              <td>{{appointment.date}}</td>
+              <td>{{appointment.time}}</td>
               <td>
                 <div class="row">
                   <div class="col-6">
@@ -65,16 +65,62 @@ export default {
       ChHeader,
       ChSearch,
     },
-  props:{
-        id: String,
-        O_name: String,
-        O_email: String,
-        O_phone: String,
-        P_name: String,
-        P_age: String,
-        date: String,
-        time: String,
-    }
+    data() {
+        return {
+                Appointments: [
+                  {
+                      id: 'aaa',
+                      O_name: 'aaa',
+                      O_email: 'aaa',
+                      O_phone: 'aaa',
+                      P_name: 'aaa',
+                      P_age: 'aaa',
+                      date: 'aaa',
+                      time: 'aaa',
+                  },
+                  {
+                      id: 'bbb',
+                      O_name: 'bbb',
+                      O_email: 'bbb',
+                      O_phone: 'bbb',
+                      P_name: 'bbb',
+                      P_age: 'bbb',
+                      date: 'bbb',
+                      time: 'bbb',
+                  },
+                  {
+                      id: 'ccc',
+                      O_name: 'ccc',
+                      O_email: 'ccc',
+                      O_phone: 'ccc',
+                      P_name: 'ccc',
+                      P_age: 'ccc',
+                      date: 'ccc',
+                      time: 'ccc',
+                  },
+                  {
+                      id: 'ddd',
+                      O_name: 'ddd',
+                      O_email: 'ddd',
+                      O_phone: 'ddd',
+                      P_name: 'ddd',
+                      P_age: 'ddd',
+                      date: 'ddd',
+                      time: 'ddd', 
+                  },
+                  {
+                      id: 'eee',
+                      O_name: 'eee',
+                      O_email: 'eee',
+                      O_phone: 'eee',
+                      P_name: 'eee',
+                      P_age: 'eee',
+                      date: 'eee',
+                      time: 'eee', 
+                  },
+            ]
+            }
+        },
 
 }
 </script>

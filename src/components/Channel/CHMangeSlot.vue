@@ -12,7 +12,7 @@
       <table class="table table-success table-striped">
         <thead>
             <tr>
-              <th scope="col">#</th>
+              <!-- <th scope="col">#</th> -->
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Phone</th>
@@ -24,15 +24,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">{{id}}</th>
-              <td>{{name}}</td>
-              <td>{{email}}</td>
-              <td>{{phone}}</td>
-              <td>{{date}}</td>
-              <td>{{time}}</td>
-              <td>{{room}}</td>
-              <td>{{charge}}</td>
+            <tr v-for="slot in Slots" :key="slot._id">
+              <!-- <th scope="row">{{id}}</th> -->
+              <td>{{slot.name}}</td>
+              <td>{{slot.email}}</td>
+              <td>{{slot.phone}}</td>
+              <td>{{slot.date}}</td>
+              <td>{{slot.time}}</td>
+              <td>{{slot.room}}</td>
+              <td>{{slot.charge}}</td>
               <td>
                 <div class="row">
                   <div class="col-6">
@@ -65,16 +65,64 @@ export default {
       ChHeader,
       ChSearch,
     },
-  props:{
-        id: String,
-        name: String,
-        email: String,
-        phone: String,
-        date: String,
-        time: String,
-        room: String,
-        charge: String,
-    }
+
+      data() {
+        return {
+                Slots: [
+                  {
+                      id: 'aaa',
+                      name: 'aaa',
+                      email: 'aaa',
+                      phone: 'aaa',
+                      date: 'aaa',
+                      time: 'aaa',
+                      room: 'aaa',
+                      charge: 'aaa',
+                  },
+                  {
+                      id: 'bbb',
+                      name: 'bbb',
+                      email: 'bbb',
+                      phone: 'bbb',
+                      date: 'bbb',
+                      time: 'bbb',
+                      room: 'bbb',
+                      charge: 'bbb',
+                  },
+                  {
+                      id: 'ccc',
+                      name: 'ccc',
+                      email: 'ccc',
+                      phone: 'ccc',
+                      date: 'ccc',
+                      time: 'ccc',
+                      room: 'ccc',
+                      charge: 'ccc',
+                  },
+                  {
+                      id: 'ddd',
+                      name: 'ddd',
+                      email: 'ddd',
+                      phone: 'ddd',
+                      date: 'ddd',
+                      time: 'ddd',
+                      room: 'ddd',
+                      charge: 'ddd', 
+                  },
+                  {
+                      id: 'eee',
+                      name: 'eee',
+                      email: 'eee',
+                      phone: 'eee',
+                      date: 'eee',
+                      time: 'eee',
+                      room: 'eee',
+                      charge: 'eee', 
+                  },
+            ]
+            }
+        },
+
 
 }
 </script>

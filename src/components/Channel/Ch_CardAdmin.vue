@@ -11,8 +11,8 @@
             img-top
             img-height="150"
             tag="article"
-           style="max-width: 15rem; min-width: 15rem; box-shadow: 1px 4px 8px 2px rgba(0,0,0,0.5);"
-            class="mb-3 m-3"      
+           style="max-width: 12rem; min-width: 12rem; box-shadow: 1px 4px 8px 2px rgba(0,0,0,0.5);"
+            class="mb-3 m-2"      
         >
         <hr/>
             <b-card-text>
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-    name: 'ChCard',
+    name: 'ChAdminCard',
 
         data() {
         return {
