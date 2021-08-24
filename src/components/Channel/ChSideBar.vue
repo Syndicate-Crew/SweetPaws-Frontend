@@ -5,39 +5,35 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>Channel Home</b>
-            </a>
+            <router-link :to="{name: 'ChChannelHome'}" class="nav-link link-dark Ch-Side-bar"><b>Channel Home (After)</b></router-link>
             <hr/>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>Channel Request</b>
-            </a>
+            <router-link :to="{name: 'ChChannelReq'}" class="nav-link link-dark Ch-Side-bar"><b>Channel Request</b></router-link>
             <hr/>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>Add Channel</b>
-            </a>
+            <router-link :to="{name: 'ChAvaSlot'}" class="nav-link link-dark Ch-Side-bar"><b>view Channel</b></router-link>
             <hr/>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>View Channel</b>
-            </a>
+            <router-link :to="{name: 'ChNewChannelform'}" class="nav-link link-dark Ch-Side-bar"><b>Add Channel</b></router-link>
             <hr/>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>Available channel</b>
-            </a>
+            <router-link :to="{name: 'ChSlotManage'}" class="nav-link link-dark Ch-Side-bar"><b>Manage Channel</b></router-link>
             <hr/>
         </li>
         <li>
-            <a href="#" class="nav-link link-dark Ch-Side-bar">
-            <b>Channel Report</b>
-            </a>
+            <router-link :to="{name: 'ChReport'}" class="nav-link link-dark Ch-Side-bar"><b>Channel Report</b></router-link>
+            <hr/>
+        </li>
+        <li>
+            <router-link :to="{name: 'ChViewChannel'}" class="nav-link link-dark Ch-Side-bar"><b>User pet card (Remove)</b></router-link>
+            <hr/>
+        </li>
+        <li>
+            <router-link :to="{name: 'ChApp'}" class="nav-link link-dark Ch-Side-bar"><b>User Appointment (Remove)</b></router-link>
             <hr/>
         </li>
         </ul>

@@ -18,10 +18,13 @@
             <b-card-text>
             {{channel.time}}
             </b-card-text>
-            <b-button href="#" 
-                    variant="primary" 
+            <router-link 
+                    :to="{name: 'ChApp'}" 
+                    class="btn btn-primary" 
                     v-b-popover.hover="{ variant: 'info',  content: 'Click to Here' }"
-            >{{btntitle}}</b-button>
+                    >
+                    Channel
+            </router-link>
         </b-card>
         </b-card-group>
     </div>

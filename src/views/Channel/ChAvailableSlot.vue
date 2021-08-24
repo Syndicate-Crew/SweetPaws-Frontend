@@ -10,7 +10,7 @@
             <b-container fluid="sm">    
                 <b-container class="bv-example-row" >
                     <b-row>
-                        <b-col><ChAdminCard btntitle="View"/></b-col>
+                        <b-col><ChAdminCard/></b-col>
                     </b-row>
                 </b-container>  
             </b-container>

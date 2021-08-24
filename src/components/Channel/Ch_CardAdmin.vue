@@ -18,10 +18,13 @@
             <b-card-text>
             {{channel.time}}
             </b-card-text>
-            <b-button href="#" 
-                    variant="primary" 
+            <router-link 
+                    :to="{name: 'ChAvaChannel'}" 
+                    class="btn btn-primary" 
                     v-b-popover.hover="{ variant: 'info',  content: 'Click to Here' }"
-            >{{btntitle}}</b-button>
+                    >
+                    View
+            </router-link>
         </b-card>
         </b-card-group>
     </div>
@@ -78,11 +81,6 @@ export default {
             ]
             }
         },
-
-    props:{
-        btntitle:String,
-    },
-
 }
 </script>
 
