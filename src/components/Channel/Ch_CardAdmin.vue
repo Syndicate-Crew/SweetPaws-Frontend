@@ -2,9 +2,7 @@
     <div>
         <b-card-group>
         <b-card 
-
             v-for="channel in Channels" :key="channel._id"
-
             v-bind:title="channel.title"
             v-bind:img-src="channel.image"
             img-alt="Image"
@@ -19,12 +17,12 @@
             {{channel.time}}
             </b-card-text>
             <router-link 
-                    :to="{name: 'ChAvaChannel'}" 
-                    class="btn btn-primary" 
+                    :to="{name: 'SpecificPage'}" 
+                    class="btn btn-success" 
                     v-b-popover.hover="{ variant: 'info',  content: 'Click to Here' }"
                     >
                     View
-            </router-link>
+                    </router-link>
         </b-card>
         </b-card-group>
     </div>

@@ -8,16 +8,7 @@
             <ChAppointment/>
           </div>
           <div class="col-md-5 container card rounded m-4  shadow-lg border border-primary form-card">
-            <ChAppSlot 
-                        veterinarian="Dr Dilan"
-                        day="Tuesday"
-                        date="2021/08/30"
-                        time="9.30 - 12.30"
-                        room="no 5"
-                        hospitalcharge="Rs 1000"
-                        doctorcharge="Rs 2000"
-                        totalcharge="Rs 3000"
-            />  
+            <ChAppSlot :id= "id" />  
           </div>
         </div>
       </div>
@@ -40,8 +31,18 @@ export default {
     ChAppSlot,
   },
 
+    data() {
+    return {
+        id: {},
+    }
+    },
+    created() {
+        this.id = this.$route.params.id
+    },
+
 }
 </script>
+    
 
 <style>
 

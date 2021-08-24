@@ -20,19 +20,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{veterinarian}}</b>
-                  </label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 p-2">
-                  <label  class="form-label text-start">
-                    <b>Day :</b>
-                  </label>
-                </div>
-                <div class="col-md-6 p-2">
-                   <label  class="form-label text-start">
-                    <b>{{day}}</b>
+                    <b>{{cslot.firstname}} {{ cslot.lastname}}</b>
                   </label>
                 </div>
               </div>
@@ -44,10 +32,22 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{date}}</b>
+                    <b>{{cslot.date}}</b>
                   </label>
                 </div>
               </div>
+              <!-- <div class="row">
+                <div class="col-md-6 p-2">
+                  <label  class="form-label text-start">
+                    <b>Day :</b>
+                  </label>
+                </div>
+                <div class="col-md-6 p-2">
+                   <label  class="form-label text-start">
+                    <b>{{day}}</b>
+                  </label>
+                </div>
+              </div> -->
               <div class="row">
                 <div class="col-md-6 p-2">
                   <label  class="form-label text-start">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{time}}</b>
+                    <b>{{cslot.time}}</b>
                   </label>
                 </div>
               </div>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{room}}</b>
+                    <b>{{cslot.roomno}}</b>
                   </label>
                 </div>
               </div>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{hospitalcharge}}</b>
+                    <b>{{cslot.hcharge}}</b>
                   </label>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start">
-                    <b>{{doctorcharge}}</b>
+                    <b>{{cslot.vcharge}}</b>
                   </label>
                 </div>
               </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-md-6 p-2">
                    <label  class="form-label text-start text-danger">
-                    <b>{{totalcharge}}</b>
+                    <b>{{total}}</b>
                   </label>
                 </div>
               </div>
@@ -125,7 +125,10 @@
 </template>
 
 <script>
+
+import axios from "axios";
 import ChHeader from "../../components/Channel/Ch_Header.vue"
+
 export default {
     name: "ChAppSlot",
 
@@ -133,14 +136,24 @@ export default {
         ChHeader,
     },
       props:{
-        veterinarian: String,
-        day: String,
-        date: String,
-        time: String,
-        room: String,
-        hospitalcharge: String,
-        doctorcharge: String,
-        totalcharge: String,
+        id: String,
+    },
+     data() {
+    return {
+        cslot: {},
+    }
+    },
+    created() {
+        let apiURL = `http://localhost:8050/cslot/${this.id}`;
+        axios.get(apiURL).then((res) => {
+            this.cslot = res.data.cslot;
+            console.log(this.cslot);
+        })
+    },
+    computed:{
+      total: function(){
+        return parseInt(this.cslot.hcharge) + parseInt(this.cslot.vcharge);
+      } 
     }
 
 }
