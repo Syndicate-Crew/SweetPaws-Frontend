@@ -84,12 +84,8 @@
               >
                 <i class="bi bi-chevron-left"></i>View
               </button>
-              <input
-                type="submit"
-                class="submit-btn fw-bold"
-                value="Submit"
-                v-on:click="onViewClick(single.id)"
-              />
+              <input type="submit" class="submit-btn fw-bold" value="Submit" />
+              <!-- v-on:click="onViewClick(single.id)" -->
             </div>
           </form>
         </div>
@@ -119,20 +115,13 @@ export default {
   },
   methods: {
     postData(e) {
-      console.warn(this.posts);
+      // console.warn(this.posts);
       this.axios
-        .post("http://localhost:8090/daycare/create/", this.posts)
+        .post("http://localhost:5000/api/daycare/", this.posts)
         .then((result) => {
-          console.warn(result);
-        });
-      e.preventDefault();
-    },
-    onViewClick(id) {
-      this.axios
-        .get(`http://localhost:8090/daycare/${id}`)
-        // .then((Response) => Response.json())
-        .then((Response) => {
-          this.single = Response.data;
+          //
+          // console.warn(result.data.data._id);
+          this.single = result.data;
           this.$router.push({
             name: "daycare-receipt",
             params: {
@@ -140,7 +129,22 @@ export default {
             },
           });
         });
+      e.preventDefault();
     },
+    // onViewClick(id) {
+    //   this.axios
+    //     .get(`http://localhost:5000/api/daycare/${id}`)
+    //     // .then((Response) => Response.json())
+    //     .then((Response) => {
+    //       this.single = Response.data;
+    //       this.$router.push({
+    //         name: "daycare-receipt",
+    //         params: {
+    //           data: this.single,
+    //         },
+    //       });
+    //     });
+    // },
   },
 };
 </script>

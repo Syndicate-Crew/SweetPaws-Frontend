@@ -1,6 +1,6 @@
 <template>
   <div class="daycare-reg">
-    <div class="container-fluid ">
+    <div class="container-fluid">
       <div class="row shadow py-1 mb-3 rounded daycare-header">
         <div class="header mb-3 mt-1 p-2">
           <h1><b>We have received your booking ! ✔️</b></h1>
@@ -16,7 +16,7 @@
             </div>
             <div class="row">
               <div class="col-md-5 p-4 m-3">
-                <div class="card rounded border border-primary  pet-image">
+                <div class="card rounded border border-primary pet-image">
                   This is image
                 </div>
               </div>
@@ -59,7 +59,16 @@
         </div>
         <div class="col-md-4">
           <div
-            class="container card rounded border border-primary receipt m-2 p-5 options"
+            class="
+              container
+              card
+              rounded
+              border border-primary
+              receipt
+              m-2
+              p-5
+              options
+            "
           >
             <div class="row p-2 d-flex justify-content-center">
               <button type="button" class="w-75 btn btn-primary">
@@ -83,18 +92,35 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
   name: "daycare-receipt",
 
   data() {
     return {
-      profileData: [],
+      profileData: {
+        owner: "",
+        pet: "",
+        email: "",
+        days: "",
+        package: "",
+      },
     };
   },
-  created() {
-    this.profileData = this.$route.params.data;
-    console.warn(this.profileData);
+  async mounted() {
+    const data = this.$route.params.data.data._id;
+    const result = await axios.get("http://localhost:5000/api/daycare/" + data);
+    console.log(result.data.results);
+    this.profileData = result.data.results;
   },
+  // created() {
+  //   this.profileData = this.$route.params.data;
+  //   console.warn(this.profileData);
+  // },
 };
 </script>
 <style scoped>
