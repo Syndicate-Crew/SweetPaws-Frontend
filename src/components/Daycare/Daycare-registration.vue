@@ -14,32 +14,63 @@
       </div>
       <div class="col">
         <div class="w-75 text-start fw-bolder">
-          <form>
+          <form @submit="postData" method="post">
             <div class="mb-3">
               <label for="pet-name" class="form-label">Owner</label>
-              <input type="text" class="form-control" id="pet-name" />
+              <input
+                type="text"
+                name="owner"
+                v-model="posts.owner"
+                class="form-control"
+                id="pet-name"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-name" class="form-label">Pet Name</label>
-              <input type="text" class="form-control" id="pet-name" />
+              <input
+                type="text"
+                name="pet"
+                v-model="posts.pet"
+                class="form-control"
+                id="pet-name"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-name" class="form-label">Email</label>
-              <input type="email" class="form-control" id="pet-name" />
+              <input
+                type="email"
+                name="email"
+                v-model="posts.email"
+                class="form-control"
+                id="pet-name"
+              />
             </div>
             <div class="row">
               <div class="col-md-4 mb-3">
                 <label for="pet-name" class="form-label">No of Days</label>
-                <input type="number" class="form-control" id="pet-name" />
+                <input
+                  type="number"
+                  name="days"
+                  v-model="posts.days"
+                  class="form-control"
+                  id="pet-name"
+                />
               </div>
               <div class="col-md-6 mb-3">
                 <label for="pet-type" class="form-label">Type</label>
-                <select class="form-select" id="pet-type">
+                <!-- <select class="form-select" id="pet-type">
                   <option value="" hidden>Select</option>
                   <option value="">Premium</option>
                   <option value="">Medi Plus</option>
                   <option value="">Lite</option>
-                </select>
+                </select> -->
+                <input
+                  type="text"
+                  name="package"
+                  v-model="posts.package"
+                  class="form-control"
+                  id="pet-name"
+                />
               </div>
             </div>
             <div class="mb-3">
@@ -59,8 +90,35 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
   name: "petmanagementcreate",
+  data() {
+    return {
+      posts: {
+        owner: null,
+        pet: null,
+        email: null,
+        days: null,
+        package: null,
+      },
+    };
+  },
+  methods: {
+    postData(e) {
+      console.warn(this.posts);
+      this.axios
+        .post("http://localhost:8090/daycare/create/", this.posts)
+        .then((result) => {
+          console.warn(result);
+        });
+      e.preventDefault();
+    },
+  },
 };
 </script>
 <style>
