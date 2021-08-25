@@ -41,7 +41,7 @@
                     </button>
                   </div> 
                   <div class="col-6"> 
-                    <button type="button" class="btn btn-sm btn-danger">
+                    <button @click.prevent="deleteSlot(slot._id)" type="button" class="btn btn-sm btn-danger">
                       Delete
                     </button>
                   </div>
@@ -86,6 +86,21 @@ export default {
         //     return parseInt(this.Slots.hcharge) + parseInt(this.Slots.vcharge);
         //   }
         // }
+        methods: {
+            deleteSlot(id){
+                let apiURL =  `http://localhost:8050/cslot/delete/${id}`;
+
+                let indexOfArrayItem = this.Slots.findIndex(i => i._id === id);
+
+                if (window.confirm("Do you really want to delete ?")) {
+                    axios.delete(apiURL).then(() => {
+                        this.Slots.splice(indexOfArrayItem, 1);
+                    }).catch(error => {
+                        console.log(error)
+                    });
+                }
+            }
+        }
 }
 </script>
 
