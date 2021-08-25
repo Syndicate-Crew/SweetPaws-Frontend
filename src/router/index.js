@@ -22,7 +22,7 @@ const routes = [
     },
     {
         path: "/daycare-receipt",
-        name: "Daycare-receipt",
+        name: "daycare-receipt",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-receipt.vue')
     },
 

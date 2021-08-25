@@ -1,6 +1,5 @@
 <template>
   <div class="daycare-reg">
-    <Navbar />
     <div class="container-fluid ">
       <div class="row shadow py-1 mb-3 rounded daycare-header">
         <div class="header mb-3 mt-1 p-2">
@@ -27,25 +26,25 @@
                     <thead>
                       <tr>
                         <th scope="col">Owner Name</th>
-                        <th scope="col">Mr.Nobody</th>
+                        <th scope="col">{{ profileData.owner }}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td><b>PetName</b></td>
-                        <td>Cheems</td>
+                        <td>{{ profileData.pet }}</td>
                       </tr>
                       <tr>
                         <td><b>Email</b></td>
-                        <td>nobody@gmail.com</td>
+                        <td>{{ profileData.email }}</td>
                       </tr>
                       <tr>
                         <td><b>No of days</b></td>
-                        <td>5</td>
+                        <td>{{ profileData.days }}</td>
                       </tr>
                       <tr>
                         <td><b>Package</b></td>
-                        <td>Premium</td>
+                        <td>{{ profileData.package }}</td>
                       </tr>
                       <tr>
                         <td><b>Price</b></td>
@@ -86,6 +85,16 @@
 <script>
 export default {
   name: "daycare-receipt",
+
+  data() {
+    return {
+      profileData: [],
+    };
+  },
+  created() {
+    this.profileData = this.$route.params.data;
+    console.warn(this.profileData);
+  },
 };
 </script>
 <style scoped>

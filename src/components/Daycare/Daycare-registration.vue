@@ -78,10 +78,18 @@
             </div>
 
             <div class="mb-3 text-end">
-              <button class="cancel-btn fw-bold me-3">
-                <i class="bi bi-chevron-left"></i>Cancel
+              <button
+                class="cancel-btn fw-bold me-3"
+                v-on:click="onViewClick(single.id)"
+              >
+                <i class="bi bi-chevron-left"></i>View
               </button>
-              <input type="submit" class="submit-btn fw-bold" value="Submit" />
+              <input
+                type="submit"
+                class="submit-btn fw-bold"
+                value="Submit"
+                v-on:click="onViewClick(single.id)"
+              />
             </div>
           </form>
         </div>
@@ -106,6 +114,7 @@ export default {
         days: null,
         package: null,
       },
+      single: "",
     };
   },
   methods: {
@@ -117,6 +126,20 @@ export default {
           console.warn(result);
         });
       e.preventDefault();
+    },
+    onViewClick(id) {
+      this.axios
+        .get(`http://localhost:8090/daycare/${id}`)
+        // .then((Response) => Response.json())
+        .then((Response) => {
+          this.single = Response.data;
+          this.$router.push({
+            name: "daycare-receipt",
+            params: {
+              data: this.single,
+            },
+          });
+        });
     },
   },
 };
