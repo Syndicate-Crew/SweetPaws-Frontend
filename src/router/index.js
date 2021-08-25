@@ -101,7 +101,7 @@ const routes = [
         component: () => import('../views/Pet/PetManagement-Create')
     },
     {
-        path: "/petmanagement-update",
+        path: "/petmanagement-update/:id",
         name: "petmanagementupdate",
         component: () => import('../views/Pet/PetManagement-Update')
     },

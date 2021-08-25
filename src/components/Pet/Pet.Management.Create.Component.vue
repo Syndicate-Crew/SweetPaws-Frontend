@@ -14,18 +14,29 @@
       </div>
       <div class="col">
         <div class="w-75 text-start fw-bolder">
-          <form>
+          <form @submit="postData" method="post">
             <div class="mb-3">
               <label for="pet-name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="pet-name" required/>
+              <input
+                type="text"
+                class="form-control"
+                id="pet-name"
+                name="name"
+                v-model="pet.name"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-type" class="form-label">Type</label>
-              <select class="form-select" id="pet-type">
-                <option value="" hidden>Select</option>
-                <option value="">Small</option>
-                <option value="">Medium</option>
-                <option value="">Large</option>
+              <select
+                class="form-select"
+                id="pet-type"
+                name="type"
+                v-model="pet.type"
+              >
+                <option value="#" hidden>Select</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
               </select>
             </div>
             <div class="mb-3">
@@ -34,7 +45,9 @@
                 class="form-control"
                 list="pet-breed-list"
                 id="pet-breed"
-                placeholder="Type to search..."
+                placeholder="Type to search"
+                name="breed"
+                v-model="pet.breed"
               />
               <datalist id="pet-breed-list">
                 <option value="Breed One"></option>
@@ -46,7 +59,13 @@
             </div>
             <div class="mb-3">
               <label for="pet-age" class="form-label">Age</label>
-              <input type="text" class="form-control" id="pet-age" required/>
+              <input
+                type="text"
+                class="form-control"
+                id="pet-age"
+                name="age"
+                v-model="pet.age"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-description" class="form-label"
@@ -54,10 +73,11 @@
               >
               <textarea
                 class="form-control"
-                name=""
                 id="pet-description"
                 rows="5"
-                required></textarea>
+                name="description"
+                v-model="pet.description"
+              ></textarea>
             </div>
             <div class="mb-3 text-end">
               <button class="cancel-btn fw-bold me-3">
@@ -72,8 +92,36 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
   name: "petmanagementcreate",
+  data() {
+    return {
+      pet: {
+        name: null,
+        type: null,
+        breed: null,
+        age: null,
+        description: null,
+      },
+    };
+  },
+  methods: {
+    postData(e) {
+      console.log(this.pet);
+      this.axios
+        .post("http://localhost:5000/api/pet/", this.pet)
+        .then((result) => {
+          console.warn(result);
+          this.$router.push('petmanagement-display')
+        });
+      e.preventDefault();
+    },
+  },
 };
 </script>
 <style>
