@@ -17,7 +17,7 @@
           <form>
             <div class="mb-3">
               <label for="pet-name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="pet-name" />
+              <input type="text" class="form-control" id="pet-name" required/>
             </div>
             <div class="mb-3">
               <label for="pet-type" class="form-label">Type</label>
@@ -46,7 +46,7 @@
             </div>
             <div class="mb-3">
               <label for="pet-age" class="form-label">Age</label>
-              <input type="text" class="form-control" id="pet-age" />
+              <input type="text" class="form-control" id="pet-age" required/>
             </div>
             <div class="mb-3">
               <label for="pet-description" class="form-label"
@@ -57,7 +57,7 @@
                 name=""
                 id="pet-description"
                 rows="5"
-              ></textarea>
+                required></textarea>
             </div>
             <div class="mb-3 text-end">
               <button class="cancel-btn fw-bold me-3">

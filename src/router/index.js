@@ -33,7 +33,7 @@ const routes = [
         component: () => import('../views/Channel/ChViewChannel.vue')
     },
     {
-        path: '/ch_appointment',
+        path: '/ch_appointment:id',
         name: 'ChApp',
         component: () => import('../views/Channel/ChAppointment.vue')
     },
