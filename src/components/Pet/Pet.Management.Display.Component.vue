@@ -40,38 +40,28 @@
           <div class="table-display pb-5 pt-2">
             <!-- Detail Row -->
             <div class="container">
-              <div class="row border rounded-pill mb-2">
+              <div
+                class="row border rounded-pill mb-2"
+                v-for="pet in list"
+                v-bind:key="pet.id"
+              >
                 <div class="col-md">
                   <img src="../../assets/Profile.png" alt="" />
                 </div>
                 <div class="col-md-7 text-start">
-                  <p class="mb-0 fw-bold">Name</p>
-                  <small>Breed</small>
+                  <p class="mb-0 fw-bold">{{ pet.name }}</p>
+                  <small>{{ pet.breed }}</small>
                 </div>
                 <div class="col edit-btn">
-                  <i class="bi bi-pencil-square pointer"></i>
+                  <router-link :to="'/petmanagement-update/' + pet._id">
+                    <i class="bi bi-pencil-square pointer"></i>
+                  </router-link>
                 </div>
                 <div class="col delete-btn">
-                  <i class="bi bi-trash-fill pointer"></i>
-                </div>
-              </div>
-            </div>
-            <!-- Detail Row End-->
-            <!-- Detail Row -->
-            <div class="container">
-              <div class="row border rounded-pill mb-2">
-                <div class="col-md">
-                  <img src="../../assets/Profile.png" alt="" />
-                </div>
-                <div class="col-md-7 text-start">
-                  <p class="mb-0 fw-bold">Name</p>
-                  <small>Breed</small>
-                </div>
-                <div class="col edit-btn">
-                  <i class="bi bi-pencil-square pointer"></i>
-                </div>
-                <div class="col delete-btn">
-                  <i class="bi bi-trash-fill pointer"></i>
+                  <i
+                    v-on:click="deletePet(pet._id)"
+                    class="bi bi-trash-fill pointer"
+                  ></i>
                 </div>
               </div>
             </div>
@@ -160,8 +150,31 @@
 </template>
 
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
   name: "petmanagementdisplay",
+  data() {
+    return { list: undefined };
+  },
+  methods: {
+    getPet() {
+      Vue.axios.get("http://localhost:5000/api/pet/").then((res) => {
+        this.list = res.data.results;
+      });
+    },
+    deletePet(_id) {
+      this.axios.delete("http://localhost:5000/api/pet/" + _id).then(() => {
+        this.getPet();
+      });
+    },
+  },
+  mounted() {
+    this.getPet();
+  },
 };
 </script>
 

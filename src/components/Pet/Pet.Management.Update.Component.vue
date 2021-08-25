@@ -17,15 +17,26 @@
           <form>
             <div class="mb-3">
               <label for="pet-name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="pet-name" />
+              <input
+                type="text"
+                class="form-control"
+                id="pet-name"
+                name="name"
+                v-model="pet.name"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-type" class="form-label">Type</label>
-              <select class="form-select" id="pet-type">
-                <option value="" hidden>Select</option>
-                <option value="">Small</option>
-                <option value="">Medium</option>
-                <option value="">Large</option>
+              <select
+                class="form-select"
+                id="pet-type"
+                name="type"
+                v-model="pet.type"
+              >
+                <option value="#" hidden>Select</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
               </select>
             </div>
             <div class="mb-3">
@@ -34,7 +45,9 @@
                 class="form-control"
                 list="pet-breed-list"
                 id="pet-breed"
-                placeholder="Type to search..."
+                placeholder="Type to search"
+                name="breed"
+                v-model="pet.breed"
               />
               <datalist id="pet-breed-list">
                 <option value="Breed One"></option>
@@ -46,7 +59,13 @@
             </div>
             <div class="mb-3">
               <label for="pet-age" class="form-label">Age</label>
-              <input type="text" class="form-control" id="pet-age" />
+              <input
+                type="text"
+                class="form-control"
+                id="pet-age"
+                name="age"
+                v-model="pet.age"
+              />
             </div>
             <div class="mb-3">
               <label for="pet-description" class="form-label"
@@ -54,9 +73,10 @@
               >
               <textarea
                 class="form-control"
-                name=""
                 id="pet-description"
                 rows="5"
+                name="description"
+                v-model="pet.description"
               ></textarea>
             </div>
             <div class="mb-3 text-end">
@@ -72,8 +92,30 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
   name: "petmanagementupdate",
+  data() {
+    return {
+      pet: {
+        name: "",
+        type: "",
+        breed: "",
+        age: "",
+        description: "",
+      },
+    };
+  },
+  async mounted() {
+    const id = this.$route.params.id;
+    const result = await axios.get("http://localhost:5000/api/pet/" + id);
+    console.log(result.data.results);
+    this.pet = result.data.results;
+  },
 };
 </script>
 <style>

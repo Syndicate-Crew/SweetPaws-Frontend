@@ -96,7 +96,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "petmanagementcreate",
+  name: "daycare-registration",
   data() {
     return {
       posts: {
