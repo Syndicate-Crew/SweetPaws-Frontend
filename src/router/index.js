@@ -105,6 +105,23 @@ const routes = [
         name: "petmanagementupdate",
         component: () => import('../views/Pet/PetManagement-Update')
     },
+    
+    // user routes
+    {
+        path: "/UserProfile",
+        name: "UserProfile",
+        component: () => import('../views/User/User.vue')
+    },
+    {
+        path: "/SignIn",
+        name: "SignIn",
+        component: () => import('../views/User/SignInView.vue')
+    },
+    {
+        path: "/SignUp",
+        name: "SignUp",
+        component: () => import('../views/User/SignUpView.vue')
+    }
 ]
 
 const router = new VueRouter({
