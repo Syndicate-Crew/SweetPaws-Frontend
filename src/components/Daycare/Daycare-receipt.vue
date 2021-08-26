@@ -71,17 +71,17 @@
             "
           >
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-primary">
+              <button type="button" class="w-75 btn btn-outline-primary">
                 <h5>Download Receipt 🔻</h5>
               </button>
             </div>
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-warning">
+              <button type="button" class="w-75 btn btn-outline-secondary">
                 <h5>Edit ✏️</h5>
               </button>
             </div>
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-danger">
+              <button type="button" class="w-75 btn btn-outline-danger">
                 <h5>Delete 🗑️</h5>
               </button>
             </div>
@@ -117,10 +117,6 @@ export default {
     console.log(result.data.results);
     this.profileData = result.data.results;
   },
-  // created() {
-  //   this.profileData = this.$route.params.data;
-  //   console.warn(this.profileData);
-  // },
 };
 </script>
 <style scoped>

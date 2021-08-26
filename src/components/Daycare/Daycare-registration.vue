@@ -58,34 +58,27 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="pet-type" class="form-label">Type</label>
-                <!-- <select class="form-select" id="pet-type">
-                  <option value="" hidden>Select</option>
-                  <option value="">Premium</option>
-                  <option value="">Medi Plus</option>
-                  <option value="">Lite</option>
-                </select> -->
-                <input
-                  type="text"
-                  name="package"
+                <select
+                  class="form-select"
+                  id="pet-type"
+                  name="type"
                   v-model="posts.package"
-                  class="form-control"
-                  id="pet-name"
-                />
+                >
+                  <option value="#" hidden>Select</option>
+                  <option value="Small">Premium</option>
+                  <option value="Medium">Medi Plus</option>
+                  <option value="Large">Lite</option>
+                </select>
               </div>
             </div>
-            <div class="mb-3">
-              <label for="pet-age" class="form-label">Total Price 10000</label>
-            </div>
-
             <div class="mb-3 text-end">
               <button
                 class="cancel-btn fw-bold me-3"
                 v-on:click="onViewClick(single.id)"
               >
-                <i class="bi bi-chevron-left"></i>View
+                <i class="bi bi-chevron-left"></i>Cancel
               </button>
               <input type="submit" class="submit-btn fw-bold" value="Submit" />
-              <!-- v-on:click="onViewClick(single.id)" -->
             </div>
           </form>
         </div>
@@ -131,20 +124,6 @@ export default {
         });
       e.preventDefault();
     },
-    // onViewClick(id) {
-    //   this.axios
-    //     .get(`http://localhost:5000/api/daycare/${id}`)
-    //     // .then((Response) => Response.json())
-    //     .then((Response) => {
-    //       this.single = Response.data;
-    //       this.$router.push({
-    //         name: "daycare-receipt",
-    //         params: {
-    //           data: this.single,
-    //         },
-    //       });
-    //     });
-    // },
   },
 };
 </script>
