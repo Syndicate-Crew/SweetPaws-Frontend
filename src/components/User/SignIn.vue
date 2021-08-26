@@ -2,14 +2,33 @@
     <b-container class="form-wrapper">
         <b-col class="form-component-wrapper">
             <div class="form-title">Sign in</div>
-            <b-input id="email" type="email" class="w=100 form-input" autocomplete="false" placeholder="E Mail"></b-input>
-            <b-input id="password" type="password" class="w=100 form-input" autocomplete="false" placeholder="Password"></b-input>
-            <div class="show-password"><span><b-checkbox id="show-password" type="checkbox"></b-checkbox></span>Show Password</div>
-            <div class="forgot-password">Forgot Password</div>
-            <b-row class="form-actions">
-                <button class="form-btn" @click="$event.preventDefault()">Reset</button>
-                <button class="form-btn" @click="$event.preventDefault()" style="background: #5F30E2;color: white">Submit</button>
-            </b-row>
+            <form @submit.prevent="handleSubmit">
+                 <div class="form-group w-100">
+                    <input type="text" v-model="user.email" id="email" name="email" class="form-control w=75 form-input" placeholder="E mail" autocomplete="false" :class="{ 'is-invalid': submitted && $v.user.email.$error }" />
+                    <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
+                        <span v-if="!$v.user.email.required">Email is required</span>
+                        <span v-if="!$v.user.email.email">Email is invalid</span>
+                    </div>
+                </div>
+                <div class="form-group w-100">
+                    <input :type="passwordType" v-model="user.password" id="password" name="password" autocomplete="false" placeholder="Password" class="form-control w=75 form-input" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
+                    <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
+                        <span v-if="!$v.user.password.required">Password is required</span>
+                        <span v-if="!$v.user.password.minLength">Password must be at least 6 characters</span>
+                    </div>
+                </div>
+                <div class="form-group w-100" style="margin: 8px 0px">
+                    <input type="checkbox" @change="togglePasswordType" id="showPassword"/>
+                    <label for="showPassword" style="margin-left: 5px">Show Password</label>
+                </div>
+                <div class="form-group w-100">
+                    <div class="forgot-password">Forgot Password</div>
+                    <b-row class="form-actions">
+                        <button class="form-btn" @click.prevent="reset">Reset</button>
+                        <button class="form-btn" style="background: #5F30E2;color: white">Submit</button>
+                    </b-row>
+                </div>
+            </form>
 
             <div class="form-hint w-100">
                 <center>
@@ -73,7 +92,7 @@
 }
 
 .form-input {
-    margin: 13px 0px 19px 0px;
+    margin: 19px 0px 3px 0px;
     border: 2px solid #7E7DDE;
 }
 
@@ -96,3 +115,54 @@
 }
 
 </style>
+
+<script>
+import { required, email, minLength } from "vuelidate/lib/validators"
+
+export default {
+    name: "SignUp",
+    created() {
+        this.image = "../../assets/person.png"
+    },
+    data() {
+        return {
+            user: {
+                email: "",
+                password: "",
+            },
+            submitted: false,
+            passwordType: "password",
+        };
+    },
+    validations: {
+        user: {
+            email: { required, email },
+            password: { required, minLength: minLength(6) },
+        }
+    },
+    methods: {
+        handleSubmit() {
+            this.submitted = true;
+
+            // stop here if form is invalid
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+                return;
+            }
+
+            alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.user));
+        },
+        togglePasswordType() {
+            if (this.passwordType == "password") {
+                this.passwordType = "text"
+            } else {
+                this.passwordType = "password"
+            }
+        },
+        reset() {
+            this.user.email= ""
+            this.user.password = ""
+        }
+    }
+};
+</script>
