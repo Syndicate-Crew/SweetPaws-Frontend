@@ -143,7 +143,7 @@ export default {
     };
   },
   created() {
-    let apiURL = `http://localhost:8050/cslot/${this.id}`;
+    let apiURL = `http://localhost:5000/cslot/${this.id}`;
     axios.get(apiURL).then((res) => {
       this.cslot = res.data.cslot;
       console.log(this.cslot);

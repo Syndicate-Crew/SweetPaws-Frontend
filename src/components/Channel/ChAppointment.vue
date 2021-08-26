@@ -157,8 +157,18 @@ export default {
   },
   methods: {
     handleSubmitForm() {
-      let apiURL = "http://localhost:8050/capp/create";
+      let apiURL = "http://localhost:5000/capp/create";
       console.log(this.capp);
+
+          this.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your Appointment has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+
       axios
         .post(apiURL, this.capp)
         .then(() => {

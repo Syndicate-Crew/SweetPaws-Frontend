@@ -175,10 +175,19 @@ export default {
   },
   methods: {
     handleSubmitForm() {
-      let apiURL = "http://localhost:8050/cslot/create";
-      console.log(this.cslot);
-      axios
-        .post(apiURL, this.cslot)
+      let apiURL = "http://localhost:5000/cslot/create";
+
+      this.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your Appointment has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+
+
+      axios.post(apiURL, this.cslot)
         .then(() => {
           this.$router.push("/ch_manageslot");
           this.cslot = {

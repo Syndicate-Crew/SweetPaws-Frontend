@@ -77,7 +77,7 @@ export default {
     };
   },
   created() {
-    let apiURL = "http://localhost:8050/cslot/";
+    let apiURL = "http://localhost:5000/cslot/";
     axios
       .get(apiURL)
       .then((res) => {
@@ -94,20 +94,36 @@ export default {
   // }
   methods: {
     deleteSlot(id) {
-      let apiURL = `http://localhost:8050/cslot/delete/${id}`;
+      let apiURL = `http://localhost:5000/cslot/delete/${id}`;
 
       let indexOfArrayItem = this.Slots.findIndex((i) => i._id === id);
 
-      if (window.confirm("Do you really want to delete ?")) {
-        axios
-          .delete(apiURL)
-          .then(() => {
-            this.Slots.splice(indexOfArrayItem, 1);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+                    this.$swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+
+                      axios.delete(apiURL)
+                      .then(() => {
+                        this.Slots.splice(indexOfArrayItem, 1);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+
+                      this.$swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                    }
+                  })
     },
   },
 };

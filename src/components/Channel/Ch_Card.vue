@@ -42,7 +42,7 @@ export default {
   },
 
   created() {
-    let apiURL = "http://localhost:8050/cslot/";
+    let apiURL = "http://localhost:5000/cslot/";
     axios
       .get(apiURL)
       .then((res) => {

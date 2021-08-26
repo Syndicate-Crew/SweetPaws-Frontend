@@ -11,7 +11,7 @@
           <router-link
             :to="{ name: 'ChChannelHome' }"
             class="nav-link link-dark Ch-Side-bar"
-            ><b>Channel Home (After)</b></router-link
+            ><i class="bi bi-pencil-square pointer" width="32" height="32"></i><b>Channel Home (After)</b></router-link
           >
           <hr />
         </li>
