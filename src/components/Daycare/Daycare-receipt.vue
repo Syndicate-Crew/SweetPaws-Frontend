@@ -23,13 +23,11 @@
               <div class="col-md-6 m-3 p-3">
                 <div class="container">
                   <table class="table table-striped table-hover m-3">
-                    <thead>
-                      <tr>
-                        <th scope="col">Owner Name</th>
-                        <th scope="col">{{ profileData.owner }}</th>
-                      </tr>
-                    </thead>
                     <tbody>
+                      <tr>
+                        <td><b>Owner Name</b></td>
+                        <td>{{ profileData.owner }}</td>
+                      </tr>
                       <tr>
                         <td><b>PetName</b></td>
                         <td>{{ profileData.pet }}</td>
