@@ -1,6 +1,5 @@
 <template>
   <div>
-    <HeaderComponent />
     <h1>Home Page</h1>
     <a href="/daycare-reg">Day Care Registration</a>
     <br />
@@ -36,9 +35,7 @@
 </template>
 
 <script>
-import HeaderComponent from "../../components/Common/Header.Component.vue";
 export default {
-  components: { HeaderComponent },
   name: "Home",
 };
 </script>
