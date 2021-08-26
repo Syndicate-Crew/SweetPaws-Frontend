@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <ChHeader title="New Channel Slot" />
     <div>
       <div class="row">
@@ -18,7 +17,6 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChSideBar from "../../components/Channel/ChSideBar.vue";
 import ChSlotForm from "../../components/Channel/ChNewChannel.vue";
@@ -26,7 +24,6 @@ import ChSlotForm from "../../components/Channel/ChNewChannel.vue";
 export default {
   name: "ChNewChannelform",
   components: {
-    Navbar,
     ChHeader,
     ChSideBar,
     ChSlotForm,

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <ChHeader title="Appointment" />
     <div>
       <div class="row">
@@ -20,7 +19,6 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChAppointment from "../../components/Channel/ChAppointment.vue";
 import ChAppSlot from "../../components/Channel/ChAppSlot.vue";
@@ -28,7 +26,6 @@ import ChAppSlot from "../../components/Channel/ChAppSlot.vue";
 export default {
   name: "ChApp",
   components: {
-    Navbar,
     ChHeader,
     ChAppointment,
     ChAppSlot,

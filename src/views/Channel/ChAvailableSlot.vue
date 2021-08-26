@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <ChHeader title="Available Slots" />
     <div class="row">
       <div class="col-md-2">
@@ -20,7 +19,6 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChSideBar from "../../components/Channel/ChSideBar.vue";
 import ChAdminCard from "../../components/Channel/Ch_CardAdmin.vue";
@@ -29,7 +27,6 @@ export default {
   name: "ChAvaSlot",
 
   components: {
-    Navbar,
     ChHeader,
     ChSideBar,
     ChAdminCard,

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid pet-management-create-container">
     <h2 class="heading text-start mt-5 p-5 pb-0">Pet Management - Create</h2>
     <div class="row p-5">
       <div class="col">
@@ -117,7 +117,7 @@ export default {
         .post("http://localhost:5000/api/pet/", this.pet)
         .then((result) => {
           console.warn(result);
-          this.$router.push('petmanagement-display')
+          this.$router.push("petmanagement-display");
         });
       e.preventDefault();
     },
@@ -128,7 +128,7 @@ export default {
 html {
   background-color: #efeef1;
 }
-.container-fluid {
+.pet-management-create-container {
   width: 90%;
   top: 155px;
   background: #ffffff;

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <ChHeader title="Channel Your Pet" />
     <b-container fluid="sm">
       <b-container class="bv-example-row">
@@ -13,14 +12,13 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
+
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChCard from "../../components/Channel/Ch_Card.vue";
 
 export default {
   name: "ChViewChannel",
   components: {
-    Navbar,
     ChHeader,
     ChCard,
   },

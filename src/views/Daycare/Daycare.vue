@@ -1,16 +1,13 @@
 <template>
   <div>
-    <Navbar />
     <Daycare />
   </div>
 </template>
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
 import Daycare from "../../components/Daycare/Daycare-registration.vue";
 export default {
   name: "Daycare-reg",
   components: {
-    Navbar,
     Daycare,
   },
 };

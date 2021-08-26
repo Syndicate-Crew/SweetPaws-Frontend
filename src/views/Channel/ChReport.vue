@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Navbar />
     <ChHeader title="Channel Report" />
     <div class="row">
       <div class="col-md-2">
@@ -28,7 +27,6 @@
 </template>
 
 <script>
-import Navbar from "../../components/Navbar/Navbar.vue";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChSideBar from "../../components/Channel/ChSideBar.vue";
 import ChReportForm from "../../components/Channel/ChReportForm.vue";
@@ -38,7 +36,6 @@ export default {
   name: "ChReport",
 
   components: {
-    Navbar,
     ChHeader,
     ChSideBar,
     ChReportForm,
