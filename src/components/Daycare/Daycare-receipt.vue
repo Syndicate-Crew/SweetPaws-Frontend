@@ -69,6 +69,9 @@
             "
           >
             <div class="row p-2 d-flex justify-content-center">
+              <h2>- Options ⚙️ -</h2>
+            </div>
+            <div class="row p-2 d-flex justify-content-center">
               <button type="button" class="w-75 btn btn-outline-primary">
                 <h5>Download Receipt 🔻</h5>
               </button>
