@@ -1,6 +1,5 @@
 <template>
   <div class="daycare-reg">
-    <Navbar />
     <div class="container-fluid ">
       <div class="row shadow py-1 mb-3 rounded daycare-header">
         <div class="header mb-3 mt-1 p-2">
@@ -11,44 +10,58 @@
     <div class="container p-3">
       <div class="row">
         <div class="package-card col d-flex justify-content-evenly m-3">
-          <div class="card p-3 m-4" style="background-color:orange">
+          <div class="card p-3 m-4" style="background-color:#483C46">
             <div class="card-body">
               <h1 class="card-title"><i>Premium</i> 💎</h1>
               <br />
               <br />
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button type="button" class="btn btn-dark">Choose 👉</button>
+              <ul class="card-text m-3">
+                <li>5 hours group play</li>
+                <li>Healthy pet guaranteed</li>
+                <li>Activity training</li>
+                <li>Free clinic session</li>
+                <li>1 swimming session daily</li>
+                <li>Meals : Meats and pedigree</li>
+              </ul>
+              <a href="/daycare-reg">
+                <button type="button" class="btn btn-dark">Choose 👉</button>
+              </a>
             </div>
           </div>
         </div>
         <div class="package-card col d-flex justify-content-evenly m-3">
-          <div class="card p-3 m-4" style="background-color:red">
+          <div class="card p-3 m-4" style="background-color:#F4743B">
             <div class="card-body">
-              <h1 class="card-title"><i>HealthyPlus</i>➕</h1>
+              <h1 class="card-title"><i>Healthy</i> ➕</h1>
               <br />
               <br />
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button type="button" class="btn btn-dark">Choose 👉</button>
+              <ul class="card-text m-3">
+                <li>1 hours group play</li>
+                <li>Healthy pet guaranteed</li>
+                <li>Wash session daily</li>
+                <li>Clinic charges 50%</li>
+                <li>Meals : Pedigree</li>
+              </ul>
+              <a href="/daycare-reg">
+                <button type="button" class="btn btn-dark">Choose 👉</button>
+              </a>
             </div>
           </div>
         </div>
         <div class="package-card col d-flex justify-content-evenly m-3">
-          <div class="card p-3 m-4" style="background-color:aqua">
+          <div class="card p-3 m-4" style="background-color:#3C6E71">
             <div class="card-body">
               <h1 class="card-title"><i>Lite</i> ⚡</h1>
               <br />
               <br />
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <button type="button" class="btn btn-dark">Choose 👉</button>
+              <ul class="card-text m-3">
+                <li>Healthy pet guaranteed</li>
+                <li>Wash session daily</li>
+                <li>Meals : Pedigree</li>
+              </ul>
+              <a href="/daycare-reg">
+                <button type="button" class="btn btn-dark">Choose 👉</button>
+              </a>
             </div>
           </div>
         </div>
