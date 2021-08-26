@@ -1,17 +1,17 @@
 <template>
   <div>
-    <HeaderComponent/>
+    <Header/>
     <DaycarePacks />
   </div>
 </template>
 <script>
 import DaycarePacks from "../../components/Daycare/Daycare-packages.vue";
-import HeaderComponent from '../../components/Header/Header.Component.vue';
+import Header from '../../components/Header/Header.Component.vue';
 export default {
   name: "Daycare-reg",
   components: {
     DaycarePacks,
-    HeaderComponent,
+    Header,
   },
 };
 </script>
