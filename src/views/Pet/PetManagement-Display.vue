@@ -1,16 +1,21 @@
 <template>
-    <div class="petmanagement">
-        <pet-management-display-component/>
-    </div>
-    
+  <div class="petmanagement">
+    <HeaderComponent />
+    <PetManagementDisplayComponent />
+    <FooterComponent/>
+  </div>
 </template>
 
 <script>
-import PetManagementDisplayComponent from '../../components/Pet/Pet.Management.Display.Component.vue';
+import FooterComponent from '../../components/Footer/Footer.Component.vue';
+import HeaderComponent from "../../components/Header/Header.Component.vue";
+import PetManagementDisplayComponent from "../../components/Pet/Pet.Management.Display.Component.vue";
 export default {
-	name: "petmanagement",
-    components:{
-        PetManagementDisplayComponent
-    }
+  name: "petmanagement",
+  components: {
+    PetManagementDisplayComponent,
+    HeaderComponent,
+    FooterComponent,
+  },
 };
 </script>

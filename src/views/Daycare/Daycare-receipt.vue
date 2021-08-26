@@ -1,17 +1,20 @@
 <template>
   <div>
-    <Header/>
+    <HeaderComponent />
     <DaycareReceipt />
+    <FooterComponent />
   </div>
 </template>
 <script>
 import DaycareReceipt from "../../components/Daycare/Daycare-receipt.vue";
-import Header from "../../components/Header/Header.Component.vue"
+import FooterComponent from "../../components/Footer/Footer.Component.vue";
+import HeaderComponent from "../../components/Header/Header.Component.vue";
 export default {
   name: "Daycare-receipt",
   components: {
     DaycareReceipt,
-    Header
+    HeaderComponent,
+    FooterComponent,
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-registration">
     <h2 class="heading text-start mt-5 p-5 pb-0">Daycare Registration</h2>
     <div class="row p-5">
       <div class="col">
@@ -131,7 +131,7 @@ export default {
 html {
   background-color: #efeef1;
 }
-.container-fluid {
+.container-registration {
   width: 90%;
   top: 155px;
   background: #ffffff;

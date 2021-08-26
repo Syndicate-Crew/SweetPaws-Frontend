@@ -210,6 +210,9 @@ html {
   background-color: #6504b5;
   color: #ffff;
 }
+.table-display .row:hover > .edit-btn i{
+  color: white;
+}
 .table-display i {
   text-align: center;
   font-size: 25px;

@@ -5,20 +5,20 @@
         <a href="/"><h2 class="text-start ms-5 logo-text">Sweet Paws</h2></a>
       </div>
       <div class="col-2 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>Pets</p></a>
+        <a href="/petmanagement-display"><p>PETS</p></a>
       </div>
       <div class="col-2 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>Day Care</p></a>
+        <a href="/daycare-packs"><p>DAY CARE</p></a>
       </div>
       <div class="col-2 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>Veterinarian</p></a>
+        <a href="/ch_appointment"><p>VETERINARIAN</p></a>
       </div>
       <div class="col-1 mt-3 nav-item"></div>
       <div class="col-1 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>Sign Up</p></a>
+        <a href="/SignUp"><p>SIGN UP</p></a>
       </div>
       <div class="col-1 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>Sign In</p></a>
+        <a href="/SignIn"><p>SIGN IN</p></a>
       </div>
     </div>
     <div class="row"></div>
@@ -38,9 +38,10 @@ export default {
   font-size: 40px;
   line-height: 56px;
   color: #6504b5;
+  overflow: hidden;
 }
 .header-container {
-  border-bottom: 2px solid#6504b5;
+  border-bottom: 5px solid#6504b5;
   margin-top: -60px;
   margin-bottom: 30px;
 }
@@ -48,6 +49,5 @@ export default {
 a {
   color: #2c3e50;
   text-decoration: none;
-  text-transform: uppercase;
 }
 </style>
