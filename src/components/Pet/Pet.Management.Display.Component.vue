@@ -42,24 +42,24 @@
             <div class="container">
               <div
                 class="row border rounded-pill mb-2"
-                v-for="pet in list"
-                v-bind:key="pet.id"
+                v-for="dog in list"
+                v-bind:key="dog.id"
               >
                 <div class="col-md">
                   <img src="../../assets/Profile.png" alt="" />
                 </div>
                 <div class="col-md-7 text-start">
-                  <p class="mb-0 fw-bold">{{ pet.name }}</p>
-                  <small>{{ pet.breed }}</small>
+                  <p class="mb-0 fw-bold">{{ dog.name }}</p>
+                  <small>{{ dog.breed }}</small>
                 </div>
                 <div class="col edit-btn">
-                  <router-link :to="'/petmanagement-update/' + pet._id">
+                  <router-link :to="'/petmanagement-update/' + dog._id">
                     <i class="bi bi-pencil-square pointer"></i>
                   </router-link>
                 </div>
                 <div class="col delete-btn">
                   <i
-                    v-on:click="deletePet(pet._id)"
+                    v-on:click="deleteDog(dog._id)"
                     class="bi bi-trash-fill pointer"
                   ></i>
                 </div>
@@ -102,42 +102,31 @@
               </div>
             </div>
           </div>
-          <!-- Cat Detail Display -->
           <div class="table-display pb-5 pt-2">
             <!-- Detail Row -->
             <div class="container">
-              <div class="row border rounded-pill mb-2">
+              <div
+                class="row border rounded-pill mb-2"
+                v-for="cat in list"
+                v-bind:key="cat.id"
+              >
                 <div class="col-md">
                   <img src="../../assets/Profile.png" alt="" />
                 </div>
                 <div class="col-md-7 text-start">
-                  <p class="mb-0 fw-bold">Name</p>
-                  <small>Breed</small>
+                  <p class="mb-0 fw-bold">{{ cat.name }}</p>
+                  <small>{{ cat.breed }}</small>
                 </div>
                 <div class="col edit-btn">
-                  <i class="bi bi-pencil-square pointer"></i>
+                  <router-link :to="'/petmanagement-update/' + cat._id">
+                    <i class="bi bi-pencil-square pointer"></i>
+                  </router-link>
                 </div>
                 <div class="col delete-btn">
-                  <i class="bi bi-trash-fill pointer"></i>
-                </div>
-              </div>
-            </div>
-            <!-- Detail Row End-->
-            <!-- Detail Row -->
-            <div class="container">
-              <div class="row border rounded-pill mb-2">
-                <div class="col-md">
-                  <img src="../../assets/Profile.png" alt="" />
-                </div>
-                <div class="col-md-7 text-start">
-                  <p class="mb-0 fw-bold">Name</p>
-                  <small>Breed</small>
-                </div>
-                <div class="col edit-btn">
-                  <i class="bi bi-pencil-square pointer"></i>
-                </div>
-                <div class="col delete-btn">
-                  <i class="bi bi-trash-fill pointer"></i>
+                  <i
+                    v-on:click="deleteCat(cat._id)"
+                    class="bi bi-trash-fill pointer"
+                  ></i>
                 </div>
               </div>
             </div>
@@ -171,9 +160,31 @@ export default {
         this.getPet();
       });
     },
+    // Dog Methods
+    getDog() {
+      Vue.axios.get("http://localhost:5000/api/dog/").then((res) => {
+        this.list = res.data.results;
+      });
+    },
+    deleteDog(_id) {
+      this.axios.delete("http://localhost:5000/api/dog/" + _id).then(() => {
+        this.getDog();
+      });
+    },
+    // Cat Methods
+    getCat() {
+      Vue.axios.get("http://localhost:5000/api/cat/").then((res) => {
+        this.list = res.data.results;
+      });
+    },
+    deleteCat(_id) {
+      this.axios.delete("http://localhost:5000/api/cat/" + _id).then(() => {
+        this.getCat();
+      });
+    },
   },
   mounted() {
-    this.getPet();
+    this.getDog();
   },
 };
 </script>
@@ -210,7 +221,7 @@ html {
   background-color: #6504b5;
   color: #ffff;
 }
-.table-display .row:hover > .edit-btn i{
+.table-display .row:hover > .edit-btn i {
   color: white;
 }
 .table-display i {

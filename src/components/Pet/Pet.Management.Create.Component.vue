@@ -50,11 +50,15 @@
                 v-model="pet.breed"
               />
               <datalist id="pet-breed-list">
-                <option value="Breed One"></option>
-                <option value="Breed Two"></option>
-                <option value="Breed Three"></option>
-                <option value="Breed Four"></option>
-                <option value="Breed Five"></option>
+                <option value="Labrador Retriever"></option>
+                <option value="German Shepherd"></option>
+                <option value="Golden Retriever"></option>
+                <option value="French Bulldog"></option>
+                <option value="Bulldogs"></option>
+                <option value="Poodles"></option>
+                <option value="Beagles"></option>
+                <option value="Rottweilers"></option>
+                <option value="Corgi"></option>
               </datalist>
             </div>
             <div class="mb-3">

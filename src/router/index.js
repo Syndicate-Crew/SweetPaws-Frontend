@@ -105,6 +105,11 @@ const routes = [
         name: "petmanagementupdate",
         component: () => import('../views/Pet/PetManagement-Update')
     },
+    {
+        path: "/pet-display",
+        name: "petdisplay",
+        component: () => import('../views/Pet/Pet-Display')
+    },
     
     // user routes
     {

@@ -31,6 +31,8 @@
     <br />
     <a href="/petmanagement-update">Pet Management Update</a>
     <br />
+    <a href="/pet-display">Pet Display</a>
+    <br />
   </div>
 </template>
 
