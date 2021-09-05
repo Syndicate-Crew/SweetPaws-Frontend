@@ -25,6 +25,11 @@ const routes = [
         name: "daycare-receipt",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-receipt.vue')
     },
+    {
+        path: "/daycare-details",
+        name: "daycare-details",
+        component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-details.vue')
+    },
 
     //Channelling Routers
     {
@@ -110,7 +115,7 @@ const routes = [
         name: "petdisplay",
         component: () => import('../views/Pet/Pet-Display')
     },
-    
+
     // user routes
     {
         path: "/UserProfile",

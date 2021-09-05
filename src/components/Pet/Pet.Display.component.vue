@@ -109,8 +109,7 @@
       <div class="col">
         <div class="row row-cols-5">
           <!-- Display Card -->
-          <div class="col mb-5" v-for="pet in list"
-                v-bind:key="pet.id">
+          <div class="col mb-5" v-for="pet in list" v-bind:key="pet.id">
             <div class="card">
               <img src="../../assets/dog.jpeg" alt="" class="card-image" />
               <div class="card-body">
@@ -140,6 +139,7 @@ export default {
     getPet() {
       Vue.axios.get("http://localhost:5000/api/pet/").then((res) => {
         this.list = res.data.results;
+        console.log(this.list);
       });
     },
     deletePet(_id) {
@@ -148,7 +148,7 @@ export default {
       });
     },
   },
-    mounted() {
+  mounted() {
     this.getPet();
   },
 };
