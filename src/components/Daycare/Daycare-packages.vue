@@ -32,7 +32,7 @@
         <div class="package-card col d-flex justify-content-evenly m-3">
           <div class="card p-3 m-4" style="background-color:#F4743B">
             <div class="card-body">
-              <h1 class="card-title"><i>Healthy</i> ➕</h1>
+              <h1 class="card-title"><i>Medi Plus</i> ➕</h1>
               <br />
               <br />
               <ul class="card-text m-3">

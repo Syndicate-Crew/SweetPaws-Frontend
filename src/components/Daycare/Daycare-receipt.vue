@@ -44,10 +44,6 @@
                         <td><b>Package</b></td>
                         <td>{{ profileData.package }}</td>
                       </tr>
-                      <tr>
-                        <td><b>Price</b></td>
-                        <td>5000</td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>

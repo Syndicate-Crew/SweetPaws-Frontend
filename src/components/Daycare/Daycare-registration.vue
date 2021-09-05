@@ -23,6 +23,7 @@
                 v-model="posts.owner"
                 class="form-control"
                 id="pet-name"
+                required
               />
             </div>
             <div class="mb-3">
@@ -33,6 +34,7 @@
                 v-model="posts.pet"
                 class="form-control"
                 id="pet-name"
+                required
               />
             </div>
             <div class="mb-3">
@@ -43,6 +45,7 @@
                 v-model="posts.email"
                 class="form-control"
                 id="pet-name"
+                required
               />
             </div>
             <div class="row">
@@ -54,6 +57,7 @@
                   v-model="posts.days"
                   class="form-control"
                   id="pet-name"
+                  required
                 />
               </div>
               <div class="col-md-6 mb-3">
@@ -63,11 +67,12 @@
                   id="pet-type"
                   name="type"
                   v-model="posts.package"
+                  required
                 >
                   <option value="#" hidden>Select</option>
-                  <option value="Small">Premium</option>
-                  <option value="Medium">Medi Plus</option>
-                  <option value="Large">Lite</option>
+                  <option value="Premium">Premium package</option>
+                  <option value="Medi Plus">Medi Plus package</option>
+                  <option value="Lite">Lite package</option>
                 </select>
               </div>
             </div>
