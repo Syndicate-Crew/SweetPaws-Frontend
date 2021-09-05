@@ -1,5 +1,6 @@
 <template>
   <div>
+    <pageheader/>
     <ChHeader title="Appointment" />
     <div>
       <div class="row">
@@ -15,13 +16,19 @@
         </div>
       </div>
     </div>
+    <pagefooter/>
   </div>
 </template>
 
 <script>
+
+import pageheader from"../../components/Header/Header.Component.vue";
+import pagefooter from "../../components/Footer/Footer.Component.vue"
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChAppointment from "../../components/Channel/ChAppointment.vue";
 import ChAppSlot from "../../components/Channel/ChAppSlot.vue";
+
+
 
 export default {
   name: "ChApp",
@@ -29,6 +36,8 @@ export default {
     ChHeader,
     ChAppointment,
     ChAppSlot,
+    pageheader,
+    pagefooter,
   },
 
   data() {

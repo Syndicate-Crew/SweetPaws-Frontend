@@ -1,6 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-12">
+    <div class="row">
+    <div class="col-9">
       <input
         type="text"
         class="form-control"
@@ -8,6 +9,12 @@
         placeholder="SEARCH"
         required
       />
+    </div>
+    <div class="col p-0">
+          <button type="button" class="btn ch_search_btn">
+              <i class="bi bi-search"></i>
+          </button>
+    </div>
     </div>
   </div>
 </template>
@@ -18,4 +25,12 @@ export default {
 };
 </script>
 
-<style></style>
+
+
+<style>
+.ch_search_btn {
+  background-color: #6504b5;
+  color: #ffff;
+}
+
+</style>

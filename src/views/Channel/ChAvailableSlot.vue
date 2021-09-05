@@ -1,5 +1,6 @@
 <template>
   <div>
+    <pageheader/>
     <ChHeader title="Available Slots" />
     <div class="row">
       <div class="col-md-2">
@@ -15,10 +16,13 @@
         </b-container>
       </div>
     </div>
+    <pagefooter/>
   </div>
 </template>
 
 <script>
+import pageheader from"../../components/Header/Header.Component.vue";
+import pagefooter from "../../components/Footer/Footer.Component.vue"
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChSideBar from "../../components/Channel/ChSideBar.vue";
 import ChAdminCard from "../../components/Channel/Ch_CardAdmin.vue";
@@ -30,6 +34,8 @@ export default {
     ChHeader,
     ChSideBar,
     ChAdminCard,
+    pageheader,
+    pagefooter,
   },
 };
 </script>

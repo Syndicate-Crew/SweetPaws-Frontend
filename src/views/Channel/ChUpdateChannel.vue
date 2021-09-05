@@ -1,5 +1,6 @@
 <template>
   <div>
+    <pageheader/>
     <ChHeader title="Update Channel Slot" />
     <div class="row">
       <div class="col-md-4">
@@ -11,10 +12,13 @@
         <ChUpdateForm />
       </div>
     </div>
+    <pagefooter/>
   </div>
 </template>
 
 <script>
+import pageheader from"../../components/Header/Header.Component.vue";
+import pagefooter from "../../components/Footer/Footer.Component.vue"
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 import ChSideBar from "../../components/Channel/ChSideBar.vue";
 import ChUpdateForm from "../../components/Channel/ChUpdateSlotForm.vue";
@@ -26,6 +30,8 @@ export default {
     ChHeader,
     ChSideBar,
     ChUpdateForm,
+    pageheader,
+    pagefooter,
   },
 };
 </script>

@@ -36,9 +36,13 @@
             <td>
               <div class="row">
                 <div class="col-6">
-                  <button type="button" class="btn btn-sm btn-success">
+                  <router-link
+                    :to="{ name: 'ChUpdateSlot' }"
+                    class="btn btn-sm btn-success"
+                    v-b-popover.hover="{ variant: 'info', content: 'Click to Here' }"
+                  >
                     Update
-                  </button>
+                  </router-link>
                 </div>
                 <div class="col-6">
                   <button

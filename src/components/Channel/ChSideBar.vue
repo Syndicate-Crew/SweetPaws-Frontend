@@ -7,14 +7,14 @@
       <h3 class="Ch-Side-bar-Text"><b>Channelling Centre</b></h3>
       <hr />
       <ul class="nav nav-pills flex-column mb-auto">
-        <li>
+        <!-- <li>
           <router-link
             :to="{ name: 'ChChannelHome' }"
             class="nav-link link-dark Ch-Side-bar"
-            ><i class="bi bi-pencil-square pointer" width="32" height="32"></i><b>Channel Home (After)</b></router-link
+            ><b>  Channel Home</b></router-link
           >
           <hr />
-        </li>
+        </li> -->
         <li>
           <router-link
             :to="{ name: 'ChChannelReq' }"
@@ -55,22 +55,22 @@
           >
           <hr />
         </li>
-        <li>
+        <!-- <li>
           <router-link
             :to="{ name: 'ChViewChannel' }"
             class="nav-link link-dark Ch-Side-bar"
             ><b>User pet card (Remove)</b></router-link
           >
           <hr />
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <router-link
             :to="{ name: 'ChApp' }"
             class="nav-link link-dark Ch-Side-bar"
             ><b>User Appointment (Remove)</b></router-link
           >
           <hr />
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>

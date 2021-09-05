@@ -18,7 +18,7 @@
           {{ channel.time }}
         </b-card-text>
         <router-link
-          :to="{ name: 'SpecificPage' }"
+          :to="{ name: 'ChAvaChannel' }"
           class="btn btn-success"
           v-b-popover.hover="{ variant: 'info', content: 'Click to Here' }"
         >
@@ -37,48 +37,48 @@ export default {
     return {
       Channels: [
         {
-          title: "monday",
+          title: "Dr Yasiru",
           time: "12.30 - 3.30",
           image: "https://images.indianexpress.com/2021/06/Puppy-Pixabay.jpg",
         },
         {
-          title: "tuesday",
+          title: "Dr Maduka",
           time: "1.30 - 2.30",
           image:
             "https://umeandthekids.com/wp-content/uploads/2020/12/Why-You-Should-Get-a-Family-Dog-1.jpeg",
         },
         {
-          title: "wednesday",
+          title: "Dr Dilusha",
           time: "12.30 - 3.30",
           image:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR9QOCzXOSb3YpHxZfMkGT3oYDJyQ9k_54SJYJOKYg06aFSMV0z4kQ3-1DD8MIcPGSj2o&usqp=CAU",
         },
         {
-          title: "thursday",
+          title: "Dr Malintha",
           time: "1.30 - 2.30",
           image:
             "https://images.photowall.com/products/57215/golden-retriever-puppy.jpg?h=699&q=85",
         },
         {
-          title: "friday",
+          title: "Dr Nimesh",
           time: "12.30 - 3.30",
           image:
             "https://www.thesprucepets.com/thmb/-4jMGiuVcfrGyPZutbZPXwQVH64=/1884x1413/smart/filters:no_upscale()/GoldenPuppy185743593-56a9c1f23df78cf772aa4a33.jpg",
         },
         {
-          title: "saturady",
+          title: "Dr Vishmika",
           time: "1.30 - 2.30",
           image:
             "https://global-uploads.webflow.com/5eb69d64ca6f425ad59d4319/5ec6b195f50e51e373490c1e_two%20yellow%20lab%20puppies%20in%20leaves.jpg",
         },
         {
-          title: "monday",
+          title: "Dr Chanaka",
           time: "12.30 - 3.30",
           image:
             "https://www.dogboardingandtrainingmiami.com/wp-content/uploads/2018/08/dreamstime_xs_45116795.jpg",
         },
         {
-          title: "wednesday",
+          title: "Dr Dilan",
           time: "1.30 - 2.30",
           image:
             "https://i.pinimg.com/474x/77/12/60/771260d75c8f523aab9c9b149f06a7d3.jpg",
