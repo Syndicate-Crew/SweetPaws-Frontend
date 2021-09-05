@@ -138,6 +138,7 @@ export default {
   methods: {
     getPet() {
       Vue.axios.get("http://localhost:5000/api/pet/").then((res) => {
+        console.log(res.data.results);
         this.list = res.data.results;
         console.log(this.list);
       });

@@ -7,6 +7,8 @@
     <br />
     <a href="daycare-receipt">Day Care Receipt</a>
     <br />
+    <a href="daycare-details">Day Care Details</a>
+    <br />
     <a href="/ch_usercard">Channelling User Card</a>
     <br />
     <a href="/ch_appointment">Channelling Appointment</a>

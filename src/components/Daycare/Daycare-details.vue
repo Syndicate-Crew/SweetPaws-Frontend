@@ -3,7 +3,15 @@
     <div class="container p-2 flex-shrink-1">
       <div class="row">
         <div
-          class="d-flex justify-content-center my-5 p-1 shadow-lg table-card border border-secondary"
+          class="
+            d-flex
+            justify-content-center
+            my-5
+            p-1
+            shadow-lg
+            table-card
+            border border-secondary
+          "
         >
           <table class="table table-hover">
             <thead class="table-head">
@@ -18,6 +26,13 @@
               </tr>
             </thead>
             <tbody>
+              <!-- <tr v-for="detail in list" v-bind:key="detail.id">
+                <td>{{ detail.owner }}</td>
+                <td>{{ detail.pet }}</td>
+                <td>{{ detail.email }}</td>
+                <td>{{ detail.days }}</td>
+                <td>{{ detail.package }}</td>
+              </tr> -->
               <tr v-for="detail in list" v-bind:key="detail.id">
                 <td class="col p-3">
                   <b>{{ detail.owner }}</b>
@@ -51,15 +66,18 @@ Vue.use(VueAxios, axios);
 export default {
   name: "daycare-details",
   data() {
-    return {
-      //   details: undefined,
-      list: undefined,
-    };
+    return { list: undefined };
   },
-  async mounted() {
-    const result = await axios.get("http://localhost:5000/api/daycare/");
-    this.details = result.data.data;
-    console.log(result.data.data);
+  methods: {
+    getPet() {
+      Vue.axios.get("http://localhost:5000/api/daycare/").then((res) => {
+        console.log(res.data.data);
+        this.list = res.data.data;
+      });
+    },
+  },
+  mounted() {
+    this.getPet();
   },
 };
 </script>
