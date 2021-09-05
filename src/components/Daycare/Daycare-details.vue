@@ -16,23 +16,24 @@
           <table class="table table-hover">
             <thead class="table-head">
               <tr>
-                <th scope="col" class="p-4"><b>Owner</b></th>
-                <th scope="col" class="p-4"><b>Pet Name</b></th>
-                <th scope="col" class="p-4"><b>Email</b></th>
-                <th scope="col" class="p-4"><b>Days</b></th>
                 <th scope="col" class="p-4">
-                  <b>Package</b>
+                  <h5><b>Owner</b></h5>
+                </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Pet Name</b></h5>
+                </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Email</b></h5>
+                </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Days</b></h5>
+                </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Package</b></h5>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <!-- <tr v-for="detail in list" v-bind:key="detail.id">
-                <td>{{ detail.owner }}</td>
-                <td>{{ detail.pet }}</td>
-                <td>{{ detail.email }}</td>
-                <td>{{ detail.days }}</td>
-                <td>{{ detail.package }}</td>
-              </tr> -->
               <tr v-for="detail in list" v-bind:key="detail.id">
                 <td class="col p-3">
                   <b>{{ detail.owner }}</b>
@@ -88,6 +89,6 @@ export default {
 }
 .table-head {
   background-color: rgb(218, 218, 218);
-  color: rgb(0, 4, 255);
+  color: rgb(0, 0, 0);
 }
 </style>
