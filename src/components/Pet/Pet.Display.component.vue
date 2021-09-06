@@ -11,6 +11,7 @@
               id="pet-breed"
               placeholder="Any"
               name="breed"
+              v-model="breed"
             />
             <datalist id="pet-breed-list">
               <option value="Labrador Retriever"></option>
@@ -36,20 +37,20 @@
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Size</label>
-            <select class="form-select">
+            <select class="form-select" v-model="size">
               <option value="">Any</option>
-              <option value="">Small (0-25 lbs)</option>
-              <option value="">Medium (26-60 lbs)</option>
-              <option value="">Large (61-100 lbs)</option>
-              <option value="">Extra Large (101 lbs or more)</option>
+              <option value="small">Small (0-25 lbs)</option>
+              <option value="medium">Medium (26-60 lbs)</option>
+              <option value="large">Large (61-100 lbs)</option>
+              <option value="extra large">Extra Large (101 lbs or more)</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Gender</label>
             <select class="form-select">
               <option value="">Any</option>
-              <option value="">Male</option>
-              <option value="">Female</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
           <div class="row mb-4">
@@ -96,6 +97,7 @@
                 class="form-control search-input"
                 placeholder="Search"
                 type="text"
+                v-model="name"
               />
             </div>
             <div class="col p-0">
@@ -109,7 +111,7 @@
       <div class="col">
         <div class="row row-cols-5">
           <!-- Display Card -->
-          <div class="col mb-5" v-for="pet in list" v-bind:key="pet.id">
+          <div class="col mb-5" v-for="pet in filteredPet" v-bind:key="pet.id">
             <div class="card">
               <img src="../../assets/dog.jpeg" alt="" class="card-image" />
               <div class="card-body">
@@ -133,12 +135,22 @@ Vue.use(VueAxios, axios);
 export default {
   name: "petdisplaycomponent",
   data() {
-    return { list: undefined };
+    return {
+      list: [],
+      name: "",
+      breed: "",
+      size: "",
+      age: "",
+      gender: "",
+      goodWith: "",
+      careBehaviour: "",
+      coatLength: "",
+      color: "",
+    };
   },
   methods: {
     getPet() {
       Vue.axios.get("http://localhost:5000/api/pet/").then((res) => {
-        console.log(res.data.results);
         this.list = res.data.results;
         console.log(this.list);
       });
@@ -151,6 +163,23 @@ export default {
   },
   mounted() {
     this.getPet();
+  },
+  computed: {
+    filteredPet: function () {
+      return this.list.filter((pet) => {
+        return (
+          pet.name.toLowerCase().match(this.name.toLowerCase()) &&
+          pet.breed.toLowerCase().match(this.breed.toLowerCase()) &&
+          pet.type.toLowerCase().match(this.size.toLowerCase())
+          // pet.gender.toLowerCase().match(this.gender.toLowerCase())
+          // pet.age.toLowerCase().match(this.age.toLowerCase()) &&
+          // pet.goodWith.toLowerCase().match(this.goodWith.toLowerCase()) &&
+          // pet.careBehaviour.toLowerCase().match(this.careBehaviour.toLowerCase()) &&
+          // pet.coatLength.toLowerCase().match(this.coatLength.toLowerCase()) &&
+          // pet.color.toLowerCase().match(this.color.toLowerCase())
+        );
+      });
+    },
   },
 };
 </script>

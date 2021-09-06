@@ -102,9 +102,9 @@ export default {
     this.getPet();
   },
   computed: {
-    filteredDetails: function() {
+    filteredDetails: function () {
       return this.list.filter((detail) => {
-        return detail.owner.match(this.search);
+        return detail.owner.toLowerCase().match(this.search.toLowerCase());
       });
     },
   },
