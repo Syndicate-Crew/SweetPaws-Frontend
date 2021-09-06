@@ -1,5 +1,8 @@
 <template>
-  <div class="home">
+  <div class="container-fluid">
+    <h2 class="heading text-start mt-5 p-5 pb-0">
+      Daycare Registration Management
+    </h2>
     <div class="container p-2 flex-shrink-1">
       <div class="row">
         <div
@@ -14,7 +17,7 @@
           "
         >
           <table class="table table-hover">
-            <thead class="table-head">
+            <thead class="table-primary">
               <tr>
                 <th scope="col" class="p-4">
                   <h5><b>Owner</b></h5>
@@ -83,12 +86,16 @@ export default {
 };
 </script>
 <style>
-.table-card {
-  background-color: white !important;
-  border-radius: 10px;
+.container-fluid {
+  width: 90%;
+  top: 155px;
+  background: #ffffff;
+  border-radius: 33px 33px 33px 33px;
 }
-.table-head {
-  background-color: rgb(218, 218, 218);
-  color: rgb(0, 0, 0);
+.heading {
+  font-family: Poppins;
+  font-weight: bolder;
+  font-size: 35px;
+  color: #171859;
 }
 </style>
