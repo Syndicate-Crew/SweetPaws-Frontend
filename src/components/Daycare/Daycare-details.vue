@@ -1,8 +1,23 @@
 <template>
   <div class="container-fluid">
-    <h2 class="heading text-start mt-5 p-5 pb-0">
-      Daycare Registration Management
-    </h2>
+    <div class="row">
+      <div class="col">
+        <h2 class="heading text-start mt-5 p-5 pb-0">
+          Daycare Registration Management
+        </h2>
+      </div>
+      <div class="col-5 mt-5 p-5 pb-0">
+        <form class="d-flex">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
     <div class="container p-2 flex-shrink-1">
       <div class="row">
         <div
