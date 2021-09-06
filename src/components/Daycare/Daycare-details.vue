@@ -6,16 +6,16 @@
           Daycare Registration Management
         </h2>
       </div>
-      <div class="col-5 mt-5 p-5 pb-0">
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      <div class="col-5 mt-5 p-5 pb-0 d-flex">
+        <input
+          class="form-control me-2"
+          type="text"
+          placeholder="Search By Owner Name"
+          v-model="search"
+        />
+        <button type="button" class="btn search-btn">
+          <i class="bi bi-search"></i>
+        </button>
       </div>
     </div>
     <div class="container p-2 flex-shrink-1">
@@ -52,7 +52,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="detail in list" v-bind:key="detail.id">
+              <tr v-for="detail in filteredDetails" v-bind:key="detail.id">
                 <td class="col p-3">
                   <b>{{ detail.owner }}</b>
                 </td>
@@ -85,7 +85,10 @@ Vue.use(VueAxios, axios);
 export default {
   name: "daycare-details",
   data() {
-    return { list: undefined };
+    return {
+      list: [],
+      search: "",
+    };
   },
   methods: {
     getPet() {
@@ -97,6 +100,13 @@ export default {
   },
   mounted() {
     this.getPet();
+  },
+  computed: {
+    filteredDetails: function() {
+      return this.list.filter((detail) => {
+        return detail.owner.match(this.search);
+      });
+    },
   },
 };
 </script>
