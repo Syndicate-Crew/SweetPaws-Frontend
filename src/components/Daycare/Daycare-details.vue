@@ -91,7 +91,7 @@ export default {
     };
   },
   methods: {
-    getPet() {
+    getDaycare() {
       Vue.axios.get("http://localhost:5000/api/daycare/").then((res) => {
         console.log(res.data.data);
         this.list = res.data.data;
@@ -99,10 +99,10 @@ export default {
     },
   },
   mounted() {
-    this.getPet();
+    this.getDaycare();
   },
   computed: {
-    filteredDetails: function () {
+    filteredDetails: function() {
       return this.list.filter((detail) => {
         return detail.owner.toLowerCase().match(this.search.toLowerCase());
       });

@@ -74,7 +74,16 @@
             </div>
             <div class="row p-2 d-flex justify-content-center">
               <button type="button" class="w-75 btn btn-outline-secondary">
-                <h5>Edit ✏️</h5>
+                <router-link
+                  :to="{
+                    name: 'daycare-update',
+                    params: { id: profileData._id },
+                  }"
+                >
+                  <h5>
+                    Edit ✏️
+                  </h5>
+                </router-link>
               </button>
             </div>
             <div class="row p-2 d-flex justify-content-center">
@@ -108,11 +117,24 @@ export default {
       },
     };
   },
-  async mounted() {
-    const data = this.$route.params.data.data._id;
-    const result = await axios.get("http://localhost:5000/api/daycare/" + data);
-    console.log(result.data.results);
-    this.profileData = result.data.results;
+  // async mounted() {
+  //   const data = this.$route.params.data.data._id;
+  //   const result = await axios.get("http://localhost:5000/api/daycare/" + data);
+  //   console.log(result.data.results);
+  //   this.profileData = result.data.results;
+  // },
+  methods: {
+    getDaycare() {
+      const data = this.$route.params.data.data._id;
+      Vue.axios.get("http://localhost:5000/api/daycare/" + data).then((res) => {
+        this.profileData = res.data.results;
+        console.log(this.profileData);
+      });
+    },
+  },
+
+  mounted() {
+    this.getDaycare();
   },
 };
 </script>
