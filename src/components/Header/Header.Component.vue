@@ -5,7 +5,7 @@
         <a href="/"><h2 class="text-start ms-5 logo-text">Sweet Paws</h2></a>
       </div>
       <div class="col-2 mt-3 nav-item">
-        <a href="/petmanagement-display"><p>PETS</p></a>
+        <a href="#"><p>PETS</p></a>
       </div>
       <div class="col-2 mt-3 nav-item">
         <a href="/daycare-packs"><p>DAY CARE</p></a>

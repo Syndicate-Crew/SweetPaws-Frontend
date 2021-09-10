@@ -4,16 +4,16 @@
       <div class="col-2">
         <div class="container">
           <div class="row mb-4">
-            <label for="pet-breed" class="form-label fw-bolder">Breed</label>
+            <label for="dog-breed" class="form-label fw-bolder">Breed</label>
             <input
               class="form-select"
-              list="pet-breed-list"
-              id="pet-breed"
+              list="dog-breed-list"
+              id="dog-breed"
               placeholder="Any"
               name="breed"
               v-model="breed"
             />
-            <datalist id="pet-breed-list">
+            <datalist id="dog-breed-list">
               <option value="Labrador Retriever"></option>
               <option value="German Shepherd"></option>
               <option value="Golden Retriever"></option>
@@ -90,7 +90,7 @@
           </div>
           <div class="row text-start mb-4">
             <label for="" class="form-label fw-bolder text-center"
-              >Pet Name</label
+              >Dog Name</label
             >
             <div class="col p-0">
               <input
@@ -111,12 +111,12 @@
       <div class="col">
         <div class="row row-cols-5">
           <!-- Display Card -->
-          <div class="col mb-5" v-for="pet in filteredPet" v-bind:key="pet.id">
+          <div class="col mb-5" v-for="dog in filteredDog" v-bind:key="dog.id">
             <div class="card">
-              <img src="../../assets/dog.jpeg" alt="" class="card-image" />
+              <img src="" alt="" class="card-image" />
               <div class="card-body">
-                <h5 class="card-title">{{ pet.name }}</h5>
-                <p class="card-text">{{ pet.breed }}</p>
+                <h5 class="card-title">{{ dog.name }}</h5>
+                <p class="card-text">{{ dog.breed }}</p>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "petdisplaycomponent",
+  name: "dog display component",
   data() {
     return {
       list: [],
@@ -149,34 +149,34 @@ export default {
     };
   },
   methods: {
-    getPet() {
-      Vue.axios.get("http://localhost:5000/api/pet/").then((res) => {
+    getDog() {
+      Vue.axios.get("http://localhost:5000/api/dog/").then((res) => {
         this.list = res.data.results;
         console.log(this.list);
       });
     },
-    deletePet(_id) {
-      this.axios.delete("http://localhost:5000/api/pet/" + _id).then(() => {
-        this.getPet();
+    deleteDog(_id) {
+      this.axios.delete("http://localhost:5000/api/dog/" + _id).then(() => {
+        this.getDog();
       });
     },
   },
   mounted() {
-    this.getPet();
+    this.getDog();
   },
   computed: {
-    filteredPet: function () {
-      return this.list.filter((pet) => {
+    filteredDog: function () {
+      return this.list.filter((dog) => {
         return (
-          pet.name.toLowerCase().match(this.name.toLowerCase()) &&
-          pet.breed.toLowerCase().match(this.breed.toLowerCase()) &&
-          pet.type.toLowerCase().match(this.size.toLowerCase())
-          // pet.gender.toLowerCase().match(this.gender.toLowerCase())
-          // pet.age.toLowerCase().match(this.age.toLowerCase()) &&
-          // pet.goodWith.toLowerCase().match(this.goodWith.toLowerCase()) &&
-          // pet.careBehaviour.toLowerCase().match(this.careBehaviour.toLowerCase()) &&
-          // pet.coatLength.toLowerCase().match(this.coatLength.toLowerCase()) &&
-          // pet.color.toLowerCase().match(this.color.toLowerCase())
+          dog.name.toLowerCase().match(this.name.toLowerCase()) &&
+          dog.breed.toLowerCase().match(this.breed.toLowerCase()) &&
+          dog.type.toLowerCase().match(this.size.toLowerCase())
+          // dog.gender.toLowerCase().match(this.gender.toLowerCase())
+          // dog.age.toLowerCase().match(this.age.toLowerCase()) &&
+          // dog.goodWith.toLowerCase().match(this.goodWith.toLowerCase()) &&
+          // dog.careBehaviour.toLowerCase().match(this.careBehaviour.toLowerCase()) &&
+          // dog.coatLength.toLowerCase().match(this.coatLength.toLowerCase()) &&
+          // dog.color.toLowerCase().match(this.color.toLowerCase())
         );
       });
     },

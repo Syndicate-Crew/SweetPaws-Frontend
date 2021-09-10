@@ -1,11 +1,11 @@
 <template>
     <div>
-        
+
     </div>
 </template>
 <script>
 export default {
-    name:"petmanagementbreeddisplaycomponent",
+    name:"dog breed display component",
 }
 </script>
 <style>

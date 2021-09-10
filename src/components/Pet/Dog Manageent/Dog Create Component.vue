@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
-    <h2 class="heading text-start mt-5 p-5 pb-0">Pet Management - Update</h2>
+  <div class="container-fluid dog-management-create-container">
+    <h2 class="heading text-start mt-5 p-5 pb-0">Dog Management - Create</h2>
     <div class="row p-5">
       <div class="col">
-        <div class="pet-image h-75 w-50 mt-4">
+        <div class="dog-image h-75 w-50 mt-4">
           <div class="position-relative top-50 start-50 translate-middle">
             <label for="file-upload" class="custom-file-upload">
               <i class="bi bi-upload"></i>
@@ -14,24 +14,24 @@
       </div>
       <div class="col">
         <div class="w-75 text-start fw-bolder">
-          <form>
+          <form @submit="postData" method="post">
             <div class="mb-3">
-              <label for="pet-name" class="form-label">Name</label>
+              <label for="dog-name" class="form-label">Name</label>
               <input
                 type="text"
                 class="form-control"
-                id="pet-name"
+                id="dog-name"
                 name="name"
-                v-model="pet.name"
+                v-model="dog.name"
               />
             </div>
             <div class="mb-3">
-              <label for="pet-type" class="form-label">Type</label>
+              <label for="dog-type" class="form-label">Type</label>
               <select
                 class="form-select"
-                id="pet-type"
+                id="dog-type"
                 name="type"
-                v-model="pet.type"
+                v-model="dog.type"
               >
                 <option value="#" hidden>Select</option>
                 <option value="Small">Small</option>
@@ -40,43 +40,47 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="pet-breed" class="form-label">Breed</label>
+              <label for="dog-breed" class="form-label">Breed</label>
               <input
                 class="form-control"
-                list="pet-breed-list"
-                id="pet-breed"
+                list="dog-breed-list"
+                id="dog-breed"
                 placeholder="Type to search"
                 name="breed"
-                v-model="pet.breed"
+                v-model="dog.breed"
               />
-              <datalist id="pet-breed-list">
-                <option value="Breed One"></option>
-                <option value="Breed Two"></option>
-                <option value="Breed Three"></option>
-                <option value="Breed Four"></option>
-                <option value="Breed Five"></option>
+              <datalist id="dog-breed-list">
+                <option value="Labrador Retriever"></option>
+                <option value="German Shepherd"></option>
+                <option value="Golden Retriever"></option>
+                <option value="French Bulldog"></option>
+                <option value="Bulldogs"></option>
+                <option value="Poodles"></option>
+                <option value="Beagles"></option>
+                <option value="Rottweilers"></option>
+                <option value="Corgi"></option>
               </datalist>
             </div>
             <div class="mb-3">
-              <label for="pet-age" class="form-label">Age</label>
+              <label for="dog-age" class="form-label">Age</label>
               <input
                 type="text"
                 class="form-control"
-                id="pet-age"
+                id="dog-age"
                 name="age"
-                v-model="pet.age"
+                v-model="dog.age"
               />
             </div>
             <div class="mb-3">
-              <label for="pet-description" class="form-label"
+              <label for="dog-description" class="form-label"
                 >Description</label
               >
               <textarea
                 class="form-control"
-                id="pet-description"
+                id="dog-description"
                 rows="5"
                 name="description"
-                v-model="pet.description"
+                v-model="dog.description"
               ></textarea>
             </div>
             <div class="mb-3 text-end">
@@ -98,23 +102,29 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "petmanagementupdate",
+  name: "dog create component",
   data() {
     return {
-      pet: {
-        name: "",
-        type: "",
-        breed: "",
-        age: "",
-        description: "",
+      dog: {
+        name: null,
+        type: null,
+        breed: null,
+        age: null,
+        description: null,
       },
     };
   },
-  async mounted() {
-    const id = this.$route.params.id;
-    const result = await axios.get("http://localhost:5000/api/pet/" + id);
-    console.log(result.data.results);
-    this.pet = result.data.results;
+  methods: {
+    postData(e) {
+      console.log(this.dog);
+      this.axios
+        .post("http://localhost:5000/api/dog/", this.dog)
+        .then((result) => {
+          console.warn(result);
+          this.$router.push("petmanagement-display");
+        });
+      e.preventDefault();
+    },
   },
 };
 </script>
@@ -122,7 +132,7 @@ export default {
 html {
   background-color: #efeef1;
 }
-.container-fluid {
+.dog-management-create-container {
   width: 90%;
   top: 155px;
   background: #ffffff;
@@ -164,7 +174,7 @@ label {
 .cancel-btn i {
   font-weight: 900;
 }
-.pet-image {
+.dog-image {
   border: 1px solid #7e7dde !important;
   border-radius: 30px;
   margin-right: auto;
