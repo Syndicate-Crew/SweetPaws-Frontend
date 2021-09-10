@@ -15,6 +15,8 @@
                                 <input id="file-upload" accept="image/png, image/gif, image/jpeg" @change="previewImage" multiple="false" type="file"/>
                             </div>
                         </div>
+                        <div style="font-size: 13px;width: 300px">Hover and click the upload button to upload the profile picture(.png and .jpg only)</div>
+                        <div v-if="image == '../../assets/person.png'" style="font-size: 13px;color: red;width: 300px" :class="{'is-invalid': image == '../../assets/person.png'}">Upload an Image</div>
                     </b-col>
                     <b-col cols="8">
                         <div class="form-group">
@@ -201,13 +203,14 @@
 </style>
 
 <script>
-import { required, email, minLength, sameAs } from "vuelidate/lib/validators"
+import { required, email, minLength,sameAs } from "vuelidate/lib/validators"
+import axios from "axios";
+import Vue from "vue"
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
 
 export default {
     name: "SignUp",
-    created() {
-        this.image = require("../../assets/person.png")
-    },
     data() {
         return {
             user: {
@@ -219,7 +222,7 @@ export default {
             },
             submitted: false,
             passwordType: "password",
-            image: require("../../assets/person.png"),
+            image: "../../assets/person.png",
         };
     },
     validations: {
@@ -237,11 +240,30 @@ export default {
 
             // stop here if form is invalid
             this.$v.$touch();
-            if (this.$v.$invalid) {
+            if (this.$v.$invalid || this.image == "../../assets/person.png") {
+                this.image == "../../assets/person.png" ? alert("Upload a profile picture") : alert("FIx the invalid fields")
                 return;
-            }
+            } else {
+                const form = new FormData()
+                form.append("email", this.user.email)
+                form.append("password", this.user.password)
+                form.append("name", this.user.name)
+                form.append("phone", this.user.phone)
+                form.append("image", this.image)
 
-            alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.user));
+                this.axios.post("http://localhost:5000/api/user/SignUp", form).then(result => {
+                    if (result.data.status == "successful" ) {
+                        alert("Signed in ")
+                        localStorage.setItem("sweet-token", result.data.token)
+                        this.$router.push('/UserProfile')
+                    } else {
+                        alert("Wrong email or passowrd, try again");
+                    }
+                })
+                .catch((err) => {
+                    alert("An error occured" + JSON.stringify(err))
+                })
+            }
         },
         togglePasswordType() {
             if (this.passwordType == "password") {
@@ -267,7 +289,6 @@ export default {
             this.submitted = false
             this.image = "../../assets/person.png"
             document.getElementById("image-id").src = require("../../assets/person.png");
-
         }
     }
 };
