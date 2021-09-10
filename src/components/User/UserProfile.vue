@@ -1,8 +1,8 @@
 <template>
     <b-container class="container-main">
         <b-col class="col">
-            <b-img center class="profile-img" src="https://picsum.photos/125/125/?image=58" rounded="circle"  alt="Profile picture"></b-img>
-            <p class="text-center w-100 fw-bold text-name" >Malindu Panchala</p>
+            <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
+            <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
             <TabWrapper>
                 <!-- <Tab title="Info"><Info /></Tab>
                 <Tab title="Pet"><Pets /></Tab> -->
@@ -81,12 +81,21 @@ import Info from "./UserProfileTabs/Slots/Info.vue"
 import Pets from "./UserProfileTabs/Slots/Pets.vue"
 import TabWrapper from "./UserProfileTabs/TabWrapper.vue"
 import Tab from "./UserProfileTabs/Tab.vue"
+
+import axios from "axios";
+import Vue from "vue"
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+
 export default {
     name: "UserProfile",
     data: function() {
         return {
             tabs: ["Home", "Contact"],
-            selected: "Home"
+            selected: "Home",
+            token: "",
+            url: "",
+            name: ""
         };
     },
     components: {
@@ -94,6 +103,23 @@ export default {
         Pets,
         TabWrapper,
         Tab
+    },
+    mounted() {
+        this.token = localStorage.getItem("sweet-token");
+        const config = {
+            headers: {
+                "swt-token": this.token
+            }
+        }
+        axios.post("http://localhost:5000/api/user/auth",null,config)
+        .then(result=> {
+            this.name = result.data.name
+            this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
+
+        })
+        .catch(err => {
+            alert(err)
+        })
     }
 }
 </script>
