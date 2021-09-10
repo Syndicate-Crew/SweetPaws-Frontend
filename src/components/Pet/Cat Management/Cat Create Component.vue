@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="container-fluid cat-management-create-container">
       <h2 class="heading text-start mt-5 p-5 pb-0">Cat Management - Create</h2>
       <div class="row p-5">
@@ -175,7 +174,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import Vue from "vue";

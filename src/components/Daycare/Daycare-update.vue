@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid daycare-create-container">
-    <h2 class="heading text-start mt-5 p-5 pb-0">Daycare Registration</h2>
+    <h2 class="heading text-start mt-5 p-5 pb-0">Daycare Update</h2>
     <div class="row p-5">
       <div class="col">
         <div class="pet-image h-75 w-50 mt-4">
@@ -97,33 +97,39 @@ export default {
   data() {
     return {
       posts: {
-        owner: null,
-        pet: null,
-        email: null,
-        days: null,
-        package: null,
+        owner: "",
+        pet: "",
+        email: "",
+        days: "",
+        package: "",
       },
+      single: "",
     };
   },
   methods: {
-    getDaycare() {
-      const id = this.$route.params.data.data.id;
-      console.log(this.data);
+    getDayCare() {
+      const id = this.$route.params.id;
       Vue.axios.get("http://localhost:5000/api/daycare/" + id).then((res) => {
         this.posts = res.data.results;
       });
     },
     updateDaycare() {
-      const id = this.$route.params.data.data._id;
+      const id = this.$route.params.id;
       Vue.axios
         .put("http://localhost:5000/api/daycare/" + id, this.posts)
-        .then(() => {
-          this.$router.push("/daycare-receipt");
+        .then((res) => {
+          this.single = res.data.results._id;
+          this.$router.push({
+            name: "daycare-confirm",
+            params: {
+              data: this.single,
+            },
+          });
         });
     },
-    mounted() {
-      this.getDaycare();
-    },
+  },
+  mounted() {
+    this.getDayCare();
   },
 };
 </script>

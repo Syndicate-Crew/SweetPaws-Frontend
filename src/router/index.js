@@ -35,6 +35,11 @@ const routes = [
         name: "daycare-update",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-update.vue')
     },
+    {
+        path: "/daycare-confirm",
+        name: "daycare-confirm",
+        component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-confirm.vue')
+    },
 
     //Channelling Routers
     {

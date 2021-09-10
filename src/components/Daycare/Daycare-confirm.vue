@@ -102,16 +102,23 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "daycare-receipt",
+  name: "daycare-confirm",
 
   data() {
     return {
-      profileData: [],
+      profileData:{
+        _id:"",
+        owner:"",
+        pet:"",
+        email:"",
+        days:"",
+        package:"",
+      },
     };
   },
   methods: {
     getDaycare() {
-      const data = this.$route.params.data.data._id;
+      const data = this.$route.params.data;
       Vue.axios.get("http://localhost:5000/api/daycare/" + data).then((res) => {
         this.profileData = res.data.results;
       });
