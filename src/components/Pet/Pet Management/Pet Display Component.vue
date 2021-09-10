@@ -28,6 +28,7 @@
                       class="form-control search-input"
                       placeholder="Search"
                       type="text"
+                      v-model="name"
                     />
                   </div>
                   <div class="col p-0">
@@ -43,7 +44,7 @@
               <div class="container">
                 <div
                   class="row border rounded-pill mb-2"
-                  v-for="dog in listDog"
+                  v-for="dog in filteredDog"
                   v-bind:key="dog.id"
                 >
                   <div class="col-md">
@@ -54,7 +55,9 @@
                     <small>{{ dog.breed }}</small>
                   </div>
                   <div class="col edit-btn">
-                    <router-link :to="'/petupdate-dog/' + dog._id">
+                    <router-link
+                      :to="{ name: 'dogupdate', params: { id: dog._id } }"
+                    >
                       <i class="bi bi-pencil-square pointer"></i>
                     </router-link>
                   </div>
@@ -93,6 +96,7 @@
                       class="form-control search-input"
                       placeholder="Search"
                       type="text"
+                      v-model="name"
                     />
                   </div>
                   <div class="col p-0">
@@ -108,7 +112,7 @@
               <div class="container">
                 <div
                   class="row border rounded-pill mb-2"
-                  v-for="cat in listCat"
+                  v-for="cat in filteredCat"
                   v-bind:key="cat.id"
                 >
                   <div class="col-md">
@@ -119,7 +123,9 @@
                     <small>{{ cat.breed }}</small>
                   </div>
                   <div class="col edit-btn">
-                    <router-link :to="'/petupdate-cat/' + cat._id">
+                    <router-link
+                      :to="{ name: 'catupdate', params: { id: cat._id } }"
+                    >
                       <i class="bi bi-pencil-square pointer"></i>
                     </router-link>
                   </div>
@@ -146,9 +152,13 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "pet display component",
+  name: "petdisplaycomponent",
   data() {
-    return { listCat: undefined, listDog: undefined };
+    return {
+      listCat: [],
+      listDog: [],
+      name: "",
+    };
   },
   methods: {
     // Dog Methods
@@ -177,6 +187,18 @@ export default {
   mounted() {
     this.getDog();
     this.getCat();
+  },
+  computed: {
+    filteredCat: function () {
+      return this.listCat.filter((cat) => {
+        return cat.name.toLowerCase().match(this.name.toLowerCase());
+      });
+    },
+    filteredDog: function () {
+      return this.listDog.filter((dog) => {
+        return dog.name.toLowerCase().match(this.name.toLowerCase());
+      });
+    },
   },
 };
 </script>

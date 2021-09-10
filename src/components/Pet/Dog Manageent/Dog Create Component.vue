@@ -3,7 +3,7 @@
     <h2 class="heading text-start mt-5 p-5 pb-0">Dog Management - Create</h2>
     <div class="row p-5">
       <div class="col">
-        <div class="dog-image h-75 w-50 mt-4">
+        <div class="dog-image h-75 w-75 mt-5">
           <div class="position-relative top-50 start-50 translate-middle">
             <label for="file-upload" class="custom-file-upload">
               <i class="bi bi-upload"></i>
@@ -26,20 +26,6 @@
               />
             </div>
             <div class="mb-3">
-              <label for="dog-type" class="form-label">Type</label>
-              <select
-                class="form-select"
-                id="dog-type"
-                name="type"
-                v-model="dog.type"
-              >
-                <option value="#" hidden>Select</option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-              </select>
-            </div>
-            <div class="mb-3">
               <label for="dog-breed" class="form-label">Breed</label>
               <input
                 class="form-control"
@@ -51,36 +37,125 @@
               />
               <datalist id="dog-breed-list">
                 <option value="Labrador Retriever"></option>
-                <option value="German Shepherd"></option>
-                <option value="Golden Retriever"></option>
-                <option value="French Bulldog"></option>
-                <option value="Bulldogs"></option>
-                <option value="Poodles"></option>
-                <option value="Beagles"></option>
-                <option value="Rottweilers"></option>
-                <option value="Corgi"></option>
               </datalist>
             </div>
             <div class="mb-3">
               <label for="dog-age" class="form-label">Age</label>
-              <input
-                type="text"
-                class="form-control"
+              <select
+                class="form-select"
                 id="dog-age"
                 name="age"
                 v-model="dog.age"
-              />
+              >
+                <option value="" hidden>Select</option>
+                <option value="Puppy">Puppy</option>
+                <option value="Young">Young</option>
+                <option value="Adult">Adult</option>
+                <option value="Senior">Senior</option>
+              </select>
             </div>
             <div class="mb-3">
-              <label for="dog-description" class="form-label"
-                >Description</label
+              <label for="dog-type" class="form-label">Size</label>
+              <select
+                class="form-select"
+                id="dog-type"
+                name="size"
+                v-model="dog.size"
               >
+                <option value="" hidden>Select</option>
+                <option value="Small">Small (0-25 lbs)</option>
+                <option value="Medium">Medium (26-60 lbs)</option>
+                <option value="Large">Large (61-100 lbs)</option>
+                <option value="Extra Large">
+                  Extra Large (101 lbs or more)
+                </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dog-gender" class="form-label">Gender</label>
+              <select
+                class="form-select"
+                id="dog-gender"
+                name="gender"
+                v-model="dog.gender"
+              >
+                <option value="" hidden>Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dog-goodWith" class="form-label">Good With</label>
+              <select
+                class="form-select"
+                id="dog-goodWith"
+                name="goodWith"
+                v-model="dog.goodWith"
+              >
+                <option value="" hidden>Select</option>
+                <option value="Kids">Kids</option>
+                <option value="Cats">Cats</option>
+                <option value="Other Dogs">Other Dogs</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dog-careBehaviour" class="form-label"
+                >Care & Behaviour</label
+              >
+              <select
+                class="form-select"
+                id="dog-careBehaviour"
+                name="careBehaviour"
+                v-model="dog.careBehaviour"
+              >
+                <option value="" hidden>Select</option>
+                <option value="House-Trained">House-Trained</option>
+                <option value="Special Needs">Special Needs</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dog-coatLength" class="form-label">Coat Length</label>
+              <select
+                class="form-select"
+                id="dog-coatLength"
+                name="coatLength"
+                v-model="dog.coatLength"
+              >
+                <option value="" disabled selected hidden>Select</option>
+                <option value="Hairless">Hairless</option>
+                <option value="Short">Short</option>
+                <option value="Medium">Medium</option>
+                <option value="Long">Long</option>
+                <option value="Wire">Wire</option>
+                <option value="Curly">Curly</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="dog-color" class="form-label">Color</label>
+              <input
+                class="form-control"
+                list="dog-color-list"
+                id="dog-color"
+                placeholder="Type to search"
+                name="color"
+                v-model="dog.color"
+              />
+              <datalist id="dog-color-list">
+                <option value="White"></option>
+                  <option value="Black"></option>
+                  <option value="Brown"></option>
+                  <option value="Gold"></option>
+                  <option value="Golden Brown"></option>
+              </datalist>
+            </div>
+            <div class="mb-3">
+              <label for="dog-about" class="form-label">About</label>
               <textarea
                 class="form-control"
-                id="dog-description"
+                id="dog-about"
                 rows="5"
-                name="description"
-                v-model="dog.description"
+                name="about"
+                v-model="dog.about"
               ></textarea>
             </div>
             <div class="mb-3 text-end">
@@ -102,15 +177,20 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "dog create component",
+  name: "dogcreatecomponent",
   data() {
     return {
       dog: {
         name: null,
-        type: null,
         breed: null,
         age: null,
-        description: null,
+        size: null,
+        gender: null,
+        goodWith: null,
+        careBehaviour: null,
+        coatLength: null,
+        color: null,
+        about: null,
       },
     };
   },
@@ -121,7 +201,7 @@ export default {
         .post("http://localhost:5000/api/dog/", this.dog)
         .then((result) => {
           console.warn(result);
-          this.$router.push("petmanagement-display");
+          this.$router.push("petdisplay");
         });
       e.preventDefault();
     },

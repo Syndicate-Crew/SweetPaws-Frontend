@@ -15,7 +15,7 @@ export default {
     FooterComponent,
     PetDisplayComponent,
   },
-  name: "pet display",
+  name: "petdisplay",
 };
 </script>
 <style>

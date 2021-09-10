@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name:"dog breed create component",
+    name:"dogbreedcreatecomponent",
 }
 </script>
 <style>

@@ -11,7 +11,7 @@ import HeaderComponent from "../../../components/Header/Header.Component.vue";
 import CatBreedDisplayComponent from "../../../components/Pet/Cat Management/Cat Breed Display Component.vue";
 export default {
   components: { HeaderComponent, CatBreedDisplayComponent, FooterComponent },
-  name: "cat breed display",
+  name: "catbreeddisplay",
 };
 </script>
 <style>

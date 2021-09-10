@@ -97,69 +97,69 @@ const routes = [
     // Pet Management Routes
     {
         path: '/petdisplay',
-        name: 'pet display',
+        name: 'petdisplay',
         component: () => import('../views/Pet/Pet Management/Pet Display.vue')
     },
     // Dog Management Routes
     {
         path: '/dogcreate',
-        name: 'dog create',
+        name: 'dogcreate',
         component: () => import('../views/Pet/Dog Management/Dog Create.vue')
     },
     {
         path: '/dogdisplay',
-        name: 'dog display',
+        name: 'dogdisplay',
         component: () => import('../views/Pet/Dog Management/Dog Display.vue')
     },
     {
         path: '/dogupdate',
-        name: 'dog update',
+        name: 'dogupdate',
         component: () => import('../views/Pet/Dog Management/Dog Update.vue')
     },
     {
         path: '/dogbreedcreate',
-        name: 'dog breed create',
+        name: 'dogbreedcreate',
         component: () => import('../views/Pet/Dog Management/Dog Breed Create.vue')
     },
     {
         path: '/dogbreeddisplay',
-        name: 'dog breed display',
+        name: 'dogbreeddisplay',
         component: () => import('../views/Pet/Dog Management/Dog Breed Display.vue')
     },
     {
         path: '/dogbreedupdate',
-        name: 'dog breed update',
+        name: 'dogbreedupdate',
         component: () => import('../views/Pet/Dog Management/Dog Breed Update.vue')
     },
     // Cat Management Routes
     {
         path: '/catcreate',
-        name: 'cat create',
+        name: 'catcreate',
         component: () => import('../views/Pet/Cat Management/Cat Create.vue')
     },
     {
         path: '/catdisplay',
-        name: 'cat display',
+        name: 'catdisplay',
         component: () => import('../views/Pet/Cat Management/Cat Display.vue')
     },
     {
         path: '/catupdate',
-        name: 'cat update',
+        name: 'catupdate',
         component: () => import('../views/Pet/Cat Management/Cat Update.vue')
     },
     {
         path: '/catbreedcreate',
-        name: 'cat breed create',
+        name: 'catbreedcreate',
         component: () => import('../views/Pet/Cat Management/Cat Breed Create.vue')
     },
     {
         path: '/catbreeddisplay',
-        name: 'cat breed display',
+        name: 'catbreeddisplay',
         component: () => import('../views/Pet/Cat Management/Cat Breed Display.vue')
     },
     {
         path: '/catbreedupdate',
-        name: 'cat breed update',
+        name: 'catbreedupdate',
         component: () => import('../views/Pet/Cat Management/Cat Breed Update.vue')
     },
     // user routes

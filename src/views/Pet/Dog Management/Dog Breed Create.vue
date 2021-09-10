@@ -11,7 +11,7 @@ import HeaderComponent from "../../../components/Header/Header.Component.vue";
 import DogBreedCreateComponent from "../../../components/Pet/Dog Manageent/Dog Breed Create Component.vue";
 export default {
   components: { HeaderComponent, FooterComponent, DogBreedCreateComponent },
-  name: "dog breed create",
+  name: "dogbreedcreate",
 };
 </script>
 <style>

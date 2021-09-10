@@ -27,27 +27,27 @@
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Age</label>
-            <select class="form-select">
+            <select class="form-select" v-model="age">
               <option value="">Any</option>
-              <option value="">Puppy</option>
-              <option value="">Young</option>
-              <option value="">Adult</option>
-              <option value="">Senior</option>
+              <option value="Puppy">Puppy</option>
+              <option value="Young">Young</option>
+              <option value="Adult">Adult</option>
+              <option value="Senior">Senior</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Size</label>
             <select class="form-select" v-model="size">
               <option value="">Any</option>
-              <option value="small">Small (0-25 lbs)</option>
-              <option value="medium">Medium (26-60 lbs)</option>
-              <option value="large">Large (61-100 lbs)</option>
-              <option value="extra large">Extra Large (101 lbs or more)</option>
+              <option value="Small">Small (0-25 lbs)</option>
+              <option value="Medium">Medium (26-60 lbs)</option>
+              <option value="Large">Large (61-100 lbs)</option>
+              <option value="Extra Large">Extra Large (101 lbs or more)</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Gender</label>
-            <select class="form-select">
+            <select class="form-select" v-model="gender">
               <option value="">Any</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -55,36 +55,36 @@
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Good With</label>
-            <select class="form-select">
+            <select class="form-select" v-model="goodWith">
               <option value="">Any</option>
-              <option value="">Kids</option>
-              <option value="">Other Dogs</option>
-              <option value="">Cats</option>
+              <option value="Kids">Kids</option>
+              <option value="Cats">Cats</option>
+              <option value="Other Dogs">Other Dogs</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Care & Behaviour</label>
-            <select class="form-select">
+            <select class="form-select" v-model="careBehaviour">
               <option value="">Any</option>
-              <option value="">House-Trained</option>
-              <option value="">Special Needs</option>
+              <option value="House-Trained">House-Trained</option>
+              <option value="Special Needs">Special Needs</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Coat Length</label>
-            <select class="form-select">
+            <select class="form-select" v-model="coatLength">
               <option value="">Any</option>
-              <option value="">Hairless</option>
-              <option value="">Short</option>
-              <option value="">Medium</option>
-              <option value="">Long</option>
-              <option value="">Wire</option>
-              <option value="">Curly</option>
+              <option value="Hairless">Hairless</option>
+              <option value="Short">Short</option>
+              <option value="Medium">Medium</option>
+              <option value="Long">Long</option>
+              <option value="Wire">Wire</option>
+              <option value="Curly">Curly</option>
             </select>
           </div>
           <div class="row mb-4">
             <label for="" class="form-label fw-bolder">Color</label>
-            <select class="form-select">
+            <select class="form-select" v-model="color">
               <option value="">Any</option>
             </select>
           </div>
@@ -113,7 +113,7 @@
           <!-- Display Card -->
           <div class="col mb-5" v-for="dog in filteredDog" v-bind:key="dog.id">
             <div class="card">
-              <img src="" alt="" class="card-image" />
+              <img src="../../../assets/dog.jpeg" alt="" class="card-image" />
               <div class="card-body">
                 <h5 class="card-title">{{ dog.name }}</h5>
                 <p class="card-text">{{ dog.breed }}</p>
@@ -133,7 +133,7 @@ import VueAxios from "vue-axios";
 Vue.use(VueAxios, axios);
 
 export default {
-  name: "dog display component",
+  name: "dogdisplaycomponent",
   data() {
     return {
       list: [],
@@ -152,12 +152,6 @@ export default {
     getDog() {
       Vue.axios.get("http://localhost:5000/api/dog/").then((res) => {
         this.list = res.data.results;
-        console.log(this.list);
-      });
-    },
-    deleteDog(_id) {
-      this.axios.delete("http://localhost:5000/api/dog/" + _id).then(() => {
-        this.getDog();
       });
     },
   },
@@ -170,13 +164,15 @@ export default {
         return (
           dog.name.toLowerCase().match(this.name.toLowerCase()) &&
           dog.breed.toLowerCase().match(this.breed.toLowerCase()) &&
-          dog.type.toLowerCase().match(this.size.toLowerCase())
-          // dog.gender.toLowerCase().match(this.gender.toLowerCase())
-          // dog.age.toLowerCase().match(this.age.toLowerCase()) &&
-          // dog.goodWith.toLowerCase().match(this.goodWith.toLowerCase()) &&
-          // dog.careBehaviour.toLowerCase().match(this.careBehaviour.toLowerCase()) &&
-          // dog.coatLength.toLowerCase().match(this.coatLength.toLowerCase()) &&
-          // dog.color.toLowerCase().match(this.color.toLowerCase())
+          dog.size.toLowerCase().match(this.size.toLowerCase()) &&
+          dog.age.toLowerCase().match(this.age.toLowerCase()) &&
+          dog.gender.toLowerCase().match(this.gender.toLowerCase()) &&
+          dog.goodWith.toLowerCase().match(this.goodWith.toLowerCase()) &&
+          dog.careBehaviour
+            .toLowerCase()
+            .match(this.careBehaviour.toLowerCase()) &&
+          dog.coatLength.toLowerCase().match(this.coatLength.toLowerCase()) &&
+          dog.color.toLowerCase().match(this.color.toLowerCase())
         );
       });
     },
