@@ -4,7 +4,7 @@
             <div>
                 <button class="profile-section-selector" v-for="(tab, index) in tabs" :key="tab.title" @click='selectTab(index)' :class='{"tab_selected": (index == selectedIndex)}'>{{ tab.title }}</button>
             </div>
-            <b-container fluid>
+            <b-container fluid style="padding: 0px">
                 <slot />
             </b-container>
         </b-row>
