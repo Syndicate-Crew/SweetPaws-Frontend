@@ -308,6 +308,15 @@ export default {
                     if (result.data.status == "successful" ) {
                         alert("Data updated")
                         this.$router.go(0)
+                        this.user.email = result.data.email
+                        this.user.name = result.data.name
+                        this.user.phone = result.data.phone
+                        this.email = result.data.email
+                        this.name = result.data.name
+                        this.phone = result.data.phone
+                        this.image = result.data.image
+
+                        this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
                     } else {
                         alert("Wrong email or passowrd, try again");
                     }
