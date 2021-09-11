@@ -135,7 +135,7 @@ export default {
 
                 const config = {
                     headers: {
-                        "swt-token": localStorage.getItem("sweet-token");
+                        "swt-token": localStorage.getItem("sweet-token")
                     }
                 }
 
