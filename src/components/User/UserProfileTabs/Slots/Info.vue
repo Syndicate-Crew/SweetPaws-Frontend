@@ -3,6 +3,7 @@
         <b-form @submit.prevent="handleSubmit">
             <b-col class="form-group-column">
                 <b-form-group class="form-group image-from-group">
+                    <h2 class="change-image-h2">Change the Profile image</h2>
                     <div class="form-image-container">
                     <img class="form-image-div overlay-background" :src="url" id="image-id" alt="">
                     <div class="form-image-div overlay">
@@ -16,6 +17,13 @@
                 </div>
                 <div style="font-size: 13px;width: 300px">Hover and click the upload button to upload the profile picture(.png and .jpg only)</div>
                 </b-form-group>
+            </b-col>
+            <b-col class="form-group-column">
+                <b-row class="form-actions">
+                    <button class="form-btn" @click.prevent="" style="background: #5F30E2;color: white">Change profile image</button>
+                </b-row>
+            </b-col>
+            <b-col class="form-group-column">
                 <b-form-group class="form-group">
                     <b-row class="w-100 form-group-lable">
                         <img class="form-group-lable-icon" src="./assets/ic_profile.png"/>
@@ -58,6 +66,7 @@
                 </b-row>
             </b-col>
             <b-col class="form-group-column">
+                <h2 class="change-password-h2">Change Password</h2>
                 <b-form-group class="form-group">
                     <b-row class="w-100 form-group-lable">
                         <img class="form-group-lable-icon" src="./assets/ic_password.png"/>
@@ -75,7 +84,7 @@
             </b-col>
              <b-col class="form-group-column">
                 <b-row class="form-actions">
-                    <button class="form-btn" style="background: #5F30E2;color: white">Change password</button>
+                    <button class="form-btn" @click.prevent="" style="background: #5F30E2;color: white">Change password</button>
                 </b-row>
             </b-col>
         </b-form>
