@@ -85,9 +85,20 @@
               </router-link>
             </div>
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-outline-danger">
-                <h5>Delete 🗑️</h5>
-              </button>
+              <router-link
+                :to="{
+                  name: 'daycare-packs',
+                }"
+              >
+                <button
+                  type="button"
+                  class="w-75 btn btn-outline-danger"
+                  v-on:click="deleteDaycare(profileData._id)"
+                  @click="deleteAlert"
+                >
+                  <h5>Delete 🗑️</h5>
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -99,6 +110,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -114,6 +126,21 @@ export default {
       const data = this.$route.params.data.data._id;
       Vue.axios.get("http://localhost:5000/api/daycare/" + data).then((res) => {
         this.profileData = res.data.results;
+      });
+    },
+    deleteDaycare() {
+      const data = this.$route.params.data.data._id;
+      Vue.axios
+        .delete("http://localhost:5000/api/daycare/" + data)
+        .then((res) => {
+          this.profileData = res.data.results;
+        });
+    },
+    deleteAlert() {
+      Swal.fire({
+        icon: "error",
+        title: "Registration Deleted !",
+        text: "See you soon",
       });
     },
   },

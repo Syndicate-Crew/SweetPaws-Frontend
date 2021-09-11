@@ -71,7 +71,7 @@
 </template>
 <script>
 export default {
-  name: "daycare-receipt",
+  name: "daycare-packs",
 };
 </script>
 <style scoped>

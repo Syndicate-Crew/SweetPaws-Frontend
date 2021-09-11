@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <div class="row bg-white header-container fw-bold fs-5 p-3">
       <div class="col-3">
         <a href="/"><h2 class="text-start ms-5 logo-text">Sweet Paws</h2></a>

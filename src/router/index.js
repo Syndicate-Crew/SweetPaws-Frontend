@@ -12,12 +12,12 @@ const routes = [
     },
     {
         path: "/daycare-reg",
-        name: "Daycare-reg",
+        name: "daycare-reg",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare.vue')
     },
     {
         path: "/daycare-packs",
-        name: "Daycare-packs",
+        name: "daycare-packs",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-packages.vue')
     },
     {
