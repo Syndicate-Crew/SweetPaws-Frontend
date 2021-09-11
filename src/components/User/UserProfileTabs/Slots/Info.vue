@@ -41,22 +41,6 @@
             <b-col class="form-group-column">
                 <b-form-group class="form-group">
                     <b-row class="w-100 form-group-lable">
-                        <img class="form-group-lable-icon" src="./assets/ic_password.png"/>
-                        <div class="form-group-lable-text">password</div>
-                    </b-row>
-                    <input :type="passwordType" v-model="user.password" id="password" name="password" autocomplete="false" placeholder="Password" class="form-control form-group-input w=100 form-input" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
-                    <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
-                        <span v-if="!$v.user.password.minLength">Password must be at least 6 characters</span>
-                    </div>
-                </b-form-group>
-                <div class="form-group w-100" style="margin: 8px 0px">
-                    <input type="checkbox" @change="togglePasswordType" id="showPassword"/>
-                    <label for="showPassword" style="margin-left: 5px">Show Password</label>
-                </div>
-            </b-col>
-            <b-col class="form-group-column">
-                <b-form-group class="form-group">
-                    <b-row class="w-100 form-group-lable">
                         <img class="form-group-lable-icon" src="./assets/ic_phone.png"/>
                         <div class="form-group-lable-text">phone</div>
                     </b-row>
@@ -71,6 +55,27 @@
                 <b-row class="form-actions">
                     <button class="form-btn" @click.prevent="reset">Reset</button>
                     <button class="form-btn" style="background: #5F30E2;color: white">Submit</button>
+                </b-row>
+            </b-col>
+            <b-col class="form-group-column">
+                <b-form-group class="form-group">
+                    <b-row class="w-100 form-group-lable">
+                        <img class="form-group-lable-icon" src="./assets/ic_password.png"/>
+                        <div class="form-group-lable-text">password</div>
+                    </b-row>
+                    <input :type="passwordType" v-model="user.password" id="password" name="password" autocomplete="false" placeholder="Password" class="form-control form-group-input w=100 form-input" :class="{ 'is-invalid': submitted && $v.user.password.$error }" />
+                    <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
+                        <span v-if="!$v.user.password.minLength">Password must be at least 6 characters</span>
+                    </div>
+                </b-form-group>
+                <div class="form-group w-100" style="margin: 8px 0px">
+                    <input type="checkbox" @change="togglePasswordType" id="showPassword"/>
+                    <label for="showPassword" style="margin-left: 5px">Show Password</label>
+                </div>
+            </b-col>
+             <b-col class="form-group-column">
+                <b-row class="form-actions">
+                    <button class="form-btn" style="background: #5F30E2;color: white">Change password</button>
                 </b-row>
             </b-col>
         </b-form>
