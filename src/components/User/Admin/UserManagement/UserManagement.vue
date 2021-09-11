@@ -5,14 +5,14 @@
             <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
             <b-tabs>
                 <b-tab title="Add a user">
-
-
-                    
-
-
-                    
+                    <AddUser></AddUser>
                 </b-tab>
-                <b-tab title="Pets"><h2>User List</h2></b-tab>
+                <b-tab title="User List">
+                    <h2>User List</h2>
+                    <div>
+                        <UserListContainer />
+                    </div>
+                    </b-tab>
             </b-tabs>
         </b-col>
     </b-container>
@@ -67,20 +67,22 @@
 import axios from "axios";
 import Vue from "vue"
 import VueAxios from "vue-axios";
+
+import UserListContainer from "./UserList/UserListContainer.vue"
 Vue.use(VueAxios, axios);
 
 export default {
-    name: "UserProfile",
+    name: "UserManagement",
     data: function() {
         return {
             tabs: ["User list", "Add a user"],
             selected: "Home",
             token: "",
-            url: "",
-            name: ""
+            users: ["User 1", "User2"]
         };
     },
     components: {
+        UserListContainer
     },
     mounted() {
         this.token = localStorage.getItem("sweet-token");
