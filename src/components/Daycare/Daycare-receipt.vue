@@ -12,7 +12,9 @@
         <div class="col-md-8">
           <div class="card rounded border border-5 receipt">
             <div class="daycare-header p-3 receipt">
-              <h2><b>Receipt Details 📝</b></h2>
+              <h2>
+                <b>Receipt Details <i class="bi bi-journal-text"></i></b>
+              </h2>
             </div>
             <div class="row">
               <div class="col-md-5 p-4 m-3">
@@ -60,16 +62,16 @@
               border border-primary
               receipt
               m-2
-              p-5
+              p-4
               options
             "
           >
             <div class="row p-2 d-flex justify-content-center">
-              <h2>- Options ⚙️ -</h2>
+              <h2>Options <i class="bi bi-gear-wide-connected"></i></h2>
             </div>
             <div class="row p-2 d-flex justify-content-center">
               <button type="button" class="w-75 btn btn-outline-primary">
-                <h5>Download Receipt 🔻</h5>
+                <h5>Download Receipt <i class="bi bi-download"></i></h5>
               </button>
             </div>
             <div class="row p-2 d-flex justify-content-center">
@@ -80,7 +82,7 @@
                 }"
               >
                 <button type="button" class="w-75 btn btn-outline-secondary">
-                  <h5>Edit ✏️</h5>
+                  <h5>Edit <i class="bi bi-pencil"></i></h5>
                 </button>
               </router-link>
             </div>
@@ -96,7 +98,20 @@
                   v-on:click="deleteDaycare(profileData._id)"
                   @click="deleteAlert"
                 >
-                  <h5>Delete 🗑️</h5>
+                  <h5>Delete <i class="bi bi-trash-fill"></i></h5>
+                </button>
+              </router-link>
+            </div>
+            <div class="row p-2 d-flex justify-content-center">
+              <router-link
+                :to="{
+                  name: 'Home',
+                }"
+              >
+                <button type="button" class="w-75 btn btn-outline-success">
+                  <h5>
+                    Confirm Booking <i class="bi bi-check-square-fill"></i>
+                  </h5>
                 </button>
               </router-link>
             </div>

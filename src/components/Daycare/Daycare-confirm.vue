@@ -3,7 +3,9 @@
     <div class="container-fluid">
       <div class="row shadow py-1 mb-3 rounded daycare-header">
         <div class="header mb-3 mt-1 p-2">
-          <h1><b>We have received your booking ! ✔️</b></h1>
+          <h1>
+            <b>Registration Confirmation ! <i class="bi bi-check-lg"></i></b>
+          </h1>
         </div>
       </div>
     </div>
@@ -12,7 +14,9 @@
         <div class="col-md-8">
           <div class="card rounded border border-5 receipt">
             <div class="daycare-header p-3 receipt">
-              <h2><b>Receipt Details 📝</b></h2>
+              <h2>
+                <b>Receipt Details <i class="bi bi-journal-text"></i></b>
+              </h2>
             </div>
             <div class="row">
               <div class="col-md-5 p-4 m-3">
@@ -60,16 +64,16 @@
               border border-primary
               receipt
               m-2
-              p-5
+              p-4
               options
             "
           >
             <div class="row p-2 d-flex justify-content-center">
-              <h2>- Options ⚙️ -</h2>
+              <h2>Options <i class="bi bi-gear-wide-connected"></i></h2>
             </div>
             <div class="row p-2 d-flex justify-content-center">
               <button type="button" class="w-75 btn btn-outline-primary">
-                <h5>Download Receipt 🔻</h5>
+                <h5>Download Receipt <i class="bi bi-download"></i></h5>
               </button>
             </div>
             <div class="row p-2 d-flex justify-content-center">
@@ -80,14 +84,38 @@
                 }"
               >
                 <button type="button" class="w-75 btn btn-outline-secondary">
-                  <h5>Edit ✏️</h5>
+                  <h5>Edit <i class="bi bi-pencil"></i></h5>
                 </button>
               </router-link>
             </div>
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-outline-danger">
-                <h5>Delete 🗑️</h5>
-              </button>
+              <router-link
+                :to="{
+                  name: 'daycare-packs',
+                }"
+              >
+                <button
+                  type="button"
+                  class="w-75 btn btn-outline-danger"
+                  v-on:click="deleteDaycare(profileData._id)"
+                  @click="deleteAlert"
+                >
+                  <h5>Delete <i class="bi bi-trash-fill"></i></h5>
+                </button>
+              </router-link>
+            </div>
+            <div class="row p-2 d-flex justify-content-center">
+              <router-link
+                :to="{
+                  name: 'Home',
+                }"
+              >
+                <button type="button" class="w-75 btn btn-outline-success">
+                  <h5>
+                    Confirm Booking <i class="bi bi-check-square-fill"></i>
+                  </h5>
+                </button>
+              </router-link>
             </div>
           </div>
         </div>
@@ -99,6 +127,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -106,13 +135,13 @@ export default {
 
   data() {
     return {
-      profileData:{
-        _id:"",
-        owner:"",
-        pet:"",
-        email:"",
-        days:"",
-        package:"",
+      profileData: {
+        _id: "",
+        owner: "",
+        pet: "",
+        email: "",
+        days: "",
+        package: "",
       },
     };
   },
@@ -121,6 +150,21 @@ export default {
       const data = this.$route.params.data;
       Vue.axios.get("http://localhost:5000/api/daycare/" + data).then((res) => {
         this.profileData = res.data.results;
+      });
+    },
+    deleteDaycare() {
+      const data = this.$route.params.data.data._id;
+      Vue.axios
+        .delete("http://localhost:5000/api/daycare/" + data)
+        .then((res) => {
+          this.profileData = res.data.results;
+        });
+    },
+    deleteAlert() {
+      Swal.fire({
+        icon: "error",
+        title: "Registration Deleted !",
+        text: "See you soon",
       });
     },
   },
