@@ -111,12 +111,6 @@ export default {
 };
 </script>
 <style>
-.container-fluid {
-  width: 90%;
-  top: 155px;
-  background: #ffffff;
-  border-radius: 33px 33px 33px 33px;
-}
 .heading {
   font-family: Poppins;
   font-weight: bolder;
