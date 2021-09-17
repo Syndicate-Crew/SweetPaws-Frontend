@@ -180,7 +180,7 @@ export default {
       this.$swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Your Appointment has been saved',
+                    title: 'Your Slot has been saved',
                     showConfirmButton: false,
                     timer: 1500
                   })

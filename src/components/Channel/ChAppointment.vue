@@ -140,6 +140,9 @@ export default {
   components: {
     ChHeader,
   },
+  props: {
+    id: String,
+  },
 
   data() {
     return {
@@ -152,12 +155,20 @@ export default {
         pname: "",
         page: "",
         message: "",
+        action: "pending",
+        // slotid: "this.id",
       },
     };
+  },
+  //get Slot id 
+  created() {
+      console.log(this.id);
   },
   methods: {
     handleSubmitForm() {
       let apiURL = "http://localhost:5000/capp/create";
+
+      console.log(apiURL);
 
     this.$swal.fire({
                     position: 'top-end',
@@ -180,6 +191,8 @@ export default {
             pname: "",
             page: "",
             message: "",
+            action: "pending",
+            // slotid: "this.id",
           };
         })
         .catch((error) => {

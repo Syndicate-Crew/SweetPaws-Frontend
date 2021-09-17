@@ -7,7 +7,7 @@
         <div
           class="col-md-6 container card rounded m-4  shadow-lg border border-primary form-card"
         >
-          <ChAppointment />
+          <ChAppointment :id="id" />
         </div>
         <div
           class="col-md-5 container card rounded m-4  shadow-lg border border-primary form-card"
