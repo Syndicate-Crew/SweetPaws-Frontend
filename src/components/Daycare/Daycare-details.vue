@@ -49,6 +49,9 @@
                 <th scope="col" class="p-4">
                   <h5><b>Package</b></h5>
                 </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Actions</b></h5>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -68,6 +71,16 @@
                 <td class="col p-3">
                   {{ detail.package }}
                 </td>
+                <td class="col p-3">
+                  <button
+                    type="button"
+                    class="w-75 btn btn-outline-danger"
+                    v-on:click="deleteDaycare(list._id)"
+                    @click="deleteAlert"
+                  >
+                    <h5>Delete <i class="bi bi-trash-fill"></i></h5>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -80,6 +93,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -95,6 +109,21 @@ export default {
       Vue.axios.get("http://localhost:5000/api/daycare/").then((res) => {
         console.log(res.data.data);
         this.list = res.data.data;
+      });
+    },
+    deleteDaycare() {
+      const data = this.$route.params.data._id;
+      Vue.axios
+        .delete("http://localhost:5000/api/daycare/" + data)
+        .then((res) => {
+          this.list = res.data.results;
+        });
+    },
+    deleteAlert() {
+      Swal.fire({
+        icon: "error",
+        title: "Registration Deleted !",
+        text: "See you soon",
       });
     },
   },
