@@ -83,7 +83,7 @@ const routes = [
         component: () => import('../views/Channel/ChRequest.vue')
     },
     {
-        path: '/ch_updateslot',
+        path: '/ch_updateslot:id',
         name: 'ChUpdateSlot',
         component: () => import('../views/Channel/ChUpdateChannel.vue')
     },

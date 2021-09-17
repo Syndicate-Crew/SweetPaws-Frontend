@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <ChHeader title="Update Channel Slot" />
-        <form>
+        <form @submit.prevent="handleSubmitForm">
           <div class="row">
             <div class="row ">
               <label class="form-label text-start fs-5">
@@ -21,7 +21,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="Nipun"
+                v-model="cslot.firstname"
                 required
               />
             </div>
@@ -37,7 +37,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="Abeywardhana"
+                v-model="cslot.lastname"
                 required
               />
             </div>
@@ -53,7 +53,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="Nipun@gmail.com"
+                v-model="cslot.email"
                 required
               />
             </div>
@@ -69,7 +69,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="077404751"
+                v-model="cslot.phone"
                 required
               />
             </div>
@@ -85,7 +85,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="2000"
+                v-model="cslot.hcharge"
                 required
               />
             </div>
@@ -105,13 +105,14 @@
               </label>
             </div>
             <div class="col-md-7 p-2">
-              <input
-                type="text"
-                class="form-control"
-                id="example"
-                placeholder="No 2"
-                required
-              />
+              <select class="form-select" v-model="cslot.roomno">
+                <option value="" hidden>Select</option>
+                <option value="Room 01">Room 01</option>
+                <option value="Room 02">Room 02</option>
+                <option value="Room 03">Room 03</option>
+                <option value="Room 04">Room 04</option>
+                <option value="Room 05">Room 05</option>
+              </select>
             </div>
           </div>
           <div class="row">
@@ -125,7 +126,7 @@
                 type="date"
                 class="form-control"
                 id="example"
-                placeholder="2021/08/30"
+                v-model="cslot.date"
                 required
               />
             </div>
@@ -141,7 +142,7 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="8.30 - 12.30"
+                v-model="cslot.time"
                 required
               />
             </div>
@@ -157,23 +158,18 @@
                 type="text"
                 class="form-control"
                 id="example"
-                placeholder="1000"
+                v-model="cslot.vcharge"
                 required
               />
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-md-3 p-2"></div>
-            <div class="col-md-6 p-2">
-              <button type="button" class="btn btn-success p-2 m-2">
-                Update
-              </button>
-              <button type="button" class="btn btn-danger p-2 m-2">
+              <div class="form-group">
+                <button class="btn btn-success btn-block">Update</button>
+              </div>
+              <!-- <button type="button" class="btn btn-danger p-2 m-2">
                 Cancel
-              </button>
-            </div>
-          </div>
+              </button> -->
+
         </form>
       </div>
     </div>
@@ -181,12 +177,78 @@
 </template>
 
 <script>
+import axios from "axios";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
 
 export default {
   name: "ChUpdateForm",
   components: {
     ChHeader,
+  },
+
+   props: {
+    id: String,
+  },
+  data() {
+    return {
+      cslot: {
+
+            firstname: "",
+            lastname: "",
+            email: "",
+            phone: "",
+            hcharge: "",
+            roomno: "",
+            date: "",
+            time: "",
+            vcharge: "",
+      },
+
+    };
+  },
+  created() {
+    let apiURL = `http://localhost:5000/cslot/${this.id}`;
+    axios.get(apiURL).then((res) => {
+      this.cslot = res.data.cslot;
+      // console.log(this.cslot);
+    });
+  },
+
+    methods: {
+    handleSubmitForm() {
+      let apiURL = `http://localhost:5000/cslot/update/${this.id}`;
+
+      console.log(apiURL);
+      console.log(this.cslot);
+
+    this.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Update Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+      axios
+        .put(apiURL, this.cslot)
+        .then(() => {
+          this.$router.push("/ch_manageslot");
+          this.cslot = {
+            firstname: "",
+            lastname: "",
+            email: "",
+            phone: "",
+            hcharge: "",
+            roomno: "",
+            date: "",
+            time: "",
+            vcharge: "",
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>

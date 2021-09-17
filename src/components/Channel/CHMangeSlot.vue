@@ -37,7 +37,7 @@
               <div class="row">
                 <div class="col-6">
                   <router-link
-                    :to="{ name: 'ChUpdateSlot' }"
+                    :to="{ name: 'ChUpdateSlot', params: { id: slot._id } }"
                     class="btn btn-sm btn-success"
                     v-b-popover.hover="{ variant: 'info', content: 'Click to Here' }"
                   >

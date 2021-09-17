@@ -9,7 +9,7 @@
       <div
         class="col-md-6 container center card rounded m-5 p-2 shadow-lg border border-primary form-card"
       >
-        <ChUpdateForm />
+        <ChUpdateForm :id="id" />
       </div>
     </div>
     <pagefooter/>
@@ -32,6 +32,15 @@ export default {
     ChUpdateForm,
     pageheader,
     pagefooter,
+  },
+
+    data() {
+    return {
+      id: {},
+    };
+  },
+  created() {
+    this.id = this.$route.params.id;
   },
 };
 </script>
