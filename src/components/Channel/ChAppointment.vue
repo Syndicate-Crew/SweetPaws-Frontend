@@ -155,7 +155,7 @@ export default {
         pname: "",
         page: "",
         message: "",
-        action: "pending",
+        action: "Pending",
         // slotid: "this.id",
       },
     };
@@ -191,7 +191,7 @@ export default {
             pname: "",
             page: "",
             message: "",
-            action: "pending",
+            action: "Pending",
             // slotid: "this.id",
           };
         })

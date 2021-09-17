@@ -38,12 +38,12 @@
             <td>
               <div class="row">
                 <div class="col-6">
-                  <button type="button" class="btn btn-sm btn-success">
+                  <button type="button" class="btn btn-sm btn-success" @click.prevent="onApprove(appointment._id)">
                     Approve
                   </button>
                 </div>
                 <div class="col-6">
-                  <button type="button" class="btn btn-sm btn-danger">
+                  <button type="button" class="btn btn-sm btn-danger" @click.prevent="onDecline(appointment._id)">
                     Decline
                   </button>
                 </div>
@@ -76,7 +76,7 @@ export default {
     };
   },
   created() {
-    let apiURL = "http://localhost:5000/capp/";
+    let apiURL = "http://localhost:5000/capp/pending/";
     axios
     .get(apiURL)
       .then((res) => {
@@ -88,7 +88,71 @@ export default {
       });
   },
 
-};
+  methods: {
+
+    onApprove(id){
+
+      let apiURL = `http://localhost:5000/capp/update/${id}`
+
+      let indexOfArrayItem = this.Appointments.findIndex((i) => i._id === id);
+
+          this.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Appointment Approved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+      const data ={
+          action:"Approved",      
+      }
+
+      axios.put(apiURL ,data)
+      .then(() =>{
+
+              this.Appointments.splice(indexOfArrayItem, 1);
+      })
+      .catch((error) => {
+
+          console.log(error);
+
+        });
+  },
+
+      onDecline(id){
+
+      let apiURL = `http://localhost:5000/capp/update/${id}`
+
+      let indexOfArrayItem = this.Appointments.findIndex((i) => i._id === id);
+
+          this.$swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Appointment Decline',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+
+      const data ={
+          action:"Declined",      
+      }
+
+      axios.put(apiURL ,data)
+      .then(() =>{
+
+              this.Appointments.splice(indexOfArrayItem, 1);
+      })
+      .catch((error) => {
+
+          console.log(error);
+
+        });
+  }
+
+},
+
+}
 </script>
 
 <style></style>
