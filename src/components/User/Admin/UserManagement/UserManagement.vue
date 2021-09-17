@@ -3,12 +3,17 @@
         <b-col class="col">
             <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
             <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <TabWrapper>
-                <!-- <Tab title="Info"><Info /></Tab>
-                <Tab title="Pet"><Pets /></Tab> -->
-                <Tab title="Info"><Info /></Tab>
-                <Tab title="Pets"><Pets /></Tab>
-            </TabWrapper>
+            <b-tabs>
+                <b-tab title="Add a user">
+                    <AddUser></AddUser>
+                </b-tab>
+                <b-tab title="User List">
+                    <h2>User List</h2>
+                    <div>
+                        <UserListContainer />
+                    </div>
+                    </b-tab>
+            </b-tabs>
         </b-col>
     </b-container>
 </template>
@@ -55,54 +60,29 @@
 .tab-button-wrapper {
     overflow: hidden;
 }
-
-.profile-section-selector {
-    background: #FFFFFF;
-    border: 1px solid #6880FF;
-    box-sizing: border-box;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 30px;
-    transition: 300ms;
-    padding: 3px 20px;
-    margin-bottom: 50px;
-}
-
-.active {
-    background: #6880FF;
-    background: #6880FF;
-    color: #FFFFFF;
-}
 </style>
 
 <script setup>
-import Info from "./UserProfileTabs/Slots/Info.vue"
-import Pets from "./UserProfileTabs/Slots/Pets.vue"
-import TabWrapper from "./UserProfileTabs/TabWrapper.vue"
-import Tab from "./UserProfileTabs/Tab.vue"
 
 import axios from "axios";
 import Vue from "vue"
 import VueAxios from "vue-axios";
+
+import UserListContainer from "./UserList/UserListContainer.vue"
 Vue.use(VueAxios, axios);
 
 export default {
-    name: "UserProfile",
+    name: "UserManagement",
     data: function() {
         return {
-            tabs: ["Home", "Contact"],
+            tabs: ["User list", "Add a user"],
             selected: "Home",
             token: "",
-            url: "",
-            name: ""
+            users: ["User 1", "User2"]
         };
     },
     components: {
-        Info,
-        Pets,
-        TabWrapper,
-        Tab
+        UserListContainer
     },
     mounted() {
         this.token = localStorage.getItem("sweet-token");

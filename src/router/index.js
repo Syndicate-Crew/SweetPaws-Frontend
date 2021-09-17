@@ -12,18 +12,33 @@ const routes = [
     },
     {
         path: "/daycare-reg",
-        name: "Daycare-reg",
+        name: "daycare-reg",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare.vue')
     },
     {
         path: "/daycare-packs",
-        name: "Daycare-packs",
+        name: "daycare-packs",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-packages.vue')
     },
     {
         path: "/daycare-receipt",
         name: "daycare-receipt",
         component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-receipt.vue')
+    },
+    {
+        path: "/daycare-details",
+        name: "daycare-details",
+        component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-details.vue')
+    },
+    {
+        path: "/daycare-update",
+        name: "daycare-update",
+        component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-update.vue')
+    },
+    {
+        path: "/daycare-confirm",
+        name: "daycare-confirm",
+        component: () => import( /* webpackChunkName: "home" */ '../views/Daycare/Daycare-confirm.vue')
     },
 
     //Channelling Routers
@@ -91,26 +106,72 @@ const routes = [
 
     // Pet Management Routes
     {
-        path: "/petmanagement-display",
-        name: "petmanagement-display",
-        component: () => import('../views/Pet/PetManagement-Display.vue')
+        path: '/petdisplay',
+        name: 'petdisplay',
+        component: () => import('../views/Pet/Pet Management/Pet Display.vue')
+    },
+    // Dog Management Routes
+    {
+        path: '/dogcreate',
+        name: 'dogcreate',
+        component: () => import('../views/Pet/Dog Management/Dog Create.vue')
     },
     {
-        path: "/petmanagement-create",
-        name: "petmanagementcreate",
-        component: () => import('../views/Pet/PetManagement-Create')
+        path: '/dogdisplay',
+        name: 'dogdisplay',
+        component: () => import('../views/Pet/Dog Management/Dog Display.vue')
     },
     {
-        path: "/petmanagement-update/:id",
-        name: "petmanagementupdate",
-        component: () => import('../views/Pet/PetManagement-Update')
+        path: '/dogupdate',
+        name: 'dogupdate',
+        component: () => import('../views/Pet/Dog Management/Dog Update.vue')
     },
     {
-        path: "/pet-display",
-        name: "petdisplay",
-        component: () => import('../views/Pet/Pet-Display')
+        path: '/dogbreedcreate',
+        name: 'dogbreedcreate',
+        component: () => import('../views/Pet/Dog Management/Dog Breed Create.vue')
     },
-    
+    {
+        path: '/dogbreeddisplay',
+        name: 'dogbreeddisplay',
+        component: () => import('../views/Pet/Dog Management/Dog Breed Display.vue')
+    },
+    {
+        path: '/dogbreedupdate',
+        name: 'dogbreedupdate',
+        component: () => import('../views/Pet/Dog Management/Dog Breed Update.vue')
+    },
+    // Cat Management Routes
+    {
+        path: '/catcreate',
+        name: 'catcreate',
+        component: () => import('../views/Pet/Cat Management/Cat Create.vue')
+    },
+    {
+        path: '/catdisplay',
+        name: 'catdisplay',
+        component: () => import('../views/Pet/Cat Management/Cat Display.vue')
+    },
+    {
+        path: '/catupdate',
+        name: 'catupdate',
+        component: () => import('../views/Pet/Cat Management/Cat Update.vue')
+    },
+    {
+        path: '/catbreedcreate',
+        name: 'catbreedcreate',
+        component: () => import('../views/Pet/Cat Management/Cat Breed Create.vue')
+    },
+    {
+        path: '/catbreeddisplay',
+        name: 'catbreeddisplay',
+        component: () => import('../views/Pet/Cat Management/Cat Breed Display.vue')
+    },
+    {
+        path: '/catbreedupdate',
+        name: 'catbreedupdate',
+        component: () => import('../views/Pet/Cat Management/Cat Breed Update.vue')
+    },
     // user routes
     {
         path: "/UserProfile",

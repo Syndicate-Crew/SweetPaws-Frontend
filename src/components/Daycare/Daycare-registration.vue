@@ -83,7 +83,12 @@
               >
                 <i class="bi bi-chevron-left"></i>Cancel
               </button>
-              <input type="submit" class="submit-btn fw-bold" value="Submit" />
+              <input
+                type="submit"
+                class="submit-btn fw-bold"
+                value="Submit"
+                @click="submitAlert"
+              />
             </div>
           </form>
         </div>
@@ -95,6 +100,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -113,12 +119,9 @@ export default {
   },
   methods: {
     postData(e) {
-      // console.warn(this.posts);
       this.axios
         .post("http://localhost:5000/api/daycare/", this.posts)
         .then((result) => {
-          //
-          // console.warn(result.data.data._id);
           this.single = result.data;
           this.$router.push({
             name: "daycare-receipt",
@@ -128,6 +131,14 @@ export default {
           });
         });
       e.preventDefault();
+    },
+    submitAlert() {
+      Swal.fire({
+        title: "Submit",
+        text: "Form Submission Success",
+        icon: "success",
+        confirmButtonText: "Proceed",
+      });
     },
   },
 };

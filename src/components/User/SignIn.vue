@@ -118,6 +118,10 @@
 
 <script>
 import { required, email, minLength } from "vuelidate/lib/validators"
+import axios from "axios";
+import Vue from "vue"
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
 
 export default {
     name: "SignUp",
@@ -148,9 +152,25 @@ export default {
             this.$v.$touch();
             if (this.$v.$invalid) {
                 return;
+            } else {
+                this.axios.post("http://localhost:5000/api/user/SignIn", {
+                    email: this.user.email,
+                    password: this.user.password
+                }).then(result => {
+                    if (result.data.status == "successful" ) {
+                        localStorage.setItem("sweet-token", result.data.token)
+                        alert("Signed in ")
+                        this.$router.push('/UserProfile')
+                        
+                    } else {
+                        alert("Wrong email or passowrd, try again");
+                    }
+                })
+                .catch((err) => {
+                    alert("An error occured" + JSON.stringify(err))
+                })
+                
             }
-
-            alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.user));
         },
         togglePasswordType() {
             if (this.passwordType == "password") {
