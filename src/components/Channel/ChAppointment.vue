@@ -156,7 +156,7 @@ export default {
         page: "",
         message: "",
         action: "Pending",
-        // slotid: "this.id",
+        slotid: this.id,
       },
     };
   },
@@ -192,7 +192,7 @@ export default {
             page: "",
             message: "",
             action: "Pending",
-            // slotid: "this.id",
+            slotid: this.id,
           };
         })
         .catch((error) => {

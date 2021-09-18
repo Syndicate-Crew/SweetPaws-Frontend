@@ -7,7 +7,7 @@
         <ChSideBar />
       </div>
       <div class="col-md-9 center m-5 p-5 shadow-lg">
-        <ChManageAva />
+        <ChManageAva :id="id" />
       </div>
     </div>
     <pagefooter/>
@@ -31,6 +31,16 @@ export default {
     pageheader,
     pagefooter,
   },
+
+    data() {
+    return {
+      id: {},
+    };
+  },
+  created() {
+    this.id = this.$route.params.id;
+  },
+  
 };
 </script>
 
