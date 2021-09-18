@@ -24,7 +24,7 @@
               </div>
               <div class="col-md-6 m-3 p-3">
                 <div class="container">
-                  <table class="table table-striped table-hover m-3">
+                  <table class="table table-warning m-3">
                     <tbody>
                       <tr>
                         <td><b>Owner Name</b></td>
@@ -70,7 +70,11 @@
               <h2>Options <i class="bi bi-gear-wide-connected"></i></h2>
             </div>
             <div class="row p-2 d-flex justify-content-center">
-              <button type="button" class="w-75 btn btn-outline-primary">
+              <button
+                type="button"
+                class="w-75 btn btn-outline-primary"
+                @click="download"
+              >
                 <h5>Download Receipt <i class="bi bi-download"></i></h5>
               </button>
             </div>
@@ -126,6 +130,8 @@ import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import Swal from "sweetalert2";
+import jsPDF from "jspdf";
+import autotable from "jspdf-autotable";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -157,6 +163,25 @@ export default {
         title: "Registration Deleted !",
         text: "See you soon",
       });
+    },
+    download() {
+      const doc = new jsPDF();
+      doc.text(
+        "Daycare Registration Receipt of " + this.profileData.pet,
+        10,
+        10
+      );
+      autotable(doc, {
+        body: [
+          ["Owner Name", this.profileData.owner],
+          ["Pet Name", this.profileData.pet],
+          ["Owner Email", this.profileData.email],
+          ["Days", this.profileData.days],
+          ["Package", this.profileData.package],
+        ],
+      });
+
+      doc.save("Daycare-receipt.pdf");
     },
   },
   mounted() {

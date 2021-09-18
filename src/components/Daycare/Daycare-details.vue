@@ -49,6 +49,9 @@
                 <th scope="col" class="p-4">
                   <h5><b>Package</b></h5>
                 </th>
+                <th scope="col" class="p-4">
+                  <h5><b>Actions</b></h5>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -68,6 +71,16 @@
                 <td class="col p-3">
                   {{ detail.package }}
                 </td>
+                <td class="col p-3">
+                  <button
+                    type="button"
+                    class="w-75 btn btn-outline-danger"
+                    v-on:click="deleteDaycare(detail._id)"
+                    @click="deleteAlert"
+                  >
+                    <h5>Delete <i class="bi bi-trash-fill"></i></h5>
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -80,6 +93,7 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -97,6 +111,20 @@ export default {
         this.list = res.data.data;
       });
     },
+    deleteDaycare(id) {
+      Vue.axios.delete("http://localhost:5000/api/daycare/" + id).then(() => {
+        const idx = this.list.findIndex((itm) => itm._id == id);
+        this.list.splice(idx, 1);
+        console.log(this.list);
+      });
+    },
+    deleteAlert() {
+      Swal.fire({
+        icon: "error",
+        title: "Registration Deleted !",
+        text: "See you soon",
+      });
+    },
   },
   mounted() {
     this.getDaycare();
@@ -111,12 +139,6 @@ export default {
 };
 </script>
 <style>
-.container-fluid {
-  width: 90%;
-  top: 155px;
-  background: #ffffff;
-  border-radius: 33px 33px 33px 33px;
-}
 .heading {
   font-family: Poppins;
   font-weight: bolder;
