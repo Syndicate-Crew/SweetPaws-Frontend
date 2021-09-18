@@ -75,7 +75,7 @@
                   <button
                     type="button"
                     class="w-75 btn btn-outline-danger"
-                    v-on:click="deleteDaycare(list._id)"
+                    v-on:click="deleteDaycare(detail._id)"
                     @click="deleteAlert"
                   >
                     <h5>Delete <i class="bi bi-trash-fill"></i></h5>
@@ -111,13 +111,12 @@ export default {
         this.list = res.data.data;
       });
     },
-    deleteDaycare() {
-      const data = this.$route.params.data._id;
-      Vue.axios
-        .delete("http://localhost:5000/api/daycare/" + data)
-        .then((res) => {
-          this.list = res.data.results;
-        });
+    deleteDaycare(id) {
+      Vue.axios.delete("http://localhost:5000/api/daycare/" + id).then(() => {
+        const idx = this.list.findIndex((itm) => itm._id == id);
+        this.list.splice(idx, 1);
+        console.log(this.list);
+      });
     },
     deleteAlert() {
       Swal.fire({
