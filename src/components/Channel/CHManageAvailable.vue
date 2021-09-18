@@ -18,8 +18,8 @@
             <th scope="col">O Phone</th>
             <th scope="col">Pet Name</th>
             <th scope="col">Pet Age</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
+            <!-- <th scope="col">Date</th>
+            <th scope="col">Time</th> -->
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -31,13 +31,17 @@
             <td>{{ appointment.phone }}</td>
             <td>{{ appointment.pname }}</td>
             <td>{{ appointment.page }}</td>
-            <td>{{ appointment.date }}</td>
-            <td>{{ appointment.time }}</td>
+            <!-- <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td> -->
             <td>
               <div class="row">
                 <div class="col-6">
-                  <button type="button" class="btn btn-sm btn-danger">
-                    Remove
+                   <button
+                    @click.prevent="deleteApp(appointment._id)"
+                    type="button"
+                    class="btn btn-sm btn-danger"
+                  >
+                    Delete
                   </button>
                 </div>
               </div>
@@ -86,6 +90,40 @@ export default {
         console.log(error);
       });
 
+  },
+    methods: {
+    deleteApp(id) {
+      let apiURL = `http://localhost:5000/capp/delete/${id}`;
+
+      let indexOfArrayItem = this.Appointments.findIndex((i) => i._id === id);
+
+                    this.$swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+
+                      axios.delete(apiURL)
+                      .then(() => {
+                        this.Appointments.splice(indexOfArrayItem, 1);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+
+                      this.$swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                    }
+                  })
+    },
   },
 
 };

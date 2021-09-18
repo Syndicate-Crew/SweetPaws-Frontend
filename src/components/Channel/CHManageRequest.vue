@@ -19,8 +19,8 @@
             <th scope="col">Pet Name</th>
             <th scope="col">Pet Type</th>
             <th scope="col">Pet Age</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time</th>
+            <!-- <th scope="col">Date</th>
+            <th scope="col">Time</th> -->
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -33,8 +33,8 @@
             <td>{{ appointment.pname }}</td>
             <td>{{ appointment.ptype }}</td>
             <td>{{ appointment.page }}</td>
-            <td>{{ appointment.date }}</td>
-            <td>{{ appointment.time }}</td>
+            <!-- <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td> -->
             <td>
               <div class="row">
                 <div class="col-6">
