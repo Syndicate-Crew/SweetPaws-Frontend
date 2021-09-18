@@ -8,6 +8,32 @@
         <ChSearch />
       </div>
     </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-3">
+        <label class="form-label text-start text-primary">
+                <h6><b>DATE&nbsp;:&nbsp;</b></h6>
+        </label>
+        <label class="form-label text-start text-danger">
+                <h6><b> {{  cslot.date   }}</b></h6>
+        </label>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label text-start text-primary">
+                <h4><b> Veterinarian:  {{  cslot.firstname  }}</b></h4>
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label text-start text-primary">
+                <h6><b>TIME&nbsp;:&nbsp;</b></h6>
+        </label>
+        <label class="form-label text-start text-danger">
+                <h6><b> {{  cslot.time  }}</b></h6>
+        </label>
+      </div>
+      
+    </div> 
+    <br/>
     <div class="row">
       <table class="table table-success table-striped">
         <thead>
@@ -75,6 +101,7 @@ export default {
     data() {
     return {
       Appointments: [],
+      cslot: {},
     };
   },
 
@@ -87,6 +114,16 @@ export default {
         // console.log(Appointments);
       })
       .catch((error) => {
+        console.log(error);
+      });
+
+    let apiURL2 = `http://localhost:5000/cslot/${this.id}`;
+    axios
+    .get(apiURL2).then((res) => {
+      this.cslot = res.data.cslot;
+      // console.log(this.cslot);
+    })
+    .catch((error) => {
         console.log(error);
       });
 
