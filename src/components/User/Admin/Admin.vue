@@ -1,14 +1,9 @@
 <template>
     <b-container class="container-main">
         <b-col class="col">
-            <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
-            <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <TabWrapper>
-                <!-- <Tab title="Info"><Info /></Tab>
-                <Tab title="Pet"><Pets /></Tab> -->
-                <Tab title="Info"><Info /></Tab>
-                <Tab title="Pets"><Pets /></Tab>
-            </TabWrapper>
+            <!-- <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img> -->
+            <p class="text-center w-100 fw-bold text-name" >name</p>
+            
         </b-col>
     </b-container>
 </template>
@@ -77,11 +72,6 @@
 </style>
 
 <script setup>
-import Info from "./UserProfileTabs/Slots/Info.vue"
-import Pets from "./UserProfileTabs/Slots/Pets.vue"
-import TabWrapper from "./UserProfileTabs/TabWrapper.vue"
-import Tab from "./UserProfileTabs/Tab.vue"
-
 import axios from "axios";
 import Vue from "vue"
 import VueAxios from "vue-axios";

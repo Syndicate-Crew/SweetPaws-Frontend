@@ -63,7 +63,7 @@ const routes = [
         component: () => import('../views/Channel/CHMangeSlot.vue')
     },
     {
-        path: '/ch_avachannel:id',
+        path: '/ch_avachannel',
         name: 'ChAvaChannel',
         component: () => import('../views/Channel/ChAvailableChannel.vue')
     },
@@ -187,6 +187,11 @@ const routes = [
         path: "/SignUp",
         name: "SignUp",
         component: () => import('../views/User/SignUpView.vue')
+    },
+    {
+        path: "/UserManagement",
+        name: "UserManagement",
+        component: () => import('../views/User/UserManagement.vue')
     }
 ]
 
