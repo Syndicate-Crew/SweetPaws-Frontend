@@ -27,7 +27,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 .ch_search_btn {
   background-color: #6504b5;
   color: #ffff;

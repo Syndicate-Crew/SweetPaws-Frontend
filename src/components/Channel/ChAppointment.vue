@@ -158,17 +158,24 @@ export default {
         action: "Pending",
         slotid: this.id,
       },
+      cslot: {},
     };
   },
   //get Slot id 
   created() {
       console.log(this.id);
+
+    let apiURL = `http://localhost:5000/cslot/${this.id}`;
+    axios.get(apiURL).then((res) => {
+      this.cslot = res.data.cslot;
+      console.log(this.cslot);
+    });
   },
   methods: {
     handleSubmitForm() {
       let apiURL = "http://localhost:5000/capp/create";
 
-      console.log(apiURL);
+      //console.log(apiURL);
 
     this.$swal.fire({
                     position: 'top-end',
@@ -178,10 +185,14 @@ export default {
                     timer: 1500
                   })
 
+      //save appointment
       axios
         .post(apiURL, this.capp)
         .then(() => {
           this.$router.push("/ch_usercard");
+
+          console.log(this.capp)
+
           this.capp = {
             firstname: "",
             lastname: "",
@@ -194,6 +205,19 @@ export default {
             action: "Pending",
             slotid: this.id,
           };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+
+        //save payment details
+        let apiURL2 = "http://localhost:5000/cpay/create";
+
+        axios
+        .post(apiURL2, this.cslot)
+        .then(() => {
+
         })
         .catch((error) => {
           console.log(error);

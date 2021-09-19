@@ -1,12 +1,17 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-8">
         <ChHeader title="Available Channels" />
       </div>
       <div class="col-md-3">
-        <ChSearch />
+          <input type="text" v-model="search" placeholder="Search"/>
       </div>
+      <div class="col-md-1">
+          <button type="button" class="btn ch_search_btn">
+              <i class="bi bi-search"></i>
+          </button>
+    </div>
     </div>
     <br/>
     <div class="row">
@@ -50,7 +55,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="appointment in Appointments" :key="appointment._id">
+          <tr v-for="appointment in filteredApp" :key="appointment._id">
             <!-- <th scope="row">{{id}}</th> -->
             <td>{{ appointment.firstname }} {{ appointment.lastname }}</td>
             <td>{{ appointment.email }}</td>
@@ -83,14 +88,12 @@
 
 import axios from "axios";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
-import ChSearch from "../../components/Channel/ChSearchBar.vue";
 
 export default {
   name: "ChManageAva",
 
   components: {
     ChHeader,
-    ChSearch,
   },
 
   props: {
@@ -102,6 +105,7 @@ export default {
     return {
       Appointments: [],
       cslot: {},
+      search:'',
     };
   },
 
@@ -163,7 +167,22 @@ export default {
     },
   },
 
+  computed:{
+  filteredApp: function(){
+    return this.Appointments.filter((appointment) =>{
+      return appointment.firstname.match(this.search) || appointment.email.match(this.search) ||appointment.phone.match(this.search) ||appointment.pname.match(this.search) ||appointment.page.match(this.search)
+    })
+  }
+}
+
 };
 </script>
 
-<style></style>
+<style scooped>
+
+.ch_search_btn {
+  background-color: #6504b5;
+  color: #ffff;
+}
+
+</style>

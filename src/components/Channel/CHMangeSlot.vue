@@ -1,12 +1,17 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-8">
         <ChHeader title="Manage Channelling Slot" />
       </div>
       <div class="col-md-3">
-        <ChSearch />
+        <input type="text" v-model="search" placeholder="Search"/>
       </div>
+      <div class="col-md-1">
+          <button type="button" class="btn ch_search_btn" @click.prevent="filteredSlot()">
+              <i class="bi bi-search"></i>
+          </button>
+    </div>
     </div>
     <div class="row">
       <table class="table table-success table-striped">
@@ -24,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="slot in Slots" :key="slot._id">
+          <tr v-for="slot in filteredSlot" :key="slot._id">
             <!-- <th scope="row">{{id}}</th> -->
             <td>{{ slot.firstname }} {{ slot.lastname }}</td>
             <td>{{ slot.email }}</td>
@@ -65,19 +70,18 @@
 <script>
 import axios from "axios";
 import ChHeader from "../../components/Channel/Ch_Header.vue";
-import ChSearch from "../../components/Channel/ChSearchBar.vue";
 
 export default {
   name: "ChManageSlot",
 
   components: {
     ChHeader,
-    ChSearch,
   },
 
   data() {
     return {
       Slots: [],
+      search:'',
     };
   },
   created() {
@@ -130,7 +134,22 @@ export default {
                   })
     },
   },
+
+  computed:{
+  filteredSlot: function(){
+    return this.Slots.filter((slot) =>{
+      return slot.email.match(this.search) || slot.phone.match(this.search) || slot.date.match(this.search) || slot.time.match(this.search) || slot.roomno.match(this.search) || slot.firstname.match(this.search)
+    })
+  }
+}
 };
 </script>
 
-<style></style>
+<style scooped>
+
+.ch_search_btn {
+  background-color: #6504b5;
+  color: #ffff;
+}
+
+</style>
