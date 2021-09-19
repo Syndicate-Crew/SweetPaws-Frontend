@@ -1,64 +1,89 @@
 <template>
-    <b-container class="container-main">
-        <b-col class="col">
-            <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
-            <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <b-tabs>
-                <b-tab title="Add a user">
-                    <AddUser></AddUser>
-                </b-tab>
-                <b-tab title="User List">
-                    <h2>User List</h2>
-                    <div>
-                        <UserListContainer />
-                    </div>
+    <b-container fluid class="main-container">
+        <b-col class="main-wrapper-col">
+            <div class="page-title">User Management</div>
+            <div class="tab-container">
+                <b-tabs lazy>
+                    <b-tab title="User list" active>
+                        <div class="tab-content">
+                            <UserListContainer />
+                        </div>
                     </b-tab>
-            </b-tabs>
+                    <b-tab title="Add a user">
+                        <div class="tab-content">
+                            <AddUser />
+                        </div>
+                    </b-tab>
+                </b-tabs>
+            </div>
         </b-col>
     </b-container>
 </template>
 
 <style scoped>
-.container-main {
-  background-color: white;
-  margin: 26px 142px; 
-  border-radius: 33px;
-  overflow: hidden;
-  padding: 0px 70px;
+.main-container {
+    background-color: white;
+    width: 87vw;
+    margin: 41px auto;
+    border-radius: 33px;
+    overflow: hidden;
+    padding: 0px 86px;
+    overflow: hidden;
+}
+
+.page-title {
+    text-align: start;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 60px;
+    color: #171859;
+    margin-top: 51px;
+    margin-bottom: 41px;
 }
 
 .col {
     overflow: visible;
 }
 
-.profile-img {
-    height: 276px;
-    width: 276px;
-    margin-top: 60px;
-}
-
-.text-name {
-    margin: 26px 0px;
+.page-title {
+    text-align: start;
+    font-style: normal;
+    font-weight: bold;
     font-size: 40px;
-    /*font-style: normal;
-    font-weight: 700;
     line-height: 60px;
-    letter-spacing: 0em; */
-
+    color: #171859;
 }
 
-.container-sub {
-    margin: 0px auto;
-    margin-bottom: 56px;
-    background: #FFFCFC;
-    box-shadow: 0px 0px 20px 5px rgba(105, 105, 105, 0.15);
-    border-radius: 26px;
-    width: fit-content;
-    padding: 50px 150px;
+.tab-container {
+    margin-bottom: 70px;
 }
 
-.tab-button-wrapper {
-    overflow: hidden;
+.tab-content{
+    padding: 40px 0px;
+}
+
+@media only screen and (max-width: 850px) {
+    .page-title {
+        margin: 51px auto;
+        width: fit-content;
+    }
+
+    .main-container {
+        padding: 0px 46px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .page-title {
+        margin: 51px auto;
+        width: fit-content;
+        font-size: 30px;
+    }
+
+    .main-container {
+        padding: 0px 10px;
+    }
 }
 </style>
 
@@ -69,37 +94,20 @@ import Vue from "vue"
 import VueAxios from "vue-axios";
 
 import UserListContainer from "./UserList/UserListContainer.vue"
+import AddUser from "./AddUser.vue"
 Vue.use(VueAxios, axios);
 
 export default {
     name: "UserManagement",
     data: function() {
         return {
-            tabs: ["User list", "Add a user"],
-            selected: "Home",
             token: "",
             users: ["User 1", "User2"]
         };
     },
     components: {
-        UserListContainer
-    },
-    mounted() {
-        this.token = localStorage.getItem("sweet-token");
-        const config = {
-            headers: {
-                "swt-token": this.token
-            }
-        }
-        axios.post("http://localhost:5000/api/user/auth",null,config)
-        .then(result=> {
-            this.name = result.data.name
-            this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
-
-        })
-        .catch(err => {
-            alert(err)
-        })
+        UserListContainer,
+        AddUser
     }
 }
 </script>
