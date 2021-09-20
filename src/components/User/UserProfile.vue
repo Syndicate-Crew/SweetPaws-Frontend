@@ -4,8 +4,6 @@
             <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
             <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
             <TabWrapper>
-                <!-- <Tab title="Info"><Info /></Tab>
-                <Tab title="Pet"><Pets /></Tab> -->
                 <Tab title="Info"><Info /></Tab>
                 <Tab title="Pets"><Pets /></Tab>
             </TabWrapper>
