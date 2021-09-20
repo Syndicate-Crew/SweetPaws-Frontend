@@ -43,7 +43,6 @@ export default {
 			} else if ( this.sort == 2) {
 				alert(2)
 			}
-
 		}
 	}
 };
