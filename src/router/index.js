@@ -192,6 +192,11 @@ const routes = [
         path: "/UserManagement",
         name: "UserManagement",
         component: () => import('../views/User/UserManagement.vue')
+    },
+    {
+        path: "/UserManagement/UserProfile",
+        name: "UserProfileAdmin",
+        component: () => import('../views/User/UserProfileAdmin.vue')
     }
 ]
 
