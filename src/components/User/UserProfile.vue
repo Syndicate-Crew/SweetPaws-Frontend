@@ -103,21 +103,21 @@ export default {
         Tab
     },
     mounted() {
-        this.token = localStorage.getItem("sweet-token");
-        const config = {
-            headers: {
-                "swt-token": this.token
-            }
-        }
-        axios.post("http://localhost:5000/api/user/auth",null,config)
-        .then(result=> {
-            this.name = result.data.name
-            this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
+        // this.token = localStorage.getItem("sweet-token");
+        // const config = {
+        //     headers: {
+        //         "swt-token": this.token
+        //     }
+        // }
+        // axios.post("http://localhost:5000/api/user/auth",null,config)
+        // .then(result=> {
+        //     this.name = result.data.name
+        //     this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
 
-        })
-        .catch(err => {
-            alert(err)
-        })
+        // })
+        // .catch(err => {
+        //     alert(err)
+        // })
     }
 }
 </script>
