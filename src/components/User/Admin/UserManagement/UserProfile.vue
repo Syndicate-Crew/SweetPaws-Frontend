@@ -3,10 +3,7 @@
         <b-col class="col">
             <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
             <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <TabWrapper>
-                <Tab title="Info"><Info /></Tab>
-                <Tab title="Pets"><Pets /></Tab>
-            </TabWrapper>
+            <Info :id="id" :name="name" :email="email" :phone="phone" :url="url" />
         </b-col>
     </b-container>
 </template>
@@ -33,10 +30,7 @@
 .text-name {
     margin: 26px 0px;
     font-size: 40px;
-    /*font-style: normal;
-    font-weight: 700;
-    line-height: 60px;
-    letter-spacing: 0em; */
+
 
 }
 
@@ -75,49 +69,82 @@
 </style>
 
 <script setup>
-import Info from "./UserProfileTabs/Slots/Info.vue"
-import Pets from "./UserProfileTabs/Slots/Pets.vue"
-import TabWrapper from "./UserProfileTabs/TabWrapper.vue"
-import Tab from "./UserProfileTabs/Tab.vue"
+import Info from "./Info.vue"
 
 import axios from "axios";
 import Vue from "vue"
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
     name: "UserProfile",
     data: function() {
         return {
+            id: this.$route.params.id,
             tabs: ["Home", "Contact"],
             selected: "Home",
             token: "",
             url: "",
-            name: ""
+            name: "",
+            email: "",
+            phone: ""
         };
     },
     components: {
-        Info,
-        Pets,
-        TabWrapper,
-        Tab
+       Info
     },
     mounted() {
-        this.token = localStorage.getItem("sweet-token");
+        this.token = localStorage.getItem("sweet-token-admin");
         const config = {
             headers: {
-                "swt-token": this.token
+                "swt-token-admin": this.token
             }
         }
-        axios.post("http://localhost:5000/api/user/auth",null,config)
-        .then(result=> {
-            this.name = result.data.name
-            this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
+        axios
+			.post("http://localhost:5000/api/admin/auth", null, config)
+			.then((result) => {
+				if (result.data.msg == "Token is not valid") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Session invalid. Please sign in",
+                    });
+                    this.$router.push('/Admin/SignIn');
 
-        })
-        .catch(err => {
-            alert(err)
-        })
+                } else if (result.data.result != "successful") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "User Authentication failed. Please sign in",
+                    });
+
+                } else if (result.data.result == "successful") {
+                    axios.get(`http://localhost:5000/api/user/${this.id}`)
+                    .then(result => {
+                        this.name = result.data.result.name;
+                        this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.result.image}`;
+                        this.email = result.data.result.email;
+                        this.phone = result.data.result.phone;
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "An error occured",
+                        });
+                    })
+                }
+			})
+			.catch((err) => {
+				console.log(err);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "An error occured",
+                });
+			});
     }
 }
 </script>

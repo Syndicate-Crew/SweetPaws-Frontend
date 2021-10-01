@@ -1,15 +1,15 @@
 <template>
     <b-row class="w-100 list-item">
         <b-col class="list-item-cols" id="list-item-cols-desc">
-            <div class="list-item-image"></div>
+            <img :src="url" class="list-item-image" />
             <div class="list-item-description">
                 <p class="list-item-name">{{username}}</p>
-                <p class="list-item-joined">Joined {{username}}</p>
+                <p class="list-item-joined">Joined {{joined}}</p>
             </div>
         </b-col>
         <b-col class="list-item-cols" id="list-item-cols-options">
             <div class="list-item-options">
-                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="19" height="19" viewBox="0 0 19 19" fill="none" @click="handleEdit" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 14.2525V18.0025H3.75L14.81 6.9425L11.06 3.1925L0 14.2525ZM17.71 4.0425C18.1 3.6525 18.1 3.0225 17.71 2.6325L15.37 0.2925C14.98 -0.0975 14.35 -0.0975 13.96 0.2925L12.13 2.1225L15.88 5.8725L17.71 4.0425Z" fill="black"/>
                 </svg>
                 <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,6 +48,7 @@
 }
 
 .list-item-image {
+    display: block;
     width: 34px;
     height: 34px;
     background-color: rgb(122, 115, 115);
@@ -102,6 +103,20 @@ svg {
 <script>
 export default {
     name: "ListItem",
-    props: ["username"]
+    props: ["username","id","joined","image"],
+    data() {
+        return {
+            url: `http://localhost:5000/api/public/profile_pictures/${this.image}`
+        }
+    },
+    methods: {
+        handleEdit() {
+            alert("Edit " + this.id)
+            this.$router.push({ name: "UserProfileAdmin", params: { id: this.id}});
+        },
+        handleDelete() {
+            alert("Delete " + this.id)
+        }
+    }
 }
 </script>

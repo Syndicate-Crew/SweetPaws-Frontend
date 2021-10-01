@@ -95,6 +95,8 @@ import VueAxios from "vue-axios";
 
 import UserListContainer from "./UserList/UserListContainer.vue"
 import AddUser from "./AddUser.vue"
+
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -108,6 +110,51 @@ export default {
     components: {
         UserListContainer,
         AddUser
-    }
+    },
+    mounted() {
+		this.token = localStorage.getItem("sweet-token-admin");
+		const config = {
+			headers: {
+				"swt-token-admin": this.token,
+			},
+		};
+
+        if (this.token == null) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Session invalid. Please sign in",
+            });  
+
+            this.$router.push("/Admin/SignIn");
+        }
+		axios.post("http://localhost:5000/api/admin/auth", null, config)
+		.then((result) => {
+            if (result.data.msg == "Token is not valid") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Session invalid. Please sign in",
+                });
+                this.$router.push("/Admin/SignIn");
+            } else if (result.data.result != "successful") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Session invalid. Please sign in",
+                });
+                this.$router.push("/Admin/SignIn");
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Session invalid. Please sign in",
+                });
+            this.$router.push("/Admin/SignIn");
+        });
+	},
 }
 </script>
