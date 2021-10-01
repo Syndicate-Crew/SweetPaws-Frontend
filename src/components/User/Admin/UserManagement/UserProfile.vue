@@ -1,11 +1,14 @@
 <template>
-    <b-container class="container-main">
-        <b-col class="col">
-            <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
-            <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <Info :id="id" :name="name" :email="email" :phone="phone" :url="url" />
-        </b-col>
-    </b-container>
+    <div>
+        <h2 class="w-100 header">User Management</h2>
+        <b-container class="container-main">
+            <b-col class="col">
+                <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
+                <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
+                <Info :id="id" :name="name" :email="email" :phone="phone" :url="url" />
+            </b-col>
+        </b-container>
+    </div>
 </template>
 
 <style scoped>
@@ -15,6 +18,14 @@
   border-radius: 33px;
   overflow: hidden;
   padding: 0px 70px;
+}
+
+.header{
+    padding: 20px 0px;
+    font-weight: 700;
+    font-size: 40px;
+    background: #6504B5;
+    color: white;
 }
 
 .col {
@@ -32,16 +43,6 @@
     font-size: 40px;
 
 
-}
-
-.container-sub {
-    margin: 0px auto;
-    margin-bottom: 56px;
-    background: #FFFCFC;
-    box-shadow: 0px 0px 20px 5px rgba(105, 105, 105, 0.15);
-    border-radius: 26px;
-    width: fit-content;
-    padding: 50px 150px;
 }
 
 .tab-button-wrapper {
