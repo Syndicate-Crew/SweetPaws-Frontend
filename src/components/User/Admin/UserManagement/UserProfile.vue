@@ -33,8 +33,8 @@
 }
 
 .profile-img {
-    height: 276px;
-    width: 276px;
+    height: 400px;
+    width: 400px;
     margin-top: 60px;
 }
 
