@@ -424,9 +424,17 @@ export default {
 		},
 	},
 	mounted() {
-		
-		axios
-			.get(`http://localhost:5000/api/user/${this.id}`)
+		if (localStorage.getItem("sweet-token-admin") == null)	{
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "User authentication failed! Please sign in",
+			});
+
+			this.$router.push('/Admin/SignIn');
+		} else {
+			
+			axios.get(`http://localhost:5000/api/user/${this.id}`)
 			.then((result) => {
 				console.log(result.data);
 				this.user.email = result.data.result.email;
@@ -442,6 +450,7 @@ export default {
 			.catch((err) => {
 				console.log(err);
 			});
+		}
 	},
 	methods: {
 		handleSubmitInfo() {
@@ -452,19 +461,12 @@ export default {
 				return;
 			} else {
 				const form = {
-					id: this.id,
 					email: this.user.email,
 					name: this.user.name,
 					phone: this.user.phone,
 				};
 
-				const config = {
-					headers: {
-						"swt-token-admin": this.token,
-					},
-				};
-
-				this.axios.put("http://localhost:5000/api/admin/userInfoUpdate", form, config)
+				this.axios.put(`http://localhost:5000/api/admin/updateUserInfo/${this.id}`, form)
 				.then((result) => {
 					if (result.data.status == "successful") {
 						Swal.fire({
@@ -475,27 +477,20 @@ export default {
                         });
 						this.$router.go(0);
 					} else {
-						// alert("Wrong email or passowrd, try again");
+
 						console.log("gg");
 					}
 				})
 				.catch((err) => {
-					// alert("An error occured" + JSON.stringify(err))
 					console.log(err);
 				});
 			}
 		},
 		handleImageUpload() {
-			// check if
 			if (this.imageUpload.image != null) {
 				const form = new FormData();
+				
 				form.append("image", this.imageUpload.image);
-
-				const config = {
-					headers: {
-						"swt-token": this.token,
-					},
-				};
 
 				Swal.fire({
 					title: "Are you sure?",
@@ -507,7 +502,7 @@ export default {
 					confirmButtonText: "Yes, Change it!",
 				}).then((res) => {
 					if (res.isConfirmed) {
-						this.axios.put("http://localhost:5000/api/user/imageUpdate", form, config)
+						this.axios.put(`http://localhost:5000/api/admin/updateUserImage/${this.id}`, form)
 						.then((result) => {
 							if (result.data.status == "successful") {
 								Swal.fire(
@@ -525,7 +520,6 @@ export default {
 							}
 						})
 						.catch((err) => {
-							// alert("An error occured" + JSON.stringify(err))
 							Swal.fire({
 								icon: "error",
 								title: "Oops...",
@@ -558,11 +552,6 @@ export default {
 				const form = {
 					password: this.changePassword.password,
 				};
-				const config = {
-					headers: {
-						"swt-token": this.token,
-					},
-				};
 
 				Swal.fire({
 					title: "Are you sure?",
@@ -574,36 +563,31 @@ export default {
 					confirmButtonText: "Yes, Change it!",
 				}).then((result) => {
 					if (result.isConfirmed) {
-						this.axios
-							.put(
-								"http://localhost:5000/api/user/passwordUpdate",
-								form,
-								config
-							)
-							.then((res) => {
-								if (res.data.status == "successful") {
-									Swal.fire(
-										"Update!",
-										"Your password has been Changed.",
-										"success"
-									);
-									this.$router.push("/SignIn");
-								} else {
-									Swal.fire({
-										icon: "error",
-										title: "Oops...",
-										text: "Something went wrong!",
-									});
-								}
-							})
-							.catch((err) => {
+						this.axios.put(`http://localhost:5000/api/admin/updateUserPassword/${this.id}`,form)
+						.then((res) => {
+							if (res.data.status == "successful") {
+								Swal.fire(
+									"Update!",
+									"Your password has been Changed.",
+									"success"
+								);
+								this.$router.push("/SignIn");
+							} else {
 								Swal.fire({
 									icon: "error",
 									title: "Oops...",
 									text: "Something went wrong!",
 								});
-								console.log(err);
+							}
+						})
+						.catch((err) => {
+							Swal.fire({
+								icon: "error",
+								title: "Oops...",
+								text: "Something went wrong!",
 							});
+							console.log(err);
+						});
 					}
 				});
 			}
