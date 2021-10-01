@@ -167,7 +167,10 @@ export default {
     download() {
       const doc = new jsPDF();
       doc.text(
-        "Daycare Registration Receipt of " + this.profileData.pet,
+        "Daycare Registration Receipt of " +
+          this.profileData.pet +
+          "    Date " +
+          this.currentDate(),
         10,
         10
       );
@@ -182,6 +185,12 @@ export default {
       });
 
       doc.save("Daycare-receipt.pdf");
+    },
+    currentDate() {
+      const current = new Date();
+      const date = `${current.getDate()}/${current.getMonth() +
+        1}/${current.getFullYear()}`;
+      return date;
     },
   },
   mounted() {
