@@ -315,6 +315,7 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 import axios from "axios";
 import Vue from "vue";
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -364,6 +365,7 @@ export default {
 					})
 					.catch((err) => {
 						alert("Error occured, Failed verification");
+						console.log(err)
 						return;
 					});
 
@@ -383,15 +385,29 @@ export default {
 						.post("http://localhost:5000/api/user/SignUp", form)
 						.then((result) => {
 							if (result.data.status == "successful") {
-								alert("Signed in ");
+								Swal.fire({
+									title: "Signed in",
+									text: "Form Submission Success",
+									icon: "success",
+									confirmButtonText: "Proceed",
+								});
 								localStorage.setItem("sweet-token", result.data.token);
 								this.$router.push("/UserProfile");
 							} else {
-								alert("Wrong email or passowrd, try again");
+								Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'Wrong email or passowrd, try again',
+								})
 							}
 						})
 						.catch((err) => {
-							alert("An error occured" + JSON.stringify(err));
+							console.log(err)
+							Swal.fire({
+									icon: 'error',
+									title: 'Oops...',
+									text: 'An error occured',
+								})
 						});
 				}
 			}

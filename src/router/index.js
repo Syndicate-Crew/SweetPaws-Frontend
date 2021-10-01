@@ -194,10 +194,15 @@ const routes = [
         component: () => import('../views/User/UserManagement.vue')
     },
     {
-        path: "/UserManagement/UserProfile",
+        path: "/UserManagement/UserProfile/:id",
         name: "UserProfileAdmin",
-        component: () => import('../views/User/UserProfileAdmin.vue')
-    }
+        component: () => import('../views/Admin/UserView.vue')
+    },
+    {
+        path: "/Admin/SignIn",
+        name: "AdminSignIn",
+        component: () => import('../views/Admin/SignInView.vue')
+    },
 ]
 
 const router = new VueRouter({
