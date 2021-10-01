@@ -109,7 +109,7 @@
             <div class="row p-2 d-flex justify-content-center">
               <router-link
                 :to="{
-                  name: 'Home',
+                  name: 'daycare-packs',
                 }"
               >
                 <button type="button" class="w-75 btn btn-outline-success">
