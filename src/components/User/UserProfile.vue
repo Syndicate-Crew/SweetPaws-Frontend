@@ -1,13 +1,13 @@
 <template>
     <b-container class="container-main">
         <b-col class="links" style="width: fit-content;margin: 30px 5px;padding: 5px 20px;border: 2px solid #171859;border-radius: 8px">
-            <router-link :to="{ path: '/dogdisplay' }">Dog Display</router-link>
-            <router-link :to="{ path: '/catdisplay' }">Cat Display</router-link>
-            <router-link :to="{ path: '/daycare-packs' }">Daycare packs</router-link>
-            <router-link :to="{ path: '/daycare-receipt' }">Daycare receipt</router-link>
-            <router-link :to="{ path: '/daycare-reg' }">Daycare reg</router-link>
-            <router-link :to="{ path: '/daycare-update' }">Daycare-update</router-link>
-            <router-link :to="{ path: '/daycare-confirm' }">Daycare-confirm</router-link>
+            <p><router-link :to="{ path: '/dogdisplay' }">Dog Display</router-link></p>
+            <p><router-link :to="{ path: '/catdisplay' }">Cat Display</router-link></p>
+            <p><router-link :to="{ path: '/daycare-packs' }">Daycare packs</router-link></p>
+            <p><router-link :to="{ path: '/daycare-receipt' }">Daycare receipt</router-link></p>
+            <p><router-link :to="{ path: '/daycare-reg' }">Daycare reg</router-link></p>
+            <p><router-link :to="{ path: '/daycare-update' }">Daycare-update</router-link></p>
+            <p><router-link :to="{ path: '/daycare-confirm' }">Daycare-confirm</router-link></p>
         </b-col>
         <b-col class="col">
             <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
