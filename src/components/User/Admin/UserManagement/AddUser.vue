@@ -253,7 +253,7 @@ export default {
                             "success"
                         );
                         localStorage.setItem("sweet-token", result.data.token)
-                        this.$router.push('/UserManagement')
+                        this.$router.go(0)
                     } else {
                         Swal.fire({
                             icon: "error",

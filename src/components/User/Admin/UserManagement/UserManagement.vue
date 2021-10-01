@@ -1,5 +1,11 @@
 <template>
     <b-container fluid class="main-container">
+        <b-col class="links" style="width: fit-content;margin: 30px 5px;padding: 5px 20px;border: 2px solid #171859;border-radius: 8px">
+            <p><router-link :to="{ path: '/petdisplay' }">Pet Display</router-link></p>
+            <p><router-link :to="{ path: '/dogcreate' }">Dog Create</router-link></p>
+            <p><router-link :to="{ path: '/catcreate' }">Cat Create</router-link></p>
+            <p><router-link :to="{ path: '/daycare-details' }">Daycare Details</router-link></p>
+        </b-col>
         <b-col class="main-wrapper-col">
             <div class="page-title">User Management</div>
             <div class="tab-container">

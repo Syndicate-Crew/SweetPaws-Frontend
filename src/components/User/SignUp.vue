@@ -161,7 +161,7 @@
 				</b-row>
 				<b-row class="form-actions">
 					<button class="form-btn" @click.prevent="reset">Reset</button>
-					<button class="form-btn" style="background: #5F30E2;color: white">
+					<button class="form-btn" @click.prevent="handleSubmit" style="background: #5F30E2;color: white">
 						Submit
 					</button>
 				</b-row>
@@ -355,26 +355,7 @@ export default {
 					: alert("FIx the invalid fields");
 				return;
 			} else {
-				var emailStatus = "";
-				this.axios
-					.post("http://localhost:5000/api/user/checkUser", {
-						email: this.user.email,
-					})
-					.then((res) => {
-						emailStatus = res.data.result;
-					})
-					.catch((err) => {
-						alert("Error occured, Failed verification");
-						console.log(err)
-						return;
-					});
-
-				if (emailStatus == "exists") {
-					alert(
-						"A user already exists with this email. Please try with a different email"
-					);
-				} else if (emailStatus == "available") {
-					const form = new FormData();
+				const form = new FormData();
 					form.append("email", this.user.email);
 					form.append("password", this.user.password);
 					form.append("name", this.user.name);
@@ -409,7 +390,6 @@ export default {
 									text: 'An error occured',
 								})
 						});
-				}
 			}
 		},
 		togglePasswordType() {

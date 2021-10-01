@@ -12,6 +12,7 @@
 			<input type="text" v-model="query" id="showPassword" class="option-items"/>
 			<button class="search-controls option-items" @click="handleSearch" id="search-buttons">Search</button>
 			<button class="search-controls option-items" @click="handleClear" id="search-clear-buttons">Clear search</button>
+			<button class="search-controls option-items" @click="handleDownload" id="search-clear-buttons">Download PDF</button>
 		</div>
 		<div v-for="(user,i) in users" :key="i">
 			<ListItem :username="user.name" :id="user._id" :joined="user.joined" :image="user.image"/>
@@ -57,6 +58,11 @@
 <script>
 import ListItem from "./ListItem.vue";
 import Swal from "sweetalert2";
+import jsPDF from "jspdf";
+import Vue from "vue";
+import autotable from "jspdf-autotable";
+
+Vue.use(jsPDF)
 export default {
 	name: "UserListContainer",
 	data: function() {
@@ -110,6 +116,34 @@ export default {
 				console.log(err);
 				alert("An error occured please try again");
 			});
+		},
+		handleDownload() {
+			var list = [{
+					"name": "User name",
+					"joined": "Joined date",
+					"email": "E mail",
+					"phone": "Contact number"
+				},{
+					"name": " ",
+					"joined": " ",
+					"email": " ",
+					"phone": " "
+				}];
+			this.users.map(element => {
+				list.push({
+					"name": element.name,
+					"joined": element.joined,
+					"email": element.email,
+					"phone": element.phone
+				});
+			})
+
+			var doc = new jsPDF('p', 'pt');
+			doc.text('User list', 30, 20)
+			autotable(doc, {
+				body: list
+			})
+			doc.save('Userlist.pdf');
 		}
 	},
 	mounted() {
