@@ -4,11 +4,34 @@
     <div class="row p-5">
       <div class="col">
         <div class="dog-image h-75 w-75 mt-5">
-          <div class="position-relative top-50 start-50 translate-middle">
-            <label for="file-upload" class="custom-file-upload">
-              <i class="bi bi-upload"></i>
-            </label>
-            <input id="file-upload" type="file" accept="image/*" multiple />
+          <div
+            class="
+              position-relative
+              top-50
+              start-50
+              translate-middle
+              form-image-container
+            "
+          >
+            <img
+              class="w-100 h-100 p-3 overlay-background"
+              src="../../../assets/white.jpg"
+              id="image-id"
+              alt=""
+            />
+            <div class="position-absolute top-50 start-50 translate-middle">
+              <label for="file-upload" class="custom-file-upload">
+                <i class="bi bi-upload"></i>
+              </label>
+
+              <input
+                id="file-upload"
+                accept="image/png, image/gif, image/jpeg"
+                @change="previewImage"
+                multiple="false"
+                type="file"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -142,10 +165,10 @@
               />
               <datalist id="dog-color-list">
                 <option value="White"></option>
-                  <option value="Black"></option>
-                  <option value="Brown"></option>
-                  <option value="Gold"></option>
-                  <option value="Golden Brown"></option>
+                <option value="Black"></option>
+                <option value="Brown"></option>
+                <option value="Gold"></option>
+                <option value="Golden Brown"></option>
               </datalist>
             </div>
             <div class="mb-3">
@@ -191,18 +214,35 @@ export default {
         coatLength: null,
         color: null,
         about: null,
+        image: null,
       },
     };
   },
   methods: {
+    previewImage(e) {
+      const file = e.target.files[0];
+      document.getElementById("image-id").src = URL.createObjectURL(file);
+      this.image = file;
+    },
     postData(e) {
-      console.log(this.dog);
-      this.axios
-        .post("http://localhost:5000/api/dog/", this.dog)
-        .then((result) => {
-          console.warn(result);
-          this.$router.push("petdisplay");
-        });
+      const form = new FormData();
+      form.append("name", this.dog.name);
+      form.append("breed", this.dog.breed);
+      form.append("age", this.dog.age);
+      form.append("size", this.dog.size);
+      form.append("gender", this.dog.gender);
+      form.append("goodWith", this.dog.goodWith);
+      form.append("careBehaviour", this.dog.careBehaviour);
+      form.append("coatLength", this.dog.coatLength);
+      form.append("color", this.dog.color);
+      form.append("about", this.dog.about);
+      form.append("image", this.image);
+
+      this.axios.post("http://localhost:5000/api/dog/", form).then((result) => {
+        console.warn(form);
+        console.warn(result);
+        this.$router.push("petdisplay");
+      });
       e.preventDefault();
     },
   },

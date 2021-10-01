@@ -104,7 +104,7 @@
           <!-- Display Card -->
           <div class="col mb-5" v-for="cat in filteredCat" v-bind:key="cat.id">
             <div class="card">
-              <img src="../../../assets/dog.jpeg" alt="" class="card-image" />
+              <img :src="url + cat.image" alt="" class="card-image" />
               <div class="card-body">
                 <h5 class="card-title">{{ cat.name }}</h5>
                 <p class="card-text">{{ cat.breed }}</p>
@@ -137,12 +137,16 @@ export default {
       careBehaviour: "",
       coatLength: "",
       color: "",
+      image: "",
+      url: "",
     };
   },
   methods: {
     getCat() {
       Vue.axios.get("http://localhost:5000/api/cat/").then((res) => {
         this.list = res.data.results;
+        this.url = `http://localhost:5000/api/public/cat-pictures/`;
+        console.log(this.list);
       });
     },
   },

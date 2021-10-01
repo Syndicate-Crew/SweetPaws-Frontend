@@ -6,6 +6,9 @@
         <h3>Pet Management</h3>
         <a href="/petdisplay">Pet Display</a>
         <br />
+        <h5 class="mt-2">Breed Management</h5>
+        <a href="/breeddisplay">Breed Display</a>
+        <br />
         <h5 class="mt-2">Dog Management</h5>
         <a href="/dogdisplay">Dog Display</a>
         <br />

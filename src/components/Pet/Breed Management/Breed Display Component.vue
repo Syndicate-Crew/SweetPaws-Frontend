@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div class="pet-management-container container-fluid">
-      <h2 class="heading text-start mt-5 p-5 pb-0">Pet Management</h2>
+    <div class="container-fluid">
+      <h2 class="heading text-start mt-5 p-5 pb-0">Breed Management</h2>
       <div class="p-5">
         <b-tabs content-class="mt-3">
           <!-- Dog List Tab -->
-          <b-tab title="Dog List" active>
+          <b-tab title="Dog Breeds" active>
             <div class="row">
               <div class="col">
                 <div class="row">
@@ -38,41 +38,35 @@
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <button
-                  type="button"
-                  class="w-75 btn btn-outline-primary"
-                  @click="generateDogReport"
-                >
-                  Generate Report
-                </button>
-              </div>
             </div>
             <div class="table-display pb-5 pt-2">
               <!-- Detail Row -->
               <div class="container">
                 <div
                   class="row border rounded-pill mb-2"
-                  v-for="dog in filteredDog"
-                  v-bind:key="dog.id"
+                  v-for="dogBreed in filteredDogBreed"
+                  v-bind:key="dogBreed.id"
                 >
                   <div class="col-md">
-                    <img :src="urlDog + dog.image" alt="" />
+                    <img src="" alt="" />
                   </div>
                   <div class="col-md-7 text-start">
-                    <p class="mb-0 fw-bold">{{ dog.name }}</p>
-                    <small>{{ dog.breed }}</small>
+                    <p class="mb-0 fw-bold">{{ dogBreed.name }}</p>
+                    <small>{{ dogBreed.breed }}</small>
                   </div>
                   <div class="col edit-btn">
                     <router-link
-                      :to="{ name: 'dogupdate', params: { id: dog._id } }"
+                      :to="{
+                        name: 'dogbreedupdate',
+                        params: { id: dogBreed._id },
+                      }"
                     >
                       <i class="bi bi-pencil-square pointer"></i>
                     </router-link>
                   </div>
                   <div class="col delete-btn">
                     <i
-                      v-on:click="deleteDog(dog._id)"
+                      v-on:click="deleteDogBreed(dogBreed._id)"
                       class="bi bi-trash-fill pointer"
                     ></i>
                   </div>
@@ -82,7 +76,7 @@
             </div>
           </b-tab>
           <!-- Cat List Tab -->
-          <b-tab title="Cat List">
+          <b-tab title="Cat Breeds">
             <div class="row">
               <div class="col">
                 <div class="row">
@@ -115,41 +109,35 @@
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <button
-                  type="button"
-                  class="w-75 btn btn-outline-primary"
-                  @click="generateCatReport"
-                >
-                  Generate Report
-                </button>
-              </div>
             </div>
             <div class="table-display pb-5 pt-2">
               <!-- Detail Row -->
               <div class="container">
                 <div
                   class="row border rounded-pill mb-2"
-                  v-for="cat in filteredCat"
-                  v-bind:key="cat.id"
+                  v-for="catBreed in filteredCatBreed"
+                  v-bind:key="catBreed.id"
                 >
                   <div class="col-md">
-                    <img :src="urlCat + cat.image" alt="" />
+                    <img src="" alt="" />
                   </div>
                   <div class="col-md-7 text-start">
-                    <p class="mb-0 fw-bold">{{ cat.name }}</p>
-                    <small>{{ cat.breed }}</small>
+                    <p class="mb-0 fw-bold">{{ catBreed.name }}</p>
+                    <small>{{ catBreed.breed }}</small>
                   </div>
                   <div class="col edit-btn">
                     <router-link
-                      :to="{ name: 'catupdate', params: { id: cat._id } }"
+                      :to="{
+                        name: 'catbreedupdate',
+                        params: { id: catBreed._id },
+                      }"
                     >
                       <i class="bi bi-pencil-square pointer"></i>
                     </router-link>
                   </div>
                   <div class="col delete-btn">
                     <i
-                      v-on:click="deleteCat(cat._id)"
+                      v-on:click="deleteCat(catBreed._id)"
                       class="bi bi-trash-fill pointer"
                     ></i>
                   </div>
@@ -167,108 +155,44 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import jsPDF from "jspdf";
-import autotable from "jspdf-autotable";
 Vue.use(VueAxios, axios);
 
 export default {
   name: "petdisplaycomponent",
   data() {
     return {
-      listCat: [],
-      listDog: [],
-      dog: [],
+      listCatBreed: [],
+      listDogBreed: [],
       name: "",
-      breed: "",
-      age: "",
-      size: "",
-      gender: "",
-      goodWith: "",
-      careBehaviour: "",
-      coatLength: "",
-      color: "",
-      about: "",
-      image: "",
-      urlDog: "",
-      urlCat: "",
     };
   },
   methods: {
     // Dog Methods
-    async getDog() {
-      await Vue.axios.get("http://localhost:5000/api/dog/").then((res) => {
+    getDogBreed() {
+      Vue.axios.get("http://localhost:5000/api/dog/").then((res) => {
         this.listDog = res.data.results;
-        this.urlDog = `http://localhost:5000/api/public/dog-pictures/`;
       });
     },
-    deleteDog(_id) {
+    deleteDogBreed(_id) {
       this.axios.delete("http://localhost:5000/api/dog/" + _id).then(() => {
         this.getDog();
       });
     },
     // Cat Methods
-    async getCat() {
-      await Vue.axios.get("http://localhost:5000/api/cat/").then((res) => {
+    getCatBreed() {
+      Vue.axios.get("http://localhost:5000/api/cat/").then((res) => {
         this.listCat = res.data.results;
-        this.urlCat = `http://localhost:5000/api/public/cat-pictures/`;
       });
     },
-    deleteCat(_id) {
+    deleteCatBreed(_id) {
       this.axios.delete("http://localhost:5000/api/cat/" + _id).then(() => {
         this.getCat();
       });
     },
-    generateDogReport() {
-      var list = [];
-      this.listDog.map((element) => {
-        list.push({
-          name: element.name,
-          breed: element.breed,
-          age: element.age,
-          size: element.size,
-          gender: element.gender,
-          goodWith: element.goodWith,
-          careBehaviour: element.careBehaviour,
-          coatLength: element.coatLength,
-          color: element.color,
-          about: element.about,
-        });
-      });
-      var doc = new jsPDF("p", "pt");
-      doc.text("Dog Report", 30, 20);
-      autotable(doc, {
-        body: list,
-      });
-      doc.save("DogReport.pdf");
-    },
-    generateCatReport() {
-      var list = [];
-      this.listCat.map((element) => {
-        list.push({
-          name: element.name,
-          breed: element.breed,
-          age: element.age,
-          size: element.size,
-          gender: element.gender,
-          goodWith: element.goodWith,
-          careBehaviour: element.careBehaviour,
-          coatLength: element.coatLength,
-          color: element.color,
-          about: element.about,
-        });
-      });
-      var doc = new jsPDF("p", "pt");
-      doc.text("Cat Report", 30, 20);
-      autotable(doc, {
-        body: list,
-      });
-      doc.save("CatReport.pdf");
-    },
   },
-
   mounted() {
-    this.getDog();
-    this.getCat();
+    this.getDogBreed();
+    this.getCatBreed();
   },
   computed: {
     filteredCat: function () {
@@ -288,7 +212,7 @@ export default {
 html {
   background-color: #efeef1;
 }
-.pet-management-container {
+.container-fluid {
   width: 90%;
   top: 155px;
   background: #ffffff;

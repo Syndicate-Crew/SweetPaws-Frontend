@@ -7,9 +7,14 @@ const routes = [
 
     {
         path: "/",
-        name: "Home",
-        component: () => import( /* webpackChunkName: "home" */ '../views/Home/Home.vue')
+        name: 'dogdisplay',
+        component: () => import('../views/Pet/Dog Management/Dog Display.vue')
     },
+    // {
+    //     path: "/",
+    //     name: "Home",
+    //     component: () => import( /* webpackChunkName: "home" */ '../views/Home/Home.vue')
+    // },
     {
         path: "/daycare-reg",
         name: "daycare-reg",
