@@ -3,21 +3,27 @@
         <b-col class="col">
             <b-img center class="profile-img" :src="url" rounded="circle"  alt="Profile picture"></b-img>
             <p class="text-center w-100 fw-bold text-name" >{{name}}</p>
-            <TabWrapper>
-                <Tab title="Info"><Info /></Tab>
-                <Tab title="Pets"><Pets /></Tab>
-            </TabWrapper>
+            <hr class="rounded">
+            <Info />
         </b-col>
     </b-container>
 </template>
 
 <style scoped>
+hr.rounded {
+    width: 60vw;
+    border-top: 4px solid #6504b518;
+    border-radius: 5px;
+    margin: 40px auto 40px;
+}
+
 .container-main {
   background-color: white;
   margin: 26px 142px; 
   border-radius: 33px;
   overflow: hidden;
   padding: 0px 70px;
+  box-shadow: 0px 0px 20px 5px #6504b518;
 }
 
 .col {
@@ -25,26 +31,21 @@
 }
 
 .profile-img {
-    height: 276px;
-    width: 276px;
+    height: 350px;
+    width: 350px;
     margin-top: 60px;
 }
 
 .text-name {
     margin: 26px 0px;
     font-size: 40px;
-    /*font-style: normal;
-    font-weight: 700;
-    line-height: 60px;
-    letter-spacing: 0em; */
-
 }
 
 .container-sub {
     margin: 0px auto;
     margin-bottom: 56px;
     background: #FFFCFC;
-    box-shadow: 0px 0px 20px 5px rgba(105, 105, 105, 0.15);
+    box-shadow: 0px 0px 20px 5px #6504B5;
     border-radius: 26px;
     width: fit-content;
     padding: 50px 150px;
@@ -75,14 +76,12 @@
 </style>
 
 <script setup>
-import Info from "./UserProfileTabs/Slots/Info.vue"
-import Pets from "./UserProfileTabs/Slots/Pets.vue"
-import TabWrapper from "./UserProfileTabs/TabWrapper.vue"
-import Tab from "./UserProfileTabs/Tab.vue"
+import Info from "./Info.vue"
 
 import axios from "axios";
 import Vue from "vue"
 import VueAxios from "vue-axios";
+import Swal from "sweetalert2";
 Vue.use(VueAxios, axios);
 
 export default {
@@ -97,27 +96,32 @@ export default {
         };
     },
     components: {
-        Info,
-        Pets,
-        TabWrapper,
-        Tab
+        Info
     },
     mounted() {
-        // this.token = localStorage.getItem("sweet-token");
-        // const config = {
-        //     headers: {
-        //         "swt-token": this.token
-        //     }
-        // }
-        // axios.post("http://localhost:5000/api/user/auth",null,config)
-        // .then(result=> {
-        //     this.name = result.data.name
-        //     this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
+        this.token = localStorage.getItem("sweet-token");
 
-        // })
-        // .catch(err => {
-        //     alert(err)
-        // })
+        if (this.token == null ) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+            });
+            this.$router.push("/SignIn");
+        }
+        const config = {
+            headers: {
+                "swt-token": this.token
+            }
+        }
+        axios.post("http://localhost:5000/api/user/auth",null,config)
+        .then(result=> {
+            this.name = result.data.name
+            this.url = `http://localhost:5000/api/public/profile_pictures/${result.data.image}`
+        })
+        .catch(err => {
+            alert(err)
+        })
     }
 }
 </script>
