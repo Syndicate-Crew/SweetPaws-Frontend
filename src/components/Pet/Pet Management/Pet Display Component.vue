@@ -20,7 +20,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-5"></div>
+              <div class="col-1"></div>
               <div class="col">
                 <div class="row text-start">
                   <div class="col p-0">
@@ -46,6 +46,13 @@
                 >
                   Generate Report
                 </button>
+              </div>
+              <div class="col">
+                <a href="/dogcreate">
+                  <button type="button" class="w-75 btn btn-outline-primary">
+                    Create Dog
+                  </button></a
+                >
               </div>
             </div>
             <div class="table-display pb-5 pt-2">
@@ -97,7 +104,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-5"></div>
+              <div class="col-1"></div>
               <div class="col">
                 <div class="row text-start">
                   <div class="col p-0">
@@ -123,6 +130,13 @@
                 >
                   Generate Report
                 </button>
+              </div>
+              <div class="col">
+                <a href="/catcreate">
+                  <button type="button" class="w-75 btn btn-outline-primary">
+                    Create Cat
+                  </button></a
+                >
               </div>
             </div>
             <div class="table-display pb-5 pt-2">

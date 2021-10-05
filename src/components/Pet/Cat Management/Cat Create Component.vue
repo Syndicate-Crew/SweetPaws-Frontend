@@ -37,7 +37,7 @@
                 class="form-control"
                 id="cat-name"
                 name="name"
-                v-model="cat.name"
+                v-model="cat.name" required
               />
             </div>
             <div class="mb-3">

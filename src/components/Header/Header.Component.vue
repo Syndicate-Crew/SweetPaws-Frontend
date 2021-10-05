@@ -4,13 +4,16 @@
       <div class="col-3">
         <a href="/"><h2 class="text-start ms-5 logo-text">Sweet Paws</h2></a>
       </div>
-      <div class="col-2 mt-3 nav-item">
-        <a href="#"><p>PETS</p></a>
+      <div class="col-1 mt-3 nav-item">
+        <a href="/dogdisplay"><p>DOGS</p></a>
       </div>
-      <div class="col-2 mt-3 nav-item">
+      <div class="col-1 mt-3 nav-item">
+        <a href="/catdisplay"><p>CATS</p></a>
+      </div>
+      <div class="col-1 mt-3 nav-item">
         <a href="/daycare-packs"><p>DAY CARE</p></a>
       </div>
-      <div class="col-2 mt-3 nav-item">
+      <div class="col-1 mt-3 nav-item">
         <a href="/ch_appointment"><p>VETERINARIAN</p></a>
       </div>
       <div class="col-1 mt-3 nav-item"></div>

@@ -45,7 +45,7 @@
                 class="form-control"
                 id="dog-name"
                 name="name"
-                v-model="dog.name"
+                v-model="dog.name" required
               />
             </div>
             <div class="mb-3">
