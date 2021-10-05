@@ -5,6 +5,8 @@
             <p><router-link :to="{ path: '/dogcreate' }">Dog Create</router-link></p>
             <p><router-link :to="{ path: '/catcreate' }">Cat Create</router-link></p>
             <p><router-link :to="{ path: '/daycare-details' }">Daycare Details</router-link></p>
+            <p><router-link :to="{ path: '/dogdisplay' }">Dog Display</router-link></p>
+            <p><router-link :to="{ path: '/catdisplay' }">Cat Display</router-link></p>
         </b-col>
         <b-col class="main-wrapper-col">
             <div class="page-title">User Management</div>
