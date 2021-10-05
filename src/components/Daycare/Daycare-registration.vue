@@ -5,9 +5,7 @@
       <div class="col">
         <div class="pet-image h-75 w-50 mt-4">
           <div class="position-relative top-50 start-50 translate-middle">
-            <label for="file-upload" class="custom-file-upload">
-              <i class="bi bi-upload"></i>
-            </label>
+            <img src="./Cautious dog-bro.png" class="w-50 " />
             <input id="file-upload" type="file" accept="image/*" multiple />
           </div>
         </div>

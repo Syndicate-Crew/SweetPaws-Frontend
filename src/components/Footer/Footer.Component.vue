@@ -5,7 +5,7 @@
         <a href="/"><h2 class="text-start ms-5 logo-text">Sweet Paws</h2></a>
       </div>
       <div class="col about-section">
-        <h3>About Sweet Paws</h3>
+        <h3>About Bus</h3>
         <p>About Us</p>
         <p>Contact Us</p>
         <p>FAQ</p>

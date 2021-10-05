@@ -21,7 +21,7 @@
             <div class="row">
               <div class="col-md-5 p-4 m-3">
                 <div class="card rounded border border-primary pet-image">
-                  This is image
+                  <img src="./Cautious dog-amico.png" />
                 </div>
               </div>
               <div class="col-md-6 m-3 p-3">
